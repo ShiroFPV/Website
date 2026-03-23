@@ -6,8 +6,7 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		// This line was causing the "adapterAuto" error. 
-		// Using adapter() fixes it for Cloudflare.
+		// We are using 'adapter' here, NOT 'adapterAuto'
 		adapter: adapter()
 	}
 };
