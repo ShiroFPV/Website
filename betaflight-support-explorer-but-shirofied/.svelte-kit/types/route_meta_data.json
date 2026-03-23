@@ -1,0 +1,33 @@
+{
+	"/": [
+		"src/routes/+layout.ts",
+		"src/routes/+layout.ts"
+	],
+	"/api/manufacturers": [
+		"src/routes/api/manufacturers/+server.ts"
+	],
+	"/api/manufacturers/[manufacturer]": [
+		"src/routes/api/manufacturers/[manufacturer]/+server.ts"
+	],
+	"/api/targets": [
+		"src/routes/api/targets/+server.ts"
+	],
+	"/api/target/[target]": [
+		"src/routes/api/target/[target]/+server.ts"
+	],
+	"/settings": [
+		"src/routes/+layout.ts"
+	],
+	"/targets": [
+		"src/routes/targets/+page.ts",
+		"src/routes/+layout.ts"
+	],
+	"/targets/[target]": [
+		"src/routes/targets/[target]/+page.ts",
+		"src/routes/+layout.ts"
+	],
+	"/[key]": [
+		"src/routes/[key]/+page.ts",
+		"src/routes/+layout.ts"
+	]
+}

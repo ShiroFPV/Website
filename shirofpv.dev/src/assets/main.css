@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-purple-deep text-white font-sans;
+    background:
+      radial-gradient(circle at 18% -10%, rgba(255, 185, 229, 0.22) 0%, rgba(255, 185, 229, 0) 45%),
+      radial-gradient(circle at 88% 0%, rgba(152, 226, 255, 0.2) 0%, rgba(152, 226, 255, 0) 48%),
+      linear-gradient(180deg, #1e1730 0%, #19142a 52%, #130f21 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 199, 232, 0.28);
+  }
+
+  .glass-nav {
+    background: rgba(24, 18, 39, 0.78);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 173, 218, 0.35);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #ffd0ea 0%, #9ee8ff 55%, #ffb4e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ffb4e0, #9ee8ff, #ffd0ea);
+    border-radius: 2px;
+  }
+
+  .btn-primary {
+    @apply px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold transition-all duration-300 min-h-[44px] flex items-center justify-center;
+    background: linear-gradient(135deg, #ffb9e4 0%, #8fe2ff 55%, #ffcbe9 100%);
+    background-size: 200% 200%;
+    color: #231733;
+  }
+
+  .btn-primary:hover {
+    background-position: right center;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 35px rgba(143, 226, 255, 0.35), 0 10px 28px rgba(255, 170, 221, 0.34);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .btn-outline {
+    @apply px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold transition-all duration-300 min-h-[44px] flex items-center justify-center;
+    border: 1px solid rgba(159, 224, 255, 0.56);
+    color: #ffd0ea;
+  }
+
+  .btn-outline:hover {
+    border-color: #ffb4df;
+    color: #9ee8ff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(157, 227, 255, 0.26), 0 10px 24px rgba(255, 180, 223, 0.24);
+  }
+
+  .btn-outline:active {
+    transform: translateY(0);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 24px rgba(255, 180, 224, 0.33);
+  }
+
+  .glow-pink {
+    box-shadow: 0 0 24px rgba(155, 226, 255, 0.34);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(155, 226, 255, 0.2), 0 0 0 1px rgba(255, 184, 225, 0.24);
+  }
+}
+
+@layer utilities {
+  .animate-gradient {
+    background-size: 300% 300%;
+    animation: gradientShift 8s ease infinite;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #161225;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #ffb8e3, #96e5ff);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #ffd4ec, #b0eeff);
+}
+
+/* Page transition animations */
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.35s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-16px);
+}
+
+/* Orb animations */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(92px);
+  opacity: 0.24;
+  animation: float 8s ease-in-out infinite;
+}
+
+.orb-purple {
+  background: radial-gradient(circle, #ffc0e6, #b4ecff);
+}
+
+.orb-pink {
+  background: radial-gradient(circle, #ffaadf, #ffd1ed);
+  animation-delay: -3s;
+}
+
+.orb-blue {
+  background: radial-gradient(circle, #9de8ff, #c7f6ff);
+  animation-delay: -6s;
+}
