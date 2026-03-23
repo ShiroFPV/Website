@@ -6,8 +6,11 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		// We are using 'adapter' here, NOT 'adapterAuto'
-		adapter: adapter()
+		adapter: adapter(),
+		// This section tells Vite what your shortcuts mean
+		alias: {
+			$components: 'src/components'
+		}
 	}
 };
 
