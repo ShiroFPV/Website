@@ -1,4 +1,4 @@
-import adapterAuto from "@sveltejs/adapter-auto"
+import adapter from '@sveltejs/adapter-cloudflare';
 import adapterCloudflare from "@sveltejs/adapter-cloudflare"
 import adapterNode from "@sveltejs/adapter-node"
 import adapterStatic from "@sveltejs/adapter-static"
