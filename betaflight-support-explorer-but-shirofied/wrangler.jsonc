@@ -1,4 +1,12 @@
-"assets": {
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "explorer",
+  "compatibility_date": "2026-03-23",
+  "assets": {
     "directory": ".svelte-kit/output/client",
     "not_found_handling": "single-page-application"
   },
+  "observability": {
+    "enabled": true
+  }
+}
