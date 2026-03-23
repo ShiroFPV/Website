@@ -6,7 +6,8 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		// This tells SvelteKit to use the Cloudflare adapter we imported on line 1
+		// This line was causing the "adapterAuto" error. 
+		// Using adapter() fixes it for Cloudflare.
 		adapter: adapter()
 	}
 };
