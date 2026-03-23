@@ -1,11 +1,7 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "shirofpvdev",
+  "name": "shirofpv-explorer",
   "compatibility_date": "2026-03-23",
-  "assets": {
-    "directory": "./dist",
-    "not_found_handling": "single-page-application"
-  },
+  "pages_build_output_dir": ".svelte-kit/output",
   "observability": {
     "enabled": true
   }
