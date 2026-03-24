@@ -4,7 +4,7 @@
 	import { Download, BookOpen, FileScan, Github } from "@steeze-ui/lucide-icons"
 	import { Accordion } from "@skeletonlabs/skeleton-svelte"
 	import { fly } from "svelte/transition"
-	import Ports from "$components/Ports.svelte"
+	import Ports from '../../components/Ports.svelte';
 	import Modes from "$components/Modes.svelte"
 	import ProblemDetector from "$components/ProblemDetector.svelte"
 	import { page } from "$app/state"

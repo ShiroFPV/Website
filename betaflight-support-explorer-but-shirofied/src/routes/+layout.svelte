@@ -1,6 +1,6 @@
 <script lang="ts">
 	import "../app.css"
-	import Nav from "$components/Nav.svelte"
+	import Nav from '../components/Nav.svelte';
 	import Footer from "$components/Footer.svelte"
 	import { Tooltip } from "bits-ui"
 	import { onMount } from "svelte"
