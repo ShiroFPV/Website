@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* 1. Define custom theme variables here so Tailwind generates the utilities */
+@theme {
+  --color-purple-deep: #1e1730;
+  --color-pink-soft: #ffd0ea;
+  --color-blue-soft: #9ee8ff;
+}
+
 @layer base {
   * {
     box-sizing: border-box;
@@ -10,7 +17,9 @@
   }
 
   body {
+    /* Fixed: Removed the '--' from the apply name */
     @apply bg-purple-deep text-white font-sans;
+    
     background:
       radial-gradient(circle at 18% -10%, rgba(255, 185, 229, 0.22) 0%, rgba(255, 185, 229, 0) 45%),
       radial-gradient(circle at 88% 0%, rgba(152, 226, 255, 0.2) 0%, rgba(152, 226, 255, 0) 48%),
@@ -170,4 +179,16 @@
 .orb-blue {
   background: radial-gradient(circle, #9de8ff, #c7f6ff);
   animation-delay: -6s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
