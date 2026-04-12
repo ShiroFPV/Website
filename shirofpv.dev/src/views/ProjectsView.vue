@@ -25,7 +25,6 @@ function selectTag(tag) {
   <div class="pt-24 pb-16">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <!-- Header -->
       <div class="text-center mb-8 sm:mb-12">
         <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm" style="color: #d7b7ff;">
           <span class="w-2 h-2 rounded-full" style="background: #7dd3ff;"></span>
@@ -39,7 +38,6 @@ function selectTag(tag) {
         </p>
       </div>
 
-      <!-- Tag filter -->
       <div class="flex flex-wrap gap-2 sm:gap-3 justify-center mb-8 sm:mb-10">
         <button
           class="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200"
@@ -65,7 +63,6 @@ function selectTag(tag) {
         </button>
       </div>
 
-      <!-- Project grid -->
       <Transition mode="out-in" name="page">
         <div
           :key="selectedTag"
@@ -79,7 +76,6 @@ function selectTag(tag) {
         </div>
       </Transition>
 
-      <!-- Empty state -->
       <div v-if="filteredProjects.length === 0" class="text-center py-16">
         <p class="text-gray-400">No projects match that filter.</p>
       </div>

@@ -49,14 +49,12 @@ import { generateConfigH } from '../data/configGenerator';
 const supportId = ref('');
 const output = ref('');
 const loading = ref(false);
-const apiOnline = ref(false); // Status LED state
+const apiOnline = ref(false);
 const meta = reactive({ boardName: '', manufacturerId: '' });
 
-// Heartbeat check to see if your Worker is alive
 const checkStatus = async () => {
   try {
     const res = await fetch('https://api.shirofpv.dev/');
-    // If we get a response (even a 400), the worker is powered on
     apiOnline.value = res.status !== 404; 
   } catch {
     apiOnline.value = false;

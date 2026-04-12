@@ -47,7 +47,6 @@ const timeline = [
   <div class="pt-24 pb-16">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <!-- Hero -->
       <div class="text-center mb-12 sm:mb-16">
         <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm" style="color: #d7b7ff;">
           <span class="w-2 h-2 rounded-full" style="background: #ff8fd4;"></span>
@@ -61,10 +60,8 @@ const timeline = [
         </p>
       </div>
 
-      <!-- Bio card -->
       <div class="glass-card rounded-2xl p-4 sm:p-6 md:p-8 mb-10 sm:mb-12">
         <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
-          <!-- Avatar placeholder -->
           <div class="flex justify-center">
             <div
               class="w-40 sm:w-48 h-40 sm:h-48 rounded-full flex items-center justify-center text-4xl sm:text-6xl"
@@ -74,7 +71,6 @@ const timeline = [
             </div>
           </div>
 
-          <!-- Bio text -->
           <div>
             <h2 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">The Story</h2>
             <p class="text-sm sm:text-base text-gray-300 leading-relaxed mb-3 sm:mb-4">
@@ -87,7 +83,6 @@ const timeline = [
         </div>
       </div>
 
-      <!-- Skills -->
       <div class="mb-12 sm:mb-16">
         <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-6 text-center">
           Skills &amp; <span class="gradient-text">Technologies</span>
@@ -102,13 +97,11 @@ const timeline = [
         </div>
       </div>
 
-      <!-- Timeline -->
       <div>
         <h2 class="text-2xl sm:text-3xl font-bold text-white mb-10 text-center">
           The <span class="gradient-text">Journey</span>
         </h2>
         <div class="relative">
-          <!-- Timeline line -->
           <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px" style="background: linear-gradient(to bottom, #b48bff, #ff8fd4, #7dd3ff);"></div>
 
           <div class="space-y-8">
@@ -118,10 +111,8 @@ const timeline = [
               class="relative flex items-start gap-6"
               :class="index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'"
             >
-              <!-- Dot -->
               <div class="absolute left-4 md:left-1/2 w-3 h-3 rounded-full -translate-x-1.5 md:-translate-x-1.5 mt-1.5 z-10" style="background: linear-gradient(135deg, #b48bff, #ff8fd4);"></div>
 
-              <!-- Content -->
               <div class="ml-10 md:ml-0 md:w-5/12" :class="index % 2 === 0 ? 'md:mr-auto md:text-right md:pr-8' : 'md:ml-auto md:text-left md:pl-8'">
                 <div class="glass-card rounded-xl p-5">
                   <span class="text-sm font-bold" style="color: #d7b7ff;">{{ item.year }}</span>
