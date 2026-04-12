@@ -56,7 +56,7 @@ const timeline = [
           Hey, I'm <span class="gradient-text">ShiroFPV</span>
         </h1>
         <p class="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-          FPV pilot, open-source hardware designer, and microcontroller enthusiast. I design flight controllers, write (questionable) firmware, and share everything — because hoarding schematics is pointless.
+          FPV pilot, open-source hardware designer, and microcontroller enthusiast. I design flight controllers, break them, fix them, and then share everything — because hoarding schematics is pointless.
         </p>
       </div>
 
@@ -76,8 +76,11 @@ const timeline = [
             <p class="text-sm sm:text-base text-gray-300 leading-relaxed mb-3 sm:mb-4">
               I got into FPV drones and never looked back. What started as a hobby quickly turned into a passion for the hardware itself — understanding every chip, every trace, every millisecond of latency.
             </p>
-            <p class="text-sm sm:text-base text-gray-300 leading-relaxed">
+            <p class="text-sm sm:text-base text-gray-300 leading-relaxed mb-3 sm:mb-4">
               I design custom flight controllers using STM32 and AT32 microcontrollers, targeting Betaflight compatibility and open-source availability. The goal: high-performance hardware that every pilot can use, modify, and improve.
+            </p>
+            <p class="text-sm sm:text-base leading-relaxed" style="color: #c4a3e0;">
+              Also yes, I'm a femboy who designs flight controllers. The ESCs don't care, and honestly neither should you. 🏳️‍⚧️
             </p>
           </div>
         </div>
