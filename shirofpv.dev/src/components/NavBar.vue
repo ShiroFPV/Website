@@ -32,7 +32,6 @@ function closeMenu() {
   <nav class="glass-nav fixed top-0 left-0 right-0 z-50">
     <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
       <div class="flex items-center justify-between h-14 sm:h-16">
-        <!-- Logo -->
         <RouterLink to="/" class="flex items-center space-x-2 group" @click="closeMenu">
           <span class="text-lg sm:text-xl font-bold gradient-text">ShiroFPV</span>
         </RouterLink>
