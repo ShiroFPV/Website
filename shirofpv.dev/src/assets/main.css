@@ -158,11 +158,6 @@
   transform: translateY(-16px);
 }
 
-/* Orb animations — kept but hidden; orbs are not rendered */
-.orb {
-  display: none;
-}
-
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
