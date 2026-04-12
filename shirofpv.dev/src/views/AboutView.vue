@@ -56,7 +56,7 @@ const timeline = [
           Hey, I'm <span class="gradient-text">ShiroFPV</span>
         </h1>
         <p class="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-          FPV pilot, open-source hardware designer, and microcontroller enthusiast. I design flight controllers, write firmware, and share everything with the FPV community.
+          FPV pilot, open-source hardware designer, and microcontroller enthusiast. I design flight controllers, write (questionable) firmware, and share everything — because hoarding schematics is pointless.
         </p>
       </div>
 
@@ -85,7 +85,7 @@ const timeline = [
 
       <div class="mb-12 sm:mb-16">
         <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-6 text-center">
-          Skills &amp; <span class="gradient-text">Technologies</span>
+          What I <span class="gradient-text">Actually Know</span>
         </h2>
         <div class="flex flex-wrap gap-2 sm:gap-3 justify-center">
           <SkillBadge

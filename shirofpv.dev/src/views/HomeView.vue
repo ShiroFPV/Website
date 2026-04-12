@@ -15,10 +15,10 @@ const featuredProjects = projects.slice(0, 3)
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-8 sm:mb-12">
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-4">
-            Featured <span class="gradient-text">Projects</span>
+            Things I've <span class="gradient-text">Built</span>
           </h2>
           <p class="text-sm sm:text-base text-gray-400 max-w-xl mx-auto leading-relaxed">
-            Open-source hardware and firmware projects designed to push FPV performance forward.
+            FCs, firmware, tools — whatever I get obsessed with. Most of it actually works.
           </p>
         </div>
 
@@ -32,7 +32,7 @@ const featuredProjects = projects.slice(0, 3)
 
         <div class="text-center">
           <RouterLink to="/projects" class="btn-primary text-white inline-block">
-            See All Projects
+            See everything →
           </RouterLink>
         </div>
       </div>
@@ -47,11 +47,10 @@ const featuredProjects = projects.slice(0, 3)
             Who is <span class="gradient-text">ShiroFPV</span>?
           </h2>
           <p class="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed mb-6 sm:mb-8">
-            FPV pilot and open-source hardware designer passionate about trying to push the limits of flight controller development.
-            Designing custom PCBs with AT32 microcontroller and sharing it all with the community.
+            FPV pilot turned hardware nerd. I got into the hobby, got frustrated with what was available, and started designing my own stuff. AT32-based flight controllers, KiCad schematics, open-source everything — it's a whole thing.
           </p>
           <RouterLink to="/about" class="btn-outline inline-block">
-            Learn More
+            Read the backstory →
           </RouterLink>
         </div>
       </div>
