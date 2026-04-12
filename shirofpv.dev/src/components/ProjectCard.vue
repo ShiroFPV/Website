@@ -39,16 +39,13 @@ function getTagClass(tag) {
 
 <template>
   <article class="glass-card card-hover rounded-2xl overflow-hidden flex flex-col">
-    <!-- Image placeholder with gradient -->
     <div
       class="relative h-40 sm:h-44 flex items-center justify-center overflow-hidden"
       style="background: linear-gradient(135deg, rgba(180,139,255,0.15) 0%, rgba(255,143,212,0.15) 50%, rgba(191,233,255,0.12) 100%);"
     >
-      <!-- Decorative orbs in card -->
       <div class="absolute w-24 h-24 rounded-full opacity-20 blur-2xl" style="background: #b48bff; top: -10px; left: -10px;"></div>
       <div class="absolute w-16 h-16 rounded-full opacity-20 blur-2xl" style="background: #ff8fd4; bottom: -5px; right: -5px;"></div>
 
-      <!-- FC icon placeholder -->
       <div class="relative z-10 flex flex-col items-center gap-2">
         <svg class="w-10 sm:w-12 h-10 sm:h-12 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #d7b7ff;">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" />
@@ -57,12 +54,10 @@ function getTagClass(tag) {
       </div>
     </div>
 
-    <!-- Content -->
     <div class="p-4 sm:p-5 flex flex-col flex-1">
       <h3 class="text-base sm:text-lg font-bold text-white mb-2">{{ project.title }}</h3>
       <p class="text-gray-400 text-xs sm:text-sm leading-relaxed flex-1 mb-4">{{ project.description }}</p>
 
-      <!-- Tags -->
       <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4">
         <span
           v-for="tag in project.tags"
@@ -74,7 +69,6 @@ function getTagClass(tag) {
         </span>
       </div>
 
-      <!-- Link -->
       <a
         :href="project.link"
         target="_blank"

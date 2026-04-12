@@ -9,8 +9,9 @@ const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Projects', path: '/projects' },
-  { name: 'FC', path: '/flight-controller' },
-  { name: 'Config', path: '/config-gen' }, // <--- Add this
+  { name: 'Flight Controller', path: '/flight-controller' },
+  { name: 'Debugging', path: '/debugging' },
+  { name: 'Config', path: '/config-gen' },
   { name: 'Contact', path: '/contact' },
 ]
 
@@ -36,7 +37,6 @@ function closeMenu() {
           <span class="text-lg sm:text-xl font-bold gradient-text">ShiroFPV</span>
         </RouterLink>
 
-        <!-- Desktop Nav -->
         <div class="hidden md:flex items-center space-x-1">
           <RouterLink
             v-for="link in navLinks"
@@ -51,7 +51,6 @@ function closeMenu() {
           </RouterLink>
         </div>
 
-        <!-- Mobile hamburger -->
         <button
           class="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none"
           @click="toggleMenu"
@@ -73,7 +72,6 @@ function closeMenu() {
       </div>
     </div>
 
-    <!-- Mobile menu -->
     <Transition
       enter-active-class="transition-all duration-300 ease-out"
       enter-from-class="opacity-0 -translate-y-4"
@@ -110,4 +108,3 @@ function closeMenu() {
     </Transition>
   </nav>
 </template>
-<style scoped>  </style>

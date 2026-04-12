@@ -11,10 +11,8 @@ const featuredProjects = projects.slice(0, 3)
   <div>
     <HeroSection />
 
-    <!-- Featured section -->
     <section class="py-20 px-4 sm:px-6 lg:px-8">
       <div class="max-w-6xl mx-auto">
-        <!-- Section header -->
         <div class="text-center mb-8 sm:mb-12">
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-4">
             Featured <span class="gradient-text">Projects</span>
@@ -24,7 +22,6 @@ const featuredProjects = projects.slice(0, 3)
           </p>
         </div>
 
-        <!-- Project grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10">
           <ProjectCard
             v-for="project in featuredProjects"
@@ -41,7 +38,6 @@ const featuredProjects = projects.slice(0, 3)
       </div>
     </section>
 
-    <!-- About teaser -->
     <section class="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div class="absolute inset-0 opacity-5" style="background: linear-gradient(135deg, #b48bff, #ff8fd4, #7dd3ff); background-size: 300% 300%; animation: gradientShift 12s ease infinite;"></div>
 
