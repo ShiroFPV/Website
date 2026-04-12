@@ -1,14 +1,12 @@
 export const generateConfigH = (apiData, meta) => {
   const text = apiData.contents || "";
   
-  // Helper to find specific pins from the dump text
   const getPin = (resourceName) => {
     const regex = new RegExp(`resource\\s+${resourceName}\\s+([A-P]\\d+)`, 'i');
     const match = text.match(regex);
     return match ? match[1] : null;
   };
 
-  // 1. License & Header
   let lines = [
     "/*",
     " * This file is part of Betaflight. Free software under GPL v3.",
@@ -28,9 +26,7 @@ export const generateConfigH = (apiData, meta) => {
     ""
   ];
 
-  // 2. Gyro & Hardware Detection
   const gyroCS = getPin('GYRO_CS 1');
-  // Logic: If CS is on PB12/PB13/PB14/PB15, it's usually SPI2 on F405
   const gyroSpiInstance = gyroCS && gyroCS.startsWith('B') ? "2" : "1";
   
   lines.push(`#define USE_GYRO_SPI_ICM20602`); 
@@ -40,12 +36,10 @@ export const generateConfigH = (apiData, meta) => {
   lines.push(`#define GYRO_1_ALIGN         CW180_DEG`);
   lines.push("");
 
-  // 3. SPI Bus Mapping (Auto-detecting SCK/SDI/SDO)
   for (let i = 1; i <= 3; i++) {
     const sck = getPin(`SPI_SCK ${i}`);
     if (sck) {
       lines.push(`#define SPI${i}_SCK_PIN         P${sck}`);
-      // Check both MISO/MOSI and SDI/SDO naming conventions
       const sdi = getPin(`SPI_MISO ${i}`) || getPin(`SPI_SDI ${i}`);
       const sdo = getPin(`SPI_MOSI ${i}`) || getPin(`SPI_SDO ${i}`);
       if (sdi) lines.push(`#define SPI${i}_SDI_PIN         P${sdi}`);
@@ -54,7 +48,6 @@ export const generateConfigH = (apiData, meta) => {
   }
   lines.push("");
 
-  // 4. Flash & OSD SPI Instances
   const flashCS = getPin('FLASH_CS 1');
   if (flashCS) {
     lines.push(`#define FLASH_CS_PIN         P${flashCS}`);
@@ -68,7 +61,6 @@ export const generateConfigH = (apiData, meta) => {
   }
   lines.push("");
 
-  // 5. Power & ADC
   const vbat = getPin('ADC_BATT 1');
   if (vbat) lines.push(`#define ADC_VBAT_PIN         P${vbat}`);
   const rssi = getPin('ADC_RSSI 1');
@@ -77,7 +69,6 @@ export const generateConfigH = (apiData, meta) => {
   if (curr) lines.push(`#define ADC_CURR_PIN         P${curr}`);
   lines.push("");
 
-  // 6. UART Mapping
   for (let i = 1; i <= 6; i++) {
     const tx = getPin(`SERIAL_TX ${i}`);
     const rx = getPin(`SERIAL_RX ${i}`);
@@ -86,7 +77,6 @@ export const generateConfigH = (apiData, meta) => {
   }
   lines.push("");
 
-  // 7. Motor & Beeper
   const beeper = getPin('BEEPER 1');
   if (beeper) lines.push(`#define BEEPER_PIN           P${beeper}`);
   
@@ -95,18 +85,15 @@ export const generateConfigH = (apiData, meta) => {
     if (motor) lines.push(`#define MOTOR${i}_PIN           P${motor}`);
   }
 
-  // 8. Timer Mapping
   const timerMatches = [...text.matchAll(/timer\s+([A-P]\d+)\s+AF(\d+)/gi)];
   if (timerMatches.length > 0) {
     lines.push("\n#define TIMER_PIN_MAPPING \\");
     timerMatches.forEach((m, i) => {
       const isLast = i === timerMatches.length - 1;
-      // Format: index, pin, AF, DMA_Option (set to index as default)
       lines.push(`    TIMER_PIN_MAP(${i}, P${m[1]}, ${m[2]}, ${i})${isLast ? '' : ' \\'}`);
     });
   }
 
-  // 9. Final Defaults
   lines.push("");
   lines.push("#define DEFAULT_BLACKBOX_DEVICE         BLACKBOX_DEVICE_FLASH");
   lines.push("#define DEFAULT_VOLTAGE_METER_SOURCE    VOLTAGE_METER_ADC");
