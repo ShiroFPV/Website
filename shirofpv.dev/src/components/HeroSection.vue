@@ -11,20 +11,8 @@ onMounted(() => {
 
 <template>
   <section class="relative min-h-screen flex items-center overflow-hidden pt-16">
-    <div
-      class="absolute inset-0"
-      style="background: linear-gradient(135deg, #0d0916 0%, #160b26 25%, #1a0a2e 50%, #0d0916 75%, #0d0916 100%); background-size: 300% 300%; animation: gradientShift 10s ease infinite;"
-    ></div>
-
-    <div class="orb orb-purple w-96 h-96" style="top: 10%; left: 5%;"></div>
-    <div class="orb orb-pink w-72 h-72" style="bottom: 15%; right: 8%;"></div>
-    <div class="orb orb-blue w-64 h-64" style="top: 50%; left: 60%;"></div>
-    <div class="orb orb-purple w-48 h-48" style="bottom: 30%; left: 20%;"></div>
-
-    <div
-      class="absolute inset-0 opacity-5"
-      style="background-image: linear-gradient(rgba(180,139,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(180,139,255,0.3) 1px, transparent 1px); background-size: 50px 50px;"
-    ></div>
+    <div class="orb orb-purple w-[36rem] h-[36rem]" style="top: -5%; left: -4%; pointer-events: none;"></div>
+    <div class="orb orb-blue w-80 h-80" style="bottom: 8%; right: 6%; pointer-events: none;"></div>
 
     <div
       class="relative z-10 w-full px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto transition-all duration-700"

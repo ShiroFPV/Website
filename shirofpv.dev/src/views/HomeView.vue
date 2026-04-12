@@ -39,18 +39,16 @@ const featuredProjects = projects.slice(0, 3)
     </section>
 
     <section class="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div class="absolute inset-0 opacity-5" style="background: linear-gradient(135deg, #b48bff, #ff8fd4, #7dd3ff); background-size: 300% 300%; animation: gradientShift 12s ease infinite;"></div>
-
       <div class="max-w-4xl mx-auto text-center relative z-10">
         <div class="glass-card rounded-2xl p-6 sm:p-8 md:p-10">
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
-            Who is <span class="gradient-text">ShiroFPV</span>?
+            Who even <span class="gradient-text">is Shiro</span>?
           </h2>
           <p class="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed mb-6 sm:mb-8">
-            FPV pilot turned hardware nerd. I got into the hobby, got frustrated with what was available, and started designing my own stuff. AT32-based flight controllers, KiCad schematics, open-source everything — it's a whole thing.
+            FPV pilot turned hardware nerd. Got frustrated with what was out there, started making my own stuff. AT32 flight controllers, KiCad schematics, open-source everything — it escalated quickly.
           </p>
           <RouterLink to="/about" class="btn-outline inline-block">
-            Read the backstory →
+            The full story →
           </RouterLink>
         </div>
       </div>
