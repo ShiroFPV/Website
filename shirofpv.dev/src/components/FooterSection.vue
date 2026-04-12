@@ -33,7 +33,7 @@ const socials = [
           </div>
 
           <p class="text-gray-500 text-xs sm:text-sm">
-            © {{ year }} ShiroFPV. All rights reserved.
+            © {{ year }} ShiroFPV — built with Vue + stubbornness
           </p>
         </div>
       </div>
