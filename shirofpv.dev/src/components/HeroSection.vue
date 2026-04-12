@@ -11,8 +11,6 @@ onMounted(() => {
 
 <template>
   <section class="relative min-h-screen flex items-center overflow-hidden pt-16">
-    <div class="orb orb-purple w-[36rem] h-[36rem]" style="top: -5%; left: -4%; pointer-events: none;"></div>
-    <div class="orb orb-blue w-80 h-80" style="bottom: 8%; right: 6%; pointer-events: none;"></div>
 
     <div
       class="relative z-10 w-full px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto transition-all duration-700"
