@@ -1,10 +1,6 @@
-@import "tailwindcss";
-
-@theme {
-  --color-purple-deep: #1e1730;
-  --color-pink-soft: #ffd0ea;
-  --color-blue-soft: #9ee8ff;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   * {
