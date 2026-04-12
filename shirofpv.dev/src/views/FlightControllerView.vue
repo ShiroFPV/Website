@@ -109,8 +109,6 @@ const troubleshooting = [
         class="absolute inset-0 opacity-20"
         style="background: linear-gradient(135deg, #b48bff 0%, #ff8fd4 50%, #7dd3ff 100%);"
       ></div>
-      <div class="orb orb-purple w-72 h-72 absolute" style="top: -40px; right: 5%; opacity: 0.12;"></div>
-      <div class="orb orb-pink w-56 h-56 absolute" style="bottom: -20px; left: 10%; opacity: 0.1;"></div>
 
       <div class="relative z-10 max-w-6xl mx-auto">
         <div class="grid md:grid-cols-2 gap-10 items-center">
