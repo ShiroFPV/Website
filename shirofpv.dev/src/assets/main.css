@@ -10,10 +10,9 @@
   html {
     scroll-behavior: smooth;
   }
-
-  body {
-    @apply bg-purple-deep text-white font-sans;
-    
+    body {
+    @apply text-white font-sans;
+    background-color: #1e1730;
     background:
       radial-gradient(circle at 18% -10%, rgba(255, 185, 229, 0.22) 0%, rgba(255, 185, 229, 0) 45%),
       radial-gradient(circle at 88% 0%, rgba(152, 226, 255, 0.2) 0%, rgba(152, 226, 255, 0) 48%),
