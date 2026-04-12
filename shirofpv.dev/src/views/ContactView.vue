@@ -69,7 +69,6 @@ async function handleSubmit() {
   <div class="pt-24 pb-16">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <!-- Header -->
       <div class="text-center mb-8 sm:mb-12">
         <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm" style="color: #d7b7ff;">
           <span class="w-2 h-2 rounded-full" style="background: #ff8fd4;"></span>
@@ -85,7 +84,6 @@ async function handleSubmit() {
 
       <div class="grid md:grid-cols-2 gap-6 sm:gap-10">
 
-        <!-- Social links -->
         <div class="space-y-4">
           <h2 class="text-xl font-bold text-white mb-6">Find me online</h2>
           <a
@@ -112,7 +110,6 @@ async function handleSubmit() {
           </a>
         </div>
 
-        <!-- Contact form -->
         <div>
           <h2 class="text-xl font-bold text-white mb-6">Send a message</h2>
 

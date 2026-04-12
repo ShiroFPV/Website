@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* 1. Define custom theme variables here so Tailwind generates the utilities */
 @theme {
   --color-purple-deep: #1e1730;
   --color-pink-soft: #ffd0ea;
@@ -17,7 +16,6 @@
   }
 
   body {
-    /* Fixed: Removed the '--' from the apply name */
     @apply bg-purple-deep text-white font-sans;
     
     background:
