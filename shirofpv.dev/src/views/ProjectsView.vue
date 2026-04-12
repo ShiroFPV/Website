@@ -34,7 +34,7 @@ function selectTag(tag) {
           Open Source <span class="gradient-text">Projects</span>
         </h1>
         <p class="text-sm sm:text-base text-gray-400 max-w-xl mx-auto leading-relaxed">
-          Flight controllers, PCB designs, and firmware projects — all open source and freely available.
+          Flight controllers, PCB designs, and firmware — all open source and not going anywhere.
         </p>
       </div>
 

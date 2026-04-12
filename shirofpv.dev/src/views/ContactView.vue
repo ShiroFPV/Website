@@ -75,7 +75,7 @@ async function handleSubmit() {
           Get in Touch
         </div>
         <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-3 sm:mb-4">
-          Let's <span class="gradient-text">Connect</span>
+          Hit Me <span class="gradient-text">Up</span>
         </h1>
         <p class="text-sm sm:text-base text-gray-400 max-w-xl mx-auto leading-relaxed">
           Whether you want to collaborate on hardware projects, talk FPV, or just say hi — I'm always down to chat.
