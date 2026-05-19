@@ -476,6 +476,10 @@ const highlights = [
   --fc-pink-mid: rgba(255, 143, 212, 0.22);
   --fc-cyan: #7dd3ff;
   --fc-cyan-soft: rgba(125, 211, 255, 0.2);
+  --fc-board-size: 78%;
+  --fc-rotate-x: 18deg;
+  --fc-rotate-z: -18deg;
+  --fc-grid-size: 16px;
 }
 
 .fc-3d-shell {
@@ -485,13 +489,13 @@ const highlights = [
 
 .fc-board-3d {
   position: relative;
-  width: min(78%, 320px);
+  width: min(var(--fc-board-size), 320px); /* tuned so the full board stays visible at all hero breakpoints */
   aspect-ratio: 1;
   border-radius: 20px;
   background: linear-gradient(145deg, rgba(19, 21, 34, 0.95), rgba(11, 11, 22, 0.95));
   border: 1px solid rgba(125, 211, 255, 0.35);
   transform-style: preserve-3d;
-  transform: rotateX(18deg) rotateZ(-18deg);
+  transform: rotateX(var(--fc-rotate-x)) rotateZ(var(--fc-rotate-z));
   box-shadow: 0 30px 45px rgba(2, 3, 10, 0.55), inset 0 0 0 1px var(--fc-pink-mid);
   animation: fcTilt 7s ease-in-out infinite;
 }
@@ -500,7 +504,7 @@ const highlights = [
   position: absolute;
   inset: 12%;
   background-image: linear-gradient(rgba(125, 211, 255, 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(125, 211, 255, 0.12) 1px, transparent 1px);
-  background-size: 16px 16px;
+  background-size: var(--fc-grid-size) var(--fc-grid-size);
   transform: translateZ(2px);
 }
 
@@ -576,7 +580,7 @@ const highlights = [
 }
 
 @keyframes fcTilt {
-  0%, 100% { transform: rotateX(18deg) rotateZ(-18deg) translateY(0); }
-  50% { transform: rotateX(20deg) rotateZ(-14deg) translateY(-6px); }
+  0%, 100% { transform: rotateX(var(--fc-rotate-x)) rotateZ(var(--fc-rotate-z)) translateY(0); }
+  50% { transform: rotateX(calc(var(--fc-rotate-x) + 2deg)) rotateZ(calc(var(--fc-rotate-z) + 4deg)) translateY(-6px); }
 }
 </style>
