@@ -476,6 +476,7 @@ const highlights = [
   --fc-cyan: #7dd3ff;
   --fc-cyan-soft: rgba(125, 211, 255, 0.2);
   --fc-board-size: 78%;
+  /* Keep a slight isometric perspective while preserving chip/readability labels. */
   --fc-rotate-x: 18deg;
   --fc-rotate-z: -18deg;
   --fc-grid-size: 16px;
@@ -488,7 +489,7 @@ const highlights = [
 
 .fc-board-3d {
   position: relative;
-  width: min(var(--fc-board-size), 320px); /* tuned so board remains fully visible at Tailwind sm/md/lg viewport breakpoints */
+  width: min(var(--fc-board-size), 320px); /* tuned so board remains fully visible at Tailwind sm/md/lg breakpoints (640/768/1024px) */
   aspect-ratio: 1;
   border-radius: 20px;
   background: linear-gradient(145deg, rgba(19, 21, 34, 0.95), rgba(11, 11, 22, 0.95));
