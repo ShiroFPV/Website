@@ -90,8 +90,8 @@ const dfuMethods = [
 
 const firmwareLinks = [
   { name: 'Betaflight Configurator', url: 'https://app.betaflight.com/#', icon: '🛠️' },
-  { name: 'Betaflight Firmware (ShiroFPV build)', url: 'https://github.com/ShiroFPV/Shiro-FPV-Private-Repo/tree/main/ShiroFPV_Code', icon: '📦' },
-  { name: 'FC Hardware Repo', url: 'https://github.com/ShiroFPV/ShiroFPV-Flight-Controller-Public', icon: '🐙' },
+  { name: 'Betaflight Firmware (ShiroFPV build)', url: 'https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection/tree/main/V1_30x30_SFVPF435/Release', icon: '📦' },
+  { name: 'FC Hardware Repo', url: 'https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection'},
 ]
 
 const troubleshooting = [
@@ -128,7 +128,7 @@ const troubleshooting = [
             </p>
             <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
-                href="https://github.com/ShiroFPV/ShiroFPV-Flight-Controller-Public"
+                href="https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="btn-primary text-white text-sm sm:text-base text-center"
@@ -216,7 +216,7 @@ const troubleshooting = [
               <div class="text-4xl mb-3 opacity-40">🖨️</div>
               <p class="text-gray-500 text-sm">PCB render — design files on GitHub</p>
               <a
-                href="https://github.com/ShiroFPV/ShiroFPV-Flight-Controller-Public"
+                href="https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="inline-flex items-center gap-1 mt-3 text-sm font-medium transition-colors duration-200 hover:text-white"
@@ -434,7 +434,7 @@ const troubleshooting = [
           </h2>
           <p class="text-gray-400 mb-6 text-sm">Schematics, KiCad files, and firmware are all on GitHub — go wild.</p>
           <a
-            href="https://github.com/ShiroFPV/ShiroFPV-Flight-Controller-Public"
+            href="https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection"
             target="_blank"
             rel="noopener noreferrer"
             class="btn-primary text-white text-sm inline-flex"
