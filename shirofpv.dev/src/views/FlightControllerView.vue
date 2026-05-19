@@ -141,7 +141,7 @@ const highlights = [
             </div>
             <ul class="mt-6 grid gap-2 text-sm text-gray-300">
               <li v-for="item in highlights" :key="item" class="flex items-center gap-2">
-                <span class="fc-highlight-icon inline-flex w-5 h-5 items-center justify-center rounded-full text-xs">✓</span>
+                <span class="fc-highlight-icon inline-flex w-5 h-5 items-center justify-center rounded-full text-xs" aria-hidden="true">✓</span>
                 {{ item }}
               </li>
             </ul>
@@ -488,7 +488,7 @@ const highlights = [
 
 .fc-board-3d {
   position: relative;
-  width: min(var(--fc-board-size), 320px); /* tuned to keep full board visible at sm/md/lg layouts (640/768/1024+) */
+  width: min(var(--fc-board-size), 320px); /* tuned so board remains fully visible at sm/md/lg viewport breakpoints (640/768/1024+) */
   aspect-ratio: 1;
   border-radius: 20px;
   background: linear-gradient(145deg, rgba(19, 21, 34, 0.95), rgba(11, 11, 22, 0.95));
