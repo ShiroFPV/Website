@@ -141,7 +141,7 @@ const highlights = [
             </div>
             <ul class="mt-6 grid gap-2 text-sm text-gray-300">
               <li v-for="item in highlights" :key="item" class="flex items-center gap-2">
-                <span class="inline-flex w-5 h-5 items-center justify-center rounded-full text-xs" style="background: rgba(125,211,255,0.2); color: #7dd3ff;">✓</span>
+                <span class="inline-flex w-5 h-5 items-center justify-center rounded-full text-xs" style="background: var(--fc-cyan-soft); color: var(--fc-cyan);">✓</span>
                 {{ item }}
               </li>
             </ul>
@@ -230,7 +230,7 @@ const highlights = [
                   target="_blank"
                   rel="noopener noreferrer"
                   class="inline-flex items-center gap-1 mt-3 text-sm font-medium transition-colors duration-200 hover:text-white"
-                  style="color: #d7b7ff;"
+                  style="color: var(--fc-purple-light);"
                 >
                   View KiCad files →
                 </a>
@@ -468,11 +468,14 @@ const highlights = [
 <style scoped>
 .fc-page {
   --fc-purple: rgba(180, 139, 255, 1);
+  --fc-purple-light: #d7b7ff;
   --fc-purple-glow: rgba(180, 139, 255, 0.18);
   --fc-purple-soft: rgba(180, 139, 255, 0.08);
   --fc-purple-mid: rgba(180, 139, 255, 0.24);
   --fc-pink-soft: rgba(255, 143, 212, 0.08);
   --fc-pink-mid: rgba(255, 143, 212, 0.22);
+  --fc-cyan: #7dd3ff;
+  --fc-cyan-soft: rgba(125, 211, 255, 0.2);
 }
 
 .fc-3d-shell {
