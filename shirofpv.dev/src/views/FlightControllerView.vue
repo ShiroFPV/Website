@@ -123,9 +123,6 @@ const troubleshooting = [
             <p class="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed mb-3">
               My own fully open-source flight controller built around the AT32F435RGT7. Designed in KiCad, targeted at Betaflight, and open for anyone to use or improve.
             </p>
-            <p class="text-sm text-yellow-300/80 mb-6 sm:mb-8">
-              ⚠️ Currently not public due to issues in the design — hopefully fixed soon lol
-            </p>
             <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
                 href="https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection"
