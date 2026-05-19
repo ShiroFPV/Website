@@ -108,7 +108,7 @@ const highlights = [
 </script>
 
 <template>
-  <div class="pt-24 pb-16">
+  <div class="fc-page pt-24 pb-16">
 
     <section class="relative overflow-hidden py-16 px-4 sm:px-6 lg:px-8">
       <div
@@ -224,7 +224,7 @@ const highlights = [
           >
             <div class="grid md:grid-cols-[1fr_auto] gap-5 items-center">
               <div class="text-sm text-gray-300 leading-relaxed">
-                Interactive-style FC preview is now enabled with layered depth so the board is visible again on all screen sizes.
+                Layered 3D board preview showing key FC component zones and layout depth.
                 <a
                   href="https://github.com/ShiroFPV/ShiroFPV-Flight-Controller-Public"
                   target="_blank"
@@ -466,9 +466,18 @@ const highlights = [
 </template>
 
 <style scoped>
+.fc-page {
+  --fc-purple: rgba(180, 139, 255, 1);
+  --fc-purple-glow: rgba(180, 139, 255, 0.18);
+  --fc-purple-soft: rgba(180, 139, 255, 0.08);
+  --fc-purple-mid: rgba(180, 139, 255, 0.24);
+  --fc-pink-soft: rgba(255, 143, 212, 0.08);
+  --fc-pink-mid: rgba(255, 143, 212, 0.22);
+}
+
 .fc-3d-shell {
-  background: radial-gradient(circle at 50% 30%, rgba(180, 139, 255, 0.18), transparent 72%), linear-gradient(135deg, rgba(180, 139, 255, 0.08), rgba(255, 143, 212, 0.08));
-  border: 1px solid rgba(180, 139, 255, 0.24);
+  background: radial-gradient(circle at 50% 30%, var(--fc-purple-glow), transparent 72%), linear-gradient(135deg, var(--fc-purple-soft), var(--fc-pink-soft));
+  border: 1px solid var(--fc-purple-mid);
 }
 
 .fc-board-3d {
@@ -480,7 +489,7 @@ const highlights = [
   border: 1px solid rgba(125, 211, 255, 0.35);
   transform-style: preserve-3d;
   transform: rotateX(18deg) rotateZ(-18deg);
-  box-shadow: 0 30px 45px rgba(2, 3, 10, 0.55), inset 0 0 0 1px rgba(255, 143, 212, 0.22);
+  box-shadow: 0 30px 45px rgba(2, 3, 10, 0.55), inset 0 0 0 1px var(--fc-pink-mid);
   animation: fcTilt 7s ease-in-out infinite;
 }
 
