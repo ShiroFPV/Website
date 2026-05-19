@@ -149,7 +149,7 @@ const highlights = [
 
           <div class="flex justify-center">
             <div class="fc-3d-shell relative w-48 sm:w-60 md:w-72 lg:w-80 h-48 sm:h-60 md:h-72 lg:h-80 rounded-3xl flex items-center justify-center">
-              <div class="fc-board-3d" aria-label="3D style preview of the ShiroFPV flight controller">
+              <div class="fc-board-3d" aria-hidden="true">
                 <div class="fc-board-grid"></div>
                 <div class="fc-chip fc-chip-main">AT32</div>
                 <div class="fc-chip fc-chip-gyro">GYRO</div>
@@ -488,7 +488,7 @@ const highlights = [
 
 .fc-board-3d {
   position: relative;
-  width: min(var(--fc-board-size), 320px); /* tuned so board remains fully visible at sm/md/lg viewport breakpoints (640/768/1024+) */
+  width: min(var(--fc-board-size), 320px); /* tuned so board remains fully visible at Tailwind sm/md/lg viewport breakpoints (640/768/1024) */
   aspect-ratio: 1;
   border-radius: 20px;
   background: linear-gradient(145deg, rgba(19, 21, 34, 0.95), rgba(11, 11, 22, 0.95));
