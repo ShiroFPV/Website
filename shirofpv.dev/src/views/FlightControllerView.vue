@@ -141,7 +141,7 @@ const highlights = [
             </div>
             <ul class="mt-6 grid gap-2 text-sm text-gray-300">
               <li v-for="item in highlights" :key="item" class="flex items-center gap-2">
-                <span class="inline-flex w-5 h-5 items-center justify-center rounded-full text-xs" style="background: var(--fc-cyan-soft); color: var(--fc-cyan);">✓</span>
+                <span class="fc-highlight-icon inline-flex w-5 h-5 items-center justify-center rounded-full text-xs">✓</span>
                 {{ item }}
               </li>
             </ul>
@@ -229,8 +229,7 @@ const highlights = [
                   href="https://github.com/ShiroFPV/ShiroFPV-Flight-Controller-Public"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center gap-1 mt-3 text-sm font-medium transition-colors duration-200 hover:text-white"
-                  style="color: var(--fc-purple-light);"
+                  class="fc-link-accent inline-flex items-center gap-1 mt-3 text-sm font-medium transition-colors duration-200 hover:text-white"
                 >
                   View KiCad files →
                 </a>
@@ -489,7 +488,7 @@ const highlights = [
 
 .fc-board-3d {
   position: relative;
-  width: min(var(--fc-board-size), 320px); /* tuned so the full board stays visible at all hero breakpoints */
+  width: min(var(--fc-board-size), 320px); /* tuned to keep full board visible at sm/md/lg layouts (640/768/1024+) */
   aspect-ratio: 1;
   border-radius: 20px;
   background: linear-gradient(145deg, rgba(19, 21, 34, 0.95), rgba(11, 11, 22, 0.95));
@@ -566,6 +565,15 @@ const highlights = [
 .fc-preview-mini {
   display: flex;
   justify-content: center;
+}
+
+.fc-highlight-icon {
+  background: var(--fc-cyan-soft);
+  color: var(--fc-cyan);
+}
+
+.fc-link-accent {
+  color: var(--fc-purple-light);
 }
 
 .fc-board-3d-mini {
