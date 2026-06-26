@@ -4,8 +4,29 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="ShiroFPV — FPV Hardware Designer & Pilot. Open-source flight controllers and hardware designs." />
+    <meta name="description" content="ShiroFPV — FPV hardware designer & pilot. Open-source AT32 flight controllers, KiCad designs, firmware, and FC debugging guides." />
+    <meta name="theme-color" content="#0f0a1a" />
+    <link rel="canonical" href="https://shirofpv.dev/" />
     <title>ShiroFPV</title>
+
+    <!-- Open Graph / Facebook / Discord -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ShiroFPV" />
+    <meta property="og:url" content="https://shirofpv.dev/" />
+    <meta property="og:title" content="ShiroFPV — Open-Source FPV Flight Controllers" />
+    <meta property="og:description" content="FPV hardware designer & pilot. Open-source AT32 flight controllers, KiCad designs, firmware, and FC debugging guides." />
+    <meta property="og:image" content="https://shirofpv.dev/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ShiroFPV — Open-Source FPV Flight Controllers" />
+    <meta name="twitter:description" content="FPV hardware designer & pilot. Open-source AT32 flight controllers, KiCad designs, firmware, and FC debugging guides." />
+    <meta name="twitter:image" content="https://shirofpv.dev/og-image.png" />
+
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -13,13 +34,8 @@
   <body>
     <div id="app"></div>
 
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <textarea name="message"></textarea>
-      <input type="text" name="bot-field" />
-    </form>
-
+    <!-- Google <model-viewer> for the interactive 3D flight controller -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
