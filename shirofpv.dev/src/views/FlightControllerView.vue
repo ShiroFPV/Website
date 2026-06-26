@@ -92,6 +92,8 @@ const firmwareLinks = [
   { name: 'Betaflight Configurator', url: 'https://app.betaflight.com/#', icon: '🛠️' },
   { name: 'ShiroFPV Firmware Releases', url: 'https://github.com/ShiroFPV/ShiroFPV-Flight-Controller-Public/releases', icon: '📦' },
   { name: 'FC Hardware Repo', url: 'https://github.com/ShiroFPV/ShiroFPV-Flight-Controller-Public', icon: '🐙' },
+  { name: 'Betaflight Firmware (ShiroFPV build)', url: 'https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection/tree/main/V1_30x30_SFVPF435/Release', icon: '📦' },
+  { name: 'FC Hardware Repo', url: 'https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection'},
 ]
 
 const troubleshooting = [
@@ -126,12 +128,12 @@ const highlights = [
             <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6 leading-tight">
               ShiroFPV <span class="gradient-text">Flight Controller</span>
             </h1>
-            <p class="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed mb-6 sm:mb-8">
-              Fully open-source AT32-based flight controller designed in KiCad, tuned for Betaflight, and now publicly available with files, docs, and firmware releases in one place.
+            <p class="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed mb-3">
+              My own fully open-source flight controller built around the AT32F435RGT7. Designed in KiCad, targeted at Betaflight, and open for anyone to use or improve.
             </p>
             <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
-                href="https://github.com/ShiroFPV/ShiroFPV-Flight-Controller-Public"
+                href="https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="btn-primary text-white text-sm sm:text-base text-center"
@@ -222,24 +224,18 @@ const highlights = [
             class="rounded-xl p-4 md:p-6"
             style="background: linear-gradient(135deg, rgba(180,139,255,0.08) 0%, rgba(255,143,212,0.08) 100%); border: 1px solid rgba(180,139,255,0.22); min-height: 200px;"
           >
-            <div class="grid md:grid-cols-[1fr_auto] gap-5 items-center">
-              <div class="text-sm text-gray-300 leading-relaxed">
-                Layered 3D board preview showing key FC component zones and layout depth.
-                <a
-                  href="https://github.com/ShiroFPV/ShiroFPV-Flight-Controller-Public"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="fc-link-accent inline-flex items-center gap-1 mt-3 text-sm font-medium transition-colors duration-200 hover:text-white"
-                >
-                  View KiCad files →
-                </a>
-              </div>
-              <div class="fc-preview-mini">
-                <div class="fc-board-3d fc-board-3d-mini" aria-hidden="true">
-                  <div class="fc-board-grid"></div>
-                  <div class="fc-chip fc-chip-main">AT32</div>
-                </div>
-              </div>
+            <div class="text-center">
+              <div class="text-4xl mb-3 opacity-40">🖨️</div>
+              <p class="text-gray-500 text-sm">PCB render — design files on GitHub</p>
+              <a
+                href="https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 mt-3 text-sm font-medium transition-colors duration-200 hover:text-white"
+                style="color: #d7b7ff;"
+              >
+                View KiCad files →
+              </a>
             </div>
           </div>
           <p class="text-gray-400 text-sm mt-4 leading-relaxed">
@@ -450,7 +446,7 @@ const highlights = [
           </h2>
           <p class="text-gray-400 mb-6 text-sm">Schematics, KiCad files, and firmware are all on GitHub — go wild.</p>
           <a
-            href="https://github.com/ShiroFPV/ShiroFPV-Flight-Controller-Public"
+            href="https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection"
             target="_blank"
             rel="noopener noreferrer"
             class="btn-primary text-white text-sm inline-flex"
