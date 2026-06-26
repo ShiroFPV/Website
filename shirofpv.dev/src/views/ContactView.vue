@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 // Get a free access key at https://web3forms.com (enter your email, they send the key).
 // Paste it here — submissions are emailed straight to you, no backend required.
-const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE'
+const WEB3FORMS_ACCESS_KEY = '20b7ab87-6ba7-4159-bb07-ed3ac0ab5d03'
 
 const form = ref({ name: '', email: '', message: '', botcheck: '' })
 const submitted = ref(false)
