@@ -214,18 +214,45 @@ const highlights = [
         </div>
 
         <div class="mt-6 glass-card rounded-2xl p-6">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(180,139,255,0.2);">🖥️</span>
-            <h3 class="font-bold text-white">3D Layout Preview</h3>
-          </div>
-          <div
-            class="rounded-xl p-4 md:p-6 flex items-center justify-center"
-            style="background: linear-gradient(135deg, rgba(180,139,255,0.08) 0%, rgba(255,143,212,0.08) 100%); border: 1px solid rgba(180,139,255,0.22); min-height: 200px;"
-          >
-            <div class="fc-board-3d fc-board-3d-mini" aria-hidden="true">
-              <div class="fc-board-grid"></div>
+          <div class="flex items-center justify-between gap-3 mb-4">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(180,139,255,0.2);">🧊</span>
+              <h3 class="font-bold text-white">Interactive 3D Model</h3>
             </div>
+            <span class="text-xs text-gray-500 hidden sm:inline">drag to rotate · scroll to zoom</span>
           </div>
+          <model-viewer
+            src="/assets/fc.glb"
+            alt="ShiroFPV flight controller — interactive 3D model"
+            camera-controls
+            auto-rotate
+            auto-rotate-delay="0"
+            rotation-per-second="18deg"
+            shadow-intensity="1"
+            exposure="1.1"
+            environment-image="neutral"
+            camera-orbit="35deg 70deg 110%"
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            loading="lazy"
+            reveal="auto"
+            class="w-full rounded-xl"
+            style="min-height: 360px; background: linear-gradient(135deg, rgba(180,139,255,0.08) 0%, rgba(255,143,212,0.08) 100%); border: 1px solid rgba(180,139,255,0.2); --poster-color: transparent; touch-action: pan-y;"
+          >
+            <button
+              slot="ar-button"
+              class="absolute bottom-4 right-4 text-xs font-semibold px-3 py-1.5 rounded-full transition-colors duration-200 hover:text-white"
+              style="background: rgba(180,139,255,0.2); color: #d7b7ff; border: 1px solid rgba(180,139,255,0.3);"
+            >
+              📱 View in AR
+            </button>
+            <div slot="poster" class="w-full h-full flex items-center justify-center">
+              <div class="text-center">
+                <div class="text-4xl mb-3 opacity-40">🧊</div>
+                <p class="text-gray-500 text-sm">Loading 3D model…</p>
+              </div>
+            </div>
+          </model-viewer>
 
           <div class="flex items-center justify-between gap-3 mt-4">
             <p class="text-gray-400 text-sm leading-relaxed">
