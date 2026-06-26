@@ -90,6 +90,8 @@ const dfuMethods = [
 
 const firmwareLinks = [
   { name: 'Betaflight Configurator', url: 'https://app.betaflight.com/#', icon: '🛠️' },
+  { name: 'ShiroFPV Firmware Releases', url: 'https://github.com/ShiroFPV/ShiroFPV-Flight-Controller-Public/releases', icon: '📦' },
+  { name: 'FC Hardware Repo', url: 'https://github.com/ShiroFPV/ShiroFPV-Flight-Controller-Public', icon: '🐙' },
   { name: 'Betaflight Firmware (ShiroFPV build)', url: 'https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection/tree/main/V1_30x30_SFVPF435/Release', icon: '📦' },
   { name: 'FC Hardware Repo', url: 'https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection'},
 ]
@@ -99,10 +101,16 @@ const troubleshooting = [
   { q: 'Betaflight Configurator shows no ports.', a: 'Make sure you\'re actually in DFU mode. Restart Configurator after entering DFU.' },
   { q: 'Flash fails partway through.', a: 'Try a different USB port. Enable full chip erase. Double-check the correct target is selected.' },
 ]
+
+const highlights = [
+  'Public repo with full hardware files',
+  'Betaflight target support',
+  '16Mb onboard blackbox logging',
+]
 </script>
 
 <template>
-  <div class="pt-24 pb-16">
+  <div class="fc-page pt-24 pb-16">
 
     <section class="relative overflow-hidden py-16 px-4 sm:px-6 lg:px-8">
       <div
@@ -133,20 +141,27 @@ const troubleshooting = [
                 View on GitHub →
               </a>
             </div>
+            <ul class="mt-6 grid gap-2 text-sm text-gray-300">
+              <li v-for="item in highlights" :key="item" class="flex items-center gap-2">
+                <span class="fc-highlight-icon inline-flex w-5 h-5 items-center justify-center rounded-full text-xs" aria-hidden="true">✓</span>
+                {{ item }}
+              </li>
+            </ul>
           </div>
 
           <div class="flex justify-center">
-            <div
-              class="relative w-48 sm:w-60 md:w-72 lg:w-80 h-48 sm:h-60 md:h-72 lg:h-80 rounded-3xl flex items-center justify-center"
-              style="background: linear-gradient(135deg, rgba(180,139,255,0.1) 0%, rgba(255,143,212,0.1) 100%); border: 1px solid rgba(180,139,255,0.2);"
-            >
-              <div class="absolute inset-0 rounded-3xl" style="background: radial-gradient(circle at 50% 50%, rgba(180,139,255,0.15), transparent 70%);"></div>
-              <img
-                src="/assets/ShiroFPV_Logo.svg"
-                alt="ShiroFPV Logo"
-                class="relative z-10 w-32 sm:w-44 md:w-56 lg:w-60 h-32 sm:h-44 md:h-56 lg:h-60 object-contain animate-float"
-                loading="lazy"
-              />
+            <div class="fc-3d-shell relative w-48 sm:w-60 md:w-72 lg:w-80 h-48 sm:h-60 md:h-72 lg:h-80 rounded-3xl flex items-center justify-center">
+              <div class="fc-board-3d" aria-hidden="true">
+                <div class="fc-board-grid"></div>
+                <div class="fc-chip fc-chip-main">AT32</div>
+                <div class="fc-chip fc-chip-gyro">GYRO</div>
+                <div class="fc-chip fc-chip-osd">OSD</div>
+                <div class="fc-pad fc-pad-1"></div>
+                <div class="fc-pad fc-pad-2"></div>
+                <div class="fc-pad fc-pad-3"></div>
+                <div class="fc-pad fc-pad-4"></div>
+                <span class="fc-label">ShiroFPV FC v2</span>
+              </div>
             </div>
           </div>
         </div>
@@ -172,10 +187,10 @@ const troubleshooting = [
           </div>
           <div class="glass-card rounded-2xl p-6">
             <p class="text-gray-300 leading-relaxed mb-4 text-sm sm:text-base">
-              The project started as a personal challenge and turned into something I actually want to fly. After months of PCB revisions in KiCad and a lot of debugging, it still doesn't work perfectly — but it should work soon hopefully.
+              The project started as a personal challenge and turned into something I actually want to fly. After months of PCB revisions in KiCad and a lot of debugging, the board is now stable enough for public release and community feedback.
             </p>
             <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
-              Everything — schematics, PCB layout, firmware config — is on GitHub. I'm not keeping any of it private (well, except right now while the design issues get sorted).
+              Everything — schematics, PCB layout, and firmware configuration — is now in the public repo. If you want to build, review, or fork it, you can.
             </p>
           </div>
         </div>
@@ -203,11 +218,11 @@ const troubleshooting = [
         <div class="mt-6 glass-card rounded-2xl p-6">
           <div class="flex items-center gap-3 mb-4">
             <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(180,139,255,0.2);">🖥️</span>
-            <h3 class="font-bold text-white">PCB Layout</h3>
+            <h3 class="font-bold text-white">3D Layout Preview</h3>
           </div>
           <div
-            class="rounded-xl flex items-center justify-center"
-            style="background: linear-gradient(135deg, rgba(180,139,255,0.08) 0%, rgba(255,143,212,0.08) 100%); border: 1px dashed rgba(180,139,255,0.3); min-height: 200px;"
+            class="rounded-xl p-4 md:p-6"
+            style="background: linear-gradient(135deg, rgba(180,139,255,0.08) 0%, rgba(255,143,212,0.08) 100%); border: 1px solid rgba(180,139,255,0.22); min-height: 200px;"
           >
             <div class="text-center">
               <div class="text-4xl mb-3 opacity-40">🖨️</div>
@@ -444,3 +459,133 @@ const troubleshooting = [
     </div>
   </div>
 </template>
+
+<style scoped>
+.fc-page {
+  --fc-purple: rgba(180, 139, 255, 1);
+  --fc-purple-light: #d7b7ff;
+  --fc-purple-glow: rgba(180, 139, 255, 0.18);
+  --fc-purple-soft: rgba(180, 139, 255, 0.08);
+  --fc-purple-mid: rgba(180, 139, 255, 0.24);
+  --fc-pink-soft: rgba(255, 143, 212, 0.08);
+  --fc-pink-mid: rgba(255, 143, 212, 0.22);
+  --fc-cyan: #7dd3ff;
+  --fc-cyan-soft: rgba(125, 211, 255, 0.2);
+  --fc-board-size: 78%;
+  /* Keep a slight isometric perspective while preserving chip/readability labels. */
+  --fc-rotate-x: 18deg;
+  --fc-rotate-z: -18deg;
+  --fc-grid-size: 16px;
+}
+
+.fc-3d-shell {
+  background: radial-gradient(circle at 50% 30%, var(--fc-purple-glow), transparent 72%), linear-gradient(135deg, var(--fc-purple-soft), var(--fc-pink-soft));
+  border: 1px solid var(--fc-purple-mid);
+}
+
+.fc-board-3d {
+  position: relative;
+  width: min(var(--fc-board-size), 320px); /* tuned so board remains fully visible at Tailwind sm/md/lg breakpoints (640/768/1024px) */
+  aspect-ratio: 1;
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(19, 21, 34, 0.95), rgba(11, 11, 22, 0.95));
+  border: 1px solid rgba(125, 211, 255, 0.35);
+  transform-style: preserve-3d;
+  transform: rotateX(var(--fc-rotate-x)) rotateZ(var(--fc-rotate-z));
+  box-shadow: 0 30px 45px rgba(2, 3, 10, 0.55), inset 0 0 0 1px var(--fc-pink-mid);
+  animation: fcTilt 7s ease-in-out infinite;
+}
+
+.fc-board-grid {
+  position: absolute;
+  inset: 12%;
+  background-image: linear-gradient(rgba(125, 211, 255, 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(125, 211, 255, 0.12) 1px, transparent 1px);
+  background-size: var(--fc-grid-size) var(--fc-grid-size);
+  transform: translateZ(2px);
+}
+
+.fc-chip {
+  position: absolute;
+  border-radius: 10px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #d8f3ff;
+  border: 1px solid rgba(125, 211, 255, 0.3);
+  background: rgba(9, 19, 30, 0.85);
+  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.35);
+}
+
+.fc-chip-main {
+  top: 32%;
+  left: 32%;
+  transform: translateZ(28px);
+}
+
+.fc-chip-gyro {
+  top: 16%;
+  right: 17%;
+  transform: translateZ(16px);
+}
+
+.fc-chip-osd {
+  bottom: 20%;
+  left: 18%;
+  transform: translateZ(12px);
+}
+
+.fc-pad {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 143, 212, 0.7);
+  box-shadow: inset 0 0 0 1px rgba(255, 200, 235, 0.4);
+}
+
+.fc-pad-1 { top: 10%; left: 10%; transform: translateZ(7px); }
+.fc-pad-2 { top: 10%; right: 10%; transform: translateZ(7px); }
+.fc-pad-3 { bottom: 10%; left: 10%; transform: translateZ(7px); }
+.fc-pad-4 { bottom: 10%; right: 10%; transform: translateZ(7px); }
+
+.fc-label {
+  position: absolute;
+  right: 12%;
+  bottom: 12%;
+  transform: translateZ(20px);
+  font-size: 11px;
+  font-weight: 700;
+  color: #ff9ed7;
+}
+
+.fc-preview-mini {
+  display: flex;
+  justify-content: center;
+}
+
+.fc-highlight-icon {
+  background: var(--fc-cyan-soft);
+  color: var(--fc-cyan);
+}
+
+.fc-link-accent {
+  color: var(--fc-purple-light);
+}
+
+.fc-board-3d-mini {
+  width: 150px;
+  transform: rotateX(22deg) rotateZ(-15deg);
+}
+
+.fc-board-3d-mini .fc-chip,
+.fc-board-3d-mini .fc-label,
+.fc-board-3d-mini .fc-pad {
+  display: none;
+}
+
+@keyframes fcTilt {
+  0%, 100% { transform: rotateX(var(--fc-rotate-x)) rotateZ(var(--fc-rotate-z)) translateY(0); }
+  50% { transform: rotateX(calc(var(--fc-rotate-x) + 2deg)) rotateZ(calc(var(--fc-rotate-z) + 4deg)) translateY(-6px); }
+}
+</style>
