@@ -90,10 +90,8 @@ const dfuMethods = [
 
 const firmwareLinks = [
   { name: 'Betaflight Configurator', url: 'https://app.betaflight.com/#', icon: '🛠️' },
-  { name: 'ShiroFPV Firmware Releases', url: 'https://github.com/ShiroFPV/ShiroFPV-Flight-Controller-Public/releases', icon: '📦' },
-  { name: 'FC Hardware Repo', url: 'https://github.com/ShiroFPV/ShiroFPV-Flight-Controller-Public', icon: '🐙' },
   { name: 'Betaflight Firmware (ShiroFPV build)', url: 'https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection/tree/main/V1_30x30_SFVPF435/Release', icon: '📦' },
-  { name: 'FC Hardware Repo', url: 'https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection'},
+  { name: 'FC Hardware Repo', url: 'https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection', icon: '🐙' },
 ]
 
 const troubleshooting = [
@@ -221,23 +219,13 @@ const highlights = [
             <h3 class="font-bold text-white">3D Layout Preview</h3>
           </div>
           <div
-            class="rounded-xl p-4 md:p-6"
+            class="rounded-xl p-4 md:p-6 flex items-center justify-center"
             style="background: linear-gradient(135deg, rgba(180,139,255,0.08) 0%, rgba(255,143,212,0.08) 100%); border: 1px solid rgba(180,139,255,0.22); min-height: 200px;"
           >
-            <button
-              slot="ar-button"
-              class="absolute bottom-4 right-4 text-xs font-semibold px-3 py-1.5 rounded-full transition-colors duration-200 hover:text-white"
-              style="background: rgba(180,139,255,0.2); color: #d7b7ff; border: 1px solid rgba(180,139,255,0.3);"
-            >
-              📱 View in AR
-            </button>
-            <div slot="poster" class="w-full h-full flex items-center justify-center">
-              <div class="text-center">
-                <div class="text-4xl mb-3 opacity-40">🧊</div>
-                <p class="text-gray-500 text-sm">Loading 3D model…</p>
-              </div>
+            <div class="fc-board-3d fc-board-3d-mini" aria-hidden="true">
+              <div class="fc-board-grid"></div>
             </div>
-          </model-viewer>
+          </div>
 
           <div class="flex items-center justify-between gap-3 mt-4">
             <p class="text-gray-400 text-sm leading-relaxed">
