@@ -1,7 +1,11 @@
 <script setup>
 import { ref } from 'vue'
 
-const form = ref({ name: '', email: '', message: '' })
+// Get a free access key at https://web3forms.com (enter your email, they send the key).
+// Paste it here — submissions are emailed straight to you, no backend required.
+const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE'
+
+const form = ref({ name: '', email: '', message: '', botcheck: '' })
 const submitted = ref(false)
 const isSubmitting = ref(false)
 const submitError = ref('')
@@ -34,29 +38,33 @@ const socials = [
 ]
 
 async function handleSubmit() {
+  // Honeypot: bots fill hidden fields, humans don't.
+  if (form.value.botcheck) return
+
   isSubmitting.value = true
   submitError.value = ''
 
   try {
-    const payload = new URLSearchParams({
-      'form-name': 'contact',
-      name: form.value.name,
-      email: form.value.email,
-      message: form.value.message,
-    }).toString()
-
-    const response = await fetch('/', {
+    const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: payload,
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: 'New message from shirofpv.dev',
+        from_name: 'ShiroFPV Contact Form',
+        name: form.value.name,
+        email: form.value.email,
+        message: form.value.message,
+      }),
     })
 
-    if (!response.ok) {
-      throw new Error('Form submission failed')
+    const result = await response.json()
+    if (!result.success) {
+      throw new Error(result.message || 'Form submission failed')
     }
 
     submitted.value = true
-    form.value = { name: '', email: '', message: '' }
+    form.value = { name: '', email: '', message: '', botcheck: '' }
   } catch {
     submitError.value = 'Could not send message right now. Please try again in a moment.'
   } finally {
@@ -129,16 +137,18 @@ async function handleSubmit() {
             <form
               v-else
               name="contact"
-              method="POST"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
               class="glass-card rounded-2xl p-6 space-y-4"
               @submit.prevent="handleSubmit"
             >
-              <input type="hidden" name="form-name" value="contact" />
-              <p class="hidden">
-                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-              </p>
+              <input
+                v-model="form.botcheck"
+                type="checkbox"
+                name="botcheck"
+                class="hidden"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+              />
 
               <div>
                 <label class="block text-sm font-medium text-gray-300 mb-1.5" for="name">Name</label>
