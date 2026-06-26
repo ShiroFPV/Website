@@ -117,7 +117,7 @@ const highlights = [
       ></div>
 
       <div class="relative z-10 max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div class="max-w-3xl">
           <div>
             <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm font-medium" style="color: #d7b7ff;">
               <span class="w-2 h-2 rounded-full animate-pulse" style="background: #ff8fd4;"></span>
@@ -145,22 +145,6 @@ const highlights = [
                 {{ item }}
               </li>
             </ul>
-          </div>
-
-          <div class="flex justify-center">
-            <div class="fc-3d-shell relative w-48 sm:w-60 md:w-72 lg:w-80 h-48 sm:h-60 md:h-72 lg:h-80 rounded-3xl flex items-center justify-center">
-              <div class="fc-board-3d" aria-hidden="true">
-                <div class="fc-board-grid"></div>
-                <div class="fc-chip fc-chip-main">AT32</div>
-                <div class="fc-chip fc-chip-gyro">GYRO</div>
-                <div class="fc-chip fc-chip-osd">OSD</div>
-                <div class="fc-pad fc-pad-1"></div>
-                <div class="fc-pad fc-pad-2"></div>
-                <div class="fc-pad fc-pad-3"></div>
-                <div class="fc-pad fc-pad-4"></div>
-                <span class="fc-label">ShiroFPV FC v2</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
