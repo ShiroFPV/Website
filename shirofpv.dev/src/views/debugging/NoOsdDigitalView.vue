@@ -13,8 +13,8 @@ import { RouterLink } from 'vue-router'
       </div>
 
       <div class="mb-10">
-        <div class="inline-flex items-center gap-2 glass-card px-3 py-1.5 rounded-full mb-4 text-xs" style="color: #d7b7ff;">
-          <span class="w-2 h-2 rounded-full" style="background: #ff8fd4;"></span>
+        <div class="inline-flex items-center gap-2 glass-card px-3 py-1.5 rounded-full mb-4 text-xs" style="color: var(--accent-light);">
+          <span class="w-2 h-2 rounded-full" style="background: var(--accent);"></span>
           OSD / Digital Video
         </div>
         <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3">
@@ -45,23 +45,23 @@ import { RouterLink } from 'vue-router'
           </h2>
           <ol class="space-y-3 text-gray-300 text-sm">
             <li class="flex items-start gap-3">
-              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(180,139,255,0.2); color: #b48bff;">1</span>
+              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">1</span>
               <span>Open Betaflight Configurator → <strong class="text-white">Ports</strong> tab.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(180,139,255,0.2); color: #b48bff;">2</span>
+              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">2</span>
               <span>Find the UART your VTX is connected to.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(180,139,255,0.2); color: #b48bff;">3</span>
+              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">3</span>
               <span>Under <strong class="text-white">Peripherals</strong>, select <strong class="text-white">VTX (MSP + DisplayPort)</strong>.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(180,139,255,0.2); color: #b48bff;">4</span>
+              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">4</span>
               <span>Also make sure <strong class="text-white">Configuration / MSP</strong> is enabled on that same UART.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(180,139,255,0.2); color: #b48bff;">5</span>
+              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">5</span>
               <span>Save → Reboot → check your goggles.</span>
             </li>
           </ol>
@@ -73,19 +73,19 @@ import { RouterLink } from 'vue-router'
           </h2>
           <ul class="space-y-3 text-gray-300 text-sm">
             <li class="flex items-start gap-3">
-              <span class="mt-0.5" style="color: #b48bff;">•</span>
+              <span class="mt-0.5" style="color: var(--accent);">•</span>
               <span>Make sure <strong class="text-white">OSD is enabled</strong> in Betaflight's OSD tab (there's a master toggle at the top).</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-0.5" style="color: #b48bff;">•</span>
+              <span class="mt-0.5" style="color: var(--accent);">•</span>
               <span>Check that your VTX is actually connected to the UART you think it is — easy to get confused if you have multiple wiring options.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-0.5" style="color: #b48bff;">•</span>
+              <span class="mt-0.5" style="color: var(--accent);">•</span>
               <span>Verify RX/TX wires are correctly crossed (FC RX → VTX TX, FC TX → VTX RX).</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-0.5" style="color: #b48bff;">•</span>
+              <span class="mt-0.5" style="color: var(--accent);">•</span>
               <span>For Walksnail/Avatar specifically, make sure your goggles and camera firmware versions are compatible.</span>
             </li>
           </ul>
@@ -97,7 +97,7 @@ import { RouterLink } from 'vue-router'
         <RouterLink to="/debugging/receiver-not-detected" class="text-gray-400 hover:text-white transition-colors">
           ← Receiver not detected
         </RouterLink>
-        <RouterLink to="/debugging/no-osd-analog" class="hover:opacity-80 transition-opacity" style="color: #b48bff;">
+        <RouterLink to="/debugging/no-osd-analog" class="hover:opacity-80 transition-opacity" style="color: var(--accent);">
           No OSD (Analog) →
         </RouterLink>
       </div>

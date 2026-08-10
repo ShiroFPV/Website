@@ -26,8 +26,8 @@ function selectTag(tag) {
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <div class="text-center mb-8 sm:mb-12">
-        <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm" style="color: #d7b7ff;">
-          <span class="w-2 h-2 rounded-full" style="background: #7dd3ff;"></span>
+        <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm" style="color: var(--accent-light);">
+          <span class="w-2 h-2 rounded-full" style="background: var(--accent-light);"></span>
           My Work
         </div>
         <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-2 sm:mb-4">
@@ -44,7 +44,7 @@ function selectTag(tag) {
           :class="selectedTag === null
             ? 'text-white'
             : 'glass-card text-gray-400 hover:text-white'"
-          :style="selectedTag === null ? 'background: linear-gradient(135deg, #b48bff, #ff8fd4); color: white;' : ''"
+          :style="selectedTag === null ? 'background: var(--accent); color: white;' : ''"
           @click="selectedTag = null"
         >
           All
@@ -56,7 +56,7 @@ function selectTag(tag) {
           :class="selectedTag === tag
             ? 'text-white'
             : 'glass-card text-gray-400 hover:text-white'"
-          :style="selectedTag === tag ? 'background: linear-gradient(135deg, #b48bff, #ff8fd4); color: white;' : ''"
+          :style="selectedTag === tag ? 'background: var(--accent); color: white;' : ''"
           @click="selectTag(tag)"
         >
           {{ tag }}

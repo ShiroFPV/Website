@@ -13,8 +13,8 @@ import { RouterLink } from 'vue-router'
       </div>
 
       <div class="mb-10">
-        <div class="inline-flex items-center gap-2 glass-card px-3 py-1.5 rounded-full mb-4 text-xs" style="color: #d7b7ff;">
-          <span class="w-2 h-2 rounded-full" style="background: #ff8fd4;"></span>
+        <div class="inline-flex items-center gap-2 glass-card px-3 py-1.5 rounded-full mb-4 text-xs" style="color: var(--accent-light);">
+          <span class="w-2 h-2 rounded-full" style="background: var(--accent);"></span>
           Receiver / Serial RX
         </div>
         <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3">
@@ -37,14 +37,14 @@ import { RouterLink } from 'vue-router'
           <p class="text-gray-400 text-sm leading-relaxed">
             Betaflight won't warn you about this — it'll just silently not work, which is great for your sanity (it's not).
           </p>
-          <div class="mt-4 rounded-xl p-4 space-y-3" style="background: rgba(255,143,212,0.08); border: 1px solid rgba(255,143,212,0.2);">
+          <div class="mt-4 rounded-xl p-4 space-y-3" style="background: rgba(109,94,242,0.08); border: 1px solid rgba(109,94,242,0.2);">
             <div class="flex items-center gap-3 text-sm">
               <span class="text-red-400 font-bold">✗</span>
               <span class="text-gray-300">UART1: <span class="text-red-400">MSP ON</span> + Serial RX ON → receiver won't work</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
-              <span style="color: #7dd3ff;" class="font-bold">✓</span>
-              <span class="text-gray-300">UART1: <span style="color: #7dd3ff;">MSP OFF</span> + Serial RX ON → works fine</span>
+              <span style="color: var(--accent-light);" class="font-bold">✓</span>
+              <span class="text-gray-300">UART1: <span style="color: var(--accent-light);">MSP OFF</span> + Serial RX ON → works fine</span>
             </div>
           </div>
         </div>
@@ -55,23 +55,23 @@ import { RouterLink } from 'vue-router'
           </h2>
           <ol class="space-y-3 text-gray-300 text-sm">
             <li class="flex items-start gap-3">
-              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(180,139,255,0.2); color: #b48bff;">1</span>
+              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">1</span>
               <span>Go to Betaflight Configurator → <strong class="text-white">Ports</strong> tab.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(180,139,255,0.2); color: #b48bff;">2</span>
+              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">2</span>
               <span>Find the UART where Serial RX is enabled.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(180,139,255,0.2); color: #b48bff;">3</span>
+              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">3</span>
               <span>Make sure <strong class="text-white">Configuration / MSP is turned off</strong> on that same UART. It can be on other UARTs — just not this one.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(180,139,255,0.2); color: #b48bff;">4</span>
+              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">4</span>
               <span>Save → Reboot.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(180,139,255,0.2); color: #b48bff;">5</span>
+              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">5</span>
               <span>Go to the Receiver tab and check if your sticks are moving.</span>
             </li>
           </ol>
@@ -83,19 +83,19 @@ import { RouterLink } from 'vue-router'
           </h2>
           <ul class="space-y-3 text-gray-300 text-sm">
             <li class="flex items-start gap-3">
-              <span class="mt-0.5" style="color: #b48bff;">•</span>
+              <span class="mt-0.5" style="color: var(--accent);">•</span>
               <span>Make sure the receiver is actually <strong class="text-white">bound</strong> to your radio — solid LED usually means bound, flashing means it's searching.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-0.5" style="color: #b48bff;">•</span>
+              <span class="mt-0.5" style="color: var(--accent);">•</span>
               <span>Confirm the correct RC protocol is selected in the <strong class="text-white">Configuration</strong> tab (CRSF, SBUS, iBus, etc.).</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-0.5" style="color: #b48bff;">•</span>
-              <span>Check your RX/TX wiring too — see the <RouterLink to="/debugging/uart-no-signal" class="underline hover:opacity-80" style="color: #b48bff;">UART wiring page</RouterLink> if needed.</span>
+              <span class="mt-0.5" style="color: var(--accent);">•</span>
+              <span>Check your RX/TX wiring too — see the <RouterLink to="/debugging/uart-no-signal" class="underline hover:opacity-80" style="color: var(--accent);">UART wiring page</RouterLink> if needed.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-0.5" style="color: #b48bff;">•</span>
+              <span class="mt-0.5" style="color: var(--accent);">•</span>
               <span>If using ELRS, make sure the receiver firmware matches your TX module version. Version mismatch = no bind.</span>
             </li>
           </ul>
@@ -107,7 +107,7 @@ import { RouterLink } from 'vue-router'
         <RouterLink to="/debugging/uart-no-signal" class="text-gray-400 hover:text-white transition-colors">
           ← UART no signal
         </RouterLink>
-        <RouterLink to="/debugging/no-osd-digital" class="hover:opacity-80 transition-opacity" style="color: #b48bff;">
+        <RouterLink to="/debugging/no-osd-digital" class="hover:opacity-80 transition-opacity" style="color: var(--accent);">
           No OSD (Digital) →
         </RouterLink>
       </div>

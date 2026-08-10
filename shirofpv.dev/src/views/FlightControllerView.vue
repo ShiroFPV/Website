@@ -20,42 +20,42 @@ const setupSteps = [
     title: 'Get Betaflight Configurator',
     desc: 'Grab the latest version from the web app.',
     link: { text: 'Open Configurator', url: 'https://app.betaflight.com/#' },
-    color: '#b48bff',
+    color: '#6d5ef2',
   },
   {
     num: '02',
     title: 'Flash the Firmware',
     desc: 'Connect via USB-C while holding the boot button (or use the DFU method below). In Betaflight Configurator go to Firmware Flasher, select the ShiroFPV target — right now you need to load a local .hex which is available on the GitHub repo — and flash.',
     link: null,
-    color: '#ff8fd4',
+    color: '#6d5ef2',
   },
   {
     num: '03',
     title: 'Configure Ports',
     desc: 'Ports tab. Enable the UART connected to your receiver (e.g. UART1 for ELRS, UART2 for VTX SmartAudio). Save and reboot.',
     link: null,
-    color: '#7dd3ff',
+    color: '#8f7ff5',
   },
   {
     num: '04',
     title: 'Set Up Your Receiver',
     desc: 'In the Configuration tab pick your RC protocol (CRSF, SBUS, iBus, etc.) and verify your channels are moving correctly in the Receiver tab.',
     link: null,
-    color: '#d7b7ff',
+    color: '#8f7ff5',
   },
   {
     num: '05',
     title: 'Motor Direction & Order',
     desc: 'In the Motors tab check spin direction with props off. Use BLHeli / BL32 / AM32 Configurator to set the correct direction for your prop config. Pick your DSHOT protocol here too, and decide whether you want bidirectional DSHOT.',
     link: null,
-    color: '#ff8fd4',
+    color: '#6d5ef2',
   },
   {
     num: '06',
     title: 'Calibrate & Tune PIDs',
     desc: 'Run accelerometer calibration in the Setup tab. Start with the default PID tune and go from there.',
     link: null,
-    color: '#b48bff',
+    color: '#6d5ef2',
   },
 ]
 
@@ -64,7 +64,7 @@ const dfuMethods = [
     icon: '🔘',
     title: 'Boot Button',
     recommended: true,
-    color: '#b48bff',
+    color: '#6d5ef2',
     steps: [
       'Unplug the FC from USB.',
       'Hold down the BOOT button.',
@@ -77,7 +77,7 @@ const dfuMethods = [
     icon: '📌',
     title: 'Boot Pads',
     recommended: false,
-    color: '#ff8fd4',
+    color: '#6d5ef2',
     steps: [
       'Find the BOOT and GND pads on the PCB (pinout is on the GitHub repo).',
       'Short BOOT to GND with a jumper wire or tweezer.',
@@ -113,14 +113,14 @@ const highlights = [
     <section class="relative overflow-hidden py-16 px-4 sm:px-6 lg:px-8">
       <div
         class="absolute inset-0 opacity-20"
-        style="background: linear-gradient(135deg, #b48bff 0%, #ff8fd4 50%, #7dd3ff 100%);"
+        style="background: linear-gradient(135deg, rgba(109,94,242,0.18), rgba(109,94,242,0.04));"
       ></div>
 
       <div class="relative z-10 max-w-6xl mx-auto">
         <div class="max-w-3xl">
           <div>
-            <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm font-medium" style="color: #d7b7ff;">
-              <span class="w-2 h-2 rounded-full animate-pulse" style="background: #ff8fd4;"></span>
+            <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm font-medium" style="color: var(--accent-light);">
+              <span class="w-2 h-2 rounded-full animate-pulse" style="background: var(--accent);"></span>
               Open-Source Hardware
             </div>
             <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6 leading-tight">
@@ -154,7 +154,7 @@ const highlights = [
 
       <section>
         <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(180,139,255,0.2);">🚁</span>
+          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(109,94,242,0.2);">🚁</span>
           What's this thing?
         </h2>
         <p class="text-gray-400 text-sm mb-6">The short version of the overview.</p>
@@ -180,7 +180,7 @@ const highlights = [
 
       <section>
         <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(191,233,255,0.2);">🔧</span>
+          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(109,94,242,0.2);">🔧</span>
           Hardware Specs
         </h2>
         <p class="text-gray-400 text-sm mb-6">Full specs for the current v2 revision.</p>
@@ -191,7 +191,7 @@ const highlights = [
               :key="spec.label"
               class="flex flex-col sm:flex-row items-start sm:items-center px-5 py-3.5 gap-2 sm:gap-4"
             >
-              <dt class="w-full sm:w-52 text-xs sm:text-sm font-semibold flex-shrink-0" style="color: #d7b7ff;">{{ spec.label }}</dt>
+              <dt class="w-full sm:w-52 text-xs sm:text-sm font-semibold flex-shrink-0" style="color: var(--accent-light);">{{ spec.label }}</dt>
               <dd class="text-xs sm:text-sm text-gray-300">{{ spec.value }}</dd>
             </div>
           </div>
@@ -200,7 +200,7 @@ const highlights = [
         <div class="mt-6 glass-card rounded-2xl p-6">
           <div class="flex items-center justify-between gap-3 mb-4">
             <div class="flex items-center gap-3">
-              <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(180,139,255,0.2);">🧊</span>
+              <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(109,94,242,0.2);">🧊</span>
               <h3 class="font-bold text-white">Interactive 3D Model</h3>
             </div>
             <span class="text-xs text-gray-500 hidden sm:inline">drag to rotate · scroll to zoom</span>
@@ -221,12 +221,12 @@ const highlights = [
             loading="lazy"
             reveal="auto"
             class="w-full rounded-xl"
-            style="min-height: 360px; background: linear-gradient(135deg, rgba(180,139,255,0.08) 0%, rgba(255,143,212,0.08) 100%); border: 1px solid rgba(180,139,255,0.2); --poster-color: transparent; touch-action: pan-y;"
+            style="min-height: 360px; background: linear-gradient(135deg, rgba(109,94,242,0.18), rgba(109,94,242,0.04)); border: 1px solid rgba(109,94,242,0.2); --poster-color: transparent; touch-action: pan-y;"
           >
             <button
               slot="ar-button"
               class="absolute bottom-4 right-4 text-xs font-semibold px-3 py-1.5 rounded-full transition-colors duration-200 hover:text-white"
-              style="background: rgba(180,139,255,0.2); color: #d7b7ff; border: 1px solid rgba(180,139,255,0.3);"
+              style="background: rgba(109,94,242,0.2); color: var(--accent-light); border: 1px solid rgba(109,94,242,0.3);"
             >
               📱 View in AR
             </button>
@@ -247,7 +247,7 @@ const highlights = [
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center gap-1 text-sm font-medium transition-colors duration-200 hover:text-white flex-shrink-0"
-              style="color: #d7b7ff;"
+              style="color: var(--accent-light);"
             >
               KiCad files →
             </a>
@@ -257,7 +257,7 @@ const highlights = [
 
       <section>
         <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(255,143,212,0.2);">🚁</span>
+          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(109,94,242,0.2);">🚁</span>
           Firmware & Software
         </h2>
         <p class="text-gray-400 text-sm mb-6">It runs Betaflight. Here's what that gets you.</p>
@@ -266,7 +266,7 @@ const highlights = [
           <div class="flex items-start gap-4 sm:gap-6">
             <div
               class="w-14 sm:w-16 h-14 sm:h-16 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0"
-              style="background: linear-gradient(135deg, rgba(180,139,255,0.2), rgba(255,143,212,0.2));"
+              style="background: linear-gradient(135deg, rgba(109,94,242,0.18), rgba(109,94,242,0.04));"
             >
               🚁
             </div>
@@ -280,7 +280,7 @@ const highlights = [
                 target="_blank"
                 rel="noopener noreferrer"
                 class="inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-200 hover:text-white"
-                style="color: #ff8fd4;"
+                style="color: var(--accent);"
               >
                 betaflight.com →
               </a>
@@ -296,7 +296,7 @@ const highlights = [
             target="_blank"
             rel="noopener noreferrer"
             class="flex items-center gap-3 p-4 rounded-xl transition-all duration-200 hover:text-white"
-            style="background: rgba(255,255,255,0.04); border: 1px solid rgba(180,139,255,0.15); color: #d7b7ff;"
+            style="background: rgba(255,255,255,0.04); border: 1px solid rgba(109,94,242,0.15); color: var(--accent-light);"
           >
             <span class="text-xl">{{ link.icon }}</span>
             <span class="font-medium text-sm">{{ link.name }}</span>
@@ -306,7 +306,7 @@ const highlights = [
 
       <section>
         <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(191,233,255,0.2);">📋</span>
+          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(109,94,242,0.2);">📋</span>
           Setup Guide
         </h2>
         <p class="text-gray-400 text-sm mb-6">Step by step, getting the FC configured and ready to fly.</p>
@@ -333,7 +333,7 @@ const highlights = [
                   target="_blank"
                   rel="noopener noreferrer"
                   class="inline-flex items-center gap-1 mt-3 text-sm font-semibold transition-colors duration-200 hover:text-white"
-                  style="color: #ff8fd4;"
+                  style="color: var(--accent);"
                 >
                   {{ step.link.text }} →
                 </a>
@@ -347,19 +347,19 @@ const highlights = [
             </h3>
             <ul class="space-y-3">
               <li class="flex items-start gap-2 text-sm text-gray-400 leading-relaxed">
-                <span class="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style="background: rgba(255,143,212,0.2); color: #ff8fd4;">1</span>
+                <span class="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style="background: rgba(109,94,242,0.2); color: var(--accent);">1</span>
                 Remove props before connecting USB or testing motors. Always.
               </li>
               <li class="flex items-start gap-2 text-sm text-gray-400 leading-relaxed">
-                <span class="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style="background: rgba(255,143,212,0.2); color: #ff8fd4;">2</span>
+                <span class="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style="background: rgba(109,94,242,0.2); color: var(--accent);">2</span>
                 Use DSHOT600 for best ESC communication.
               </li>
               <li class="flex items-start gap-2 text-sm text-gray-400 leading-relaxed">
-                <span class="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style="background: rgba(255,143,212,0.2); color: #ff8fd4;">3</span>
+                <span class="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style="background: rgba(109,94,242,0.2); color: var(--accent);">3</span>
                 Enable bidirectional DSHOT for RPM filtering — it helps a lot with propwash.
               </li>
               <li class="flex items-start gap-2 text-sm text-gray-400 leading-relaxed">
-                <span class="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style="background: rgba(255,143,212,0.2); color: #ff8fd4;">4</span>
+                <span class="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style="background: rgba(109,94,242,0.2); color: var(--accent);">4</span>
                 Save a diff backup after each successful tune. You'll thank yourself later.
               </li>
             </ul>
@@ -369,7 +369,7 @@ const highlights = [
 
       <section>
         <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(155,180,255,0.2);">💾</span>
+          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(109,94,242,0.2);">💾</span>
           DFU Mode
         </h2>
         <p class="text-gray-400 text-sm mb-6">
@@ -383,7 +383,7 @@ const highlights = [
             class="glass-card rounded-2xl p-6 relative overflow-hidden"
           >
             <div v-if="method.recommended" class="absolute top-4 right-4">
-              <span class="text-xs font-bold px-2 py-1 rounded-full" style="background: rgba(255,143,212,0.2); color: #ff8fd4;">Recommended</span>
+              <span class="text-xs font-bold px-2 py-1 rounded-full" style="background: rgba(109,94,242,0.2); color: var(--accent);">Recommended</span>
             </div>
             <div
               class="w-11 h-11 rounded-xl flex items-center justify-center text-2xl mb-4"
@@ -410,24 +410,24 @@ const highlights = [
 
         <div class="glass-card rounded-2xl p-6 mb-6">
           <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
-            <span class="w-7 h-7 rounded-lg flex items-center justify-center text-sm" style="background: rgba(180,139,255,0.2);">🔥</span>
+            <span class="w-7 h-7 rounded-lg flex items-center justify-center text-sm" style="background: rgba(109,94,242,0.2);">🔥</span>
             Flashing in Betaflight Configurator
           </h3>
           <ol class="space-y-3">
             <li class="flex items-start gap-3 text-sm text-gray-300">
-              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(180,139,255,0.2); color: #d7b7ff;">1</span>
+              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(109,94,242,0.2); color: var(--accent-light);">1</span>
               Go to the <strong>Firmware Flasher</strong> tab.
             </li>
             <li class="flex items-start gap-3 text-sm text-gray-300">
-              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(180,139,255,0.2); color: #d7b7ff;">2</span>
+              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(109,94,242,0.2); color: var(--accent-light);">2</span>
               Select <strong>ShiroFPV</strong> from the board dropdown, or load the local .hex.
             </li>
             <li class="flex items-start gap-3 text-sm text-gray-300">
-              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(180,139,255,0.2); color: #d7b7ff;">3</span>
+              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(109,94,242,0.2); color: var(--accent-light);">3</span>
               Check <strong>Full chip erase</strong> if you're reflashing or switching versions.
             </li>
             <li class="flex items-start gap-3 text-sm text-gray-300">
-              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(180,139,255,0.2); color: #d7b7ff;">4</span>
+              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(109,94,242,0.2); color: var(--accent-light);">4</span>
               Click <strong>Flash Firmware</strong> and wait for the progress bar. FC will reboot when done.
             </li>
           </ol>
@@ -435,7 +435,7 @@ const highlights = [
 
         <div class="space-y-3">
           <h3 class="text-base font-bold text-white flex items-center gap-2">
-            <span class="w-7 h-7 rounded-lg flex items-center justify-center text-sm" style="background: rgba(255,143,212,0.2);">🔧</span>
+            <span class="w-7 h-7 rounded-lg flex items-center justify-center text-sm" style="background: rgba(109,94,242,0.2);">🔧</span>
             Troubleshooting
           </h3>
           <div
@@ -450,7 +450,7 @@ const highlights = [
       </section>
 
       <section class="glass-card rounded-2xl p-6 sm:p-8 text-center relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10" style="background: linear-gradient(135deg, #b48bff, #ff8fd4, #7dd3ff); background-size: 300% 300%; animation: gradientShift 8s ease infinite;"></div>
+        <div class="absolute inset-0 opacity-10" style="background: linear-gradient(135deg, rgba(109,94,242,0.18), rgba(109,94,242,0.04)); background-size: 300% 300%; animation: gradientShift 8s ease infinite;"></div>
         <div class="relative z-10">
           <h2 class="text-xl sm:text-2xl font-bold text-white mb-2">
             Want to dig into the design?
@@ -473,15 +473,15 @@ const highlights = [
 
 <style scoped>
 .fc-page {
-  --fc-purple: rgba(180, 139, 255, 1);
-  --fc-purple-light: #d7b7ff;
-  --fc-purple-glow: rgba(180, 139, 255, 0.18);
-  --fc-purple-soft: rgba(180, 139, 255, 0.08);
-  --fc-purple-mid: rgba(180, 139, 255, 0.24);
-  --fc-pink-soft: rgba(255, 143, 212, 0.08);
-  --fc-pink-mid: rgba(255, 143, 212, 0.22);
-  --fc-cyan: #7dd3ff;
-  --fc-cyan-soft: rgba(125, 211, 255, 0.2);
+  --fc-purple: rgba(109, 94, 242, 1);
+  --fc-purple-light: var(--accent-light);
+  --fc-purple-glow: rgba(109, 94, 242, 0.18);
+  --fc-purple-soft: rgba(109, 94, 242, 0.08);
+  --fc-purple-mid: rgba(109, 94, 242, 0.24);
+  --fc-pink-soft: rgba(109, 94, 242, 0.08);
+  --fc-pink-mid: rgba(109, 94, 242, 0.22);
+  --fc-cyan: var(--accent-light);
+  --fc-cyan-soft: rgba(109, 94, 242, 0.2);
   --fc-board-size: 78%;
   /* Keep a slight isometric perspective while preserving chip/readability labels. */
   --fc-rotate-x: 18deg;
@@ -500,7 +500,7 @@ const highlights = [
   aspect-ratio: 1;
   border-radius: 20px;
   background: linear-gradient(145deg, rgba(19, 21, 34, 0.95), rgba(11, 11, 22, 0.95));
-  border: 1px solid rgba(125, 211, 255, 0.35);
+  border: 1px solid rgba(109, 94, 242, 0.35);
   transform-style: preserve-3d;
   transform: rotateX(var(--fc-rotate-x)) rotateZ(var(--fc-rotate-z));
   box-shadow: 0 30px 45px rgba(2, 3, 10, 0.55), inset 0 0 0 1px var(--fc-pink-mid);
@@ -510,7 +510,7 @@ const highlights = [
 .fc-board-grid {
   position: absolute;
   inset: 12%;
-  background-image: linear-gradient(rgba(125, 211, 255, 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(125, 211, 255, 0.12) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(109, 94, 242, 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(109, 94, 242, 0.12) 1px, transparent 1px);
   background-size: var(--fc-grid-size) var(--fc-grid-size);
   transform: translateZ(2px);
 }
@@ -522,8 +522,8 @@ const highlights = [
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: #d8f3ff;
-  border: 1px solid rgba(125, 211, 255, 0.3);
+  color: var(--accent-light);
+  border: 1px solid rgba(109, 94, 242, 0.3);
   background: rgba(9, 19, 30, 0.85);
   box-shadow: 0 10px 16px rgba(0, 0, 0, 0.35);
 }
@@ -551,8 +551,8 @@ const highlights = [
   width: 24px;
   height: 24px;
   border-radius: 999px;
-  border: 2px solid rgba(255, 143, 212, 0.7);
-  box-shadow: inset 0 0 0 1px rgba(255, 200, 235, 0.4);
+  border: 2px solid rgba(109, 94, 242, 0.7);
+  box-shadow: inset 0 0 0 1px rgba(109, 94, 242, 0.4);
 }
 
 .fc-pad-1 { top: 10%; left: 10%; transform: translateZ(7px); }
@@ -567,7 +567,7 @@ const highlights = [
   transform: translateZ(20px);
   font-size: 11px;
   font-weight: 700;
-  color: #ff9ed7;
+  color: var(--accent-light);
 }
 
 .fc-preview-mini {

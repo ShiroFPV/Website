@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+:root {
+  --bg-base: #0d0b14;
+  --bg-elevated: #14111d;
+  --surface: #18141f;
+  --surface-hover: #1f1a2c;
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --accent: #6d5ef2;
+  --accent-light: #8f7ff5;
+  --accent-dark: #5747d1;
+  --accent-soft: rgba(109, 94, 242, 0.14);
+  --accent-border: rgba(109, 94, 242, 0.32);
+  --text-primary: #f4f2fa;
+  --text-secondary: #a39dc0;
+  --text-muted: #726c8c;
+  --danger: #ef5a6f;
+}
+
 @layer base {
   * {
     box-sizing: border-box;
@@ -10,9 +28,9 @@
   }
 
   body {
-    color: #fff;
+    color: var(--text-primary);
     font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
-    background: linear-gradient(180deg, #0b0812 0%, #07050c 100%);
+    background: var(--bg-base);
     min-height: 100vh;
   }
 
@@ -23,31 +41,24 @@
     pointer-events: none;
     z-index: 0;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
-    opacity: 0.04;
+    opacity: 0.03;
     mix-blend-mode: overlay;
   }
 }
 
 @layer components {
   .glass-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 199, 232, 0.18);
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
   }
 
   .glass-nav {
-    background: rgba(20, 14, 34, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255, 173, 218, 0.2);
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, #ffd0ea 0%, #9ee8ff 55%, #ffb4e0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent-light);
   }
 
   .gradient-border {
@@ -61,50 +72,45 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, #ffb4e0, #9ee8ff, #ffd0ea);
+    background: var(--accent);
     border-radius: 2px;
   }
 
   .btn-primary {
     @apply px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold transition-all duration-300 min-h-[44px] flex items-center justify-center;
-    background: linear-gradient(135deg, #ffb9e4 0%, #8fe2ff 55%, #ffcbe9 100%);
-    background-size: 200% 200%;
-    color: #231733;
+    background: var(--accent);
+    color: #fff;
   }
 
   .btn-primary:hover {
-    background-position: right center;
+    background: var(--accent-light);
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(143, 226, 255, 0.25), 0 6px 16px rgba(255, 170, 221, 0.22);
   }
 
   .btn-primary:active {
+    background: var(--accent-dark);
     transform: translateY(0);
   }
 
   .btn-outline {
     @apply px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold transition-all duration-300 min-h-[44px] flex items-center justify-center;
-    border: 1px solid rgba(159, 224, 255, 0.56);
-    color: #ffd0ea;
+    border: 1px solid var(--border-strong);
+    color: var(--text-secondary);
   }
 
   .btn-outline:hover {
-    border-color: #ffb4df;
-    color: #9ee8ff;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(157, 227, 255, 0.18), 0 6px 14px rgba(255, 180, 223, 0.16);
+    border-color: var(--accent);
+    color: var(--accent-light);
+    background: rgba(255, 255, 255, 0.03);
   }
 
   .btn-outline:active {
     transform: translateY(0);
   }
 
-  .glow-purple {
-    box-shadow: 0 0 24px rgba(255, 180, 224, 0.33);
-  }
-
+  .glow-purple,
   .glow-pink {
-    box-shadow: 0 0 24px rgba(155, 226, 255, 0.34);
+    box-shadow: 0 8px 24px rgba(109, 94, 242, 0.18);
   }
 
   .card-hover {
@@ -113,7 +119,8 @@
 
   .card-hover:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(155, 226, 255, 0.14), 0 0 0 1px rgba(255, 184, 225, 0.16);
+    border-color: var(--accent-border);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
   }
 }
 
@@ -130,16 +137,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #161225;
+  background: var(--surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #ffb8e3, #96e5ff);
+  background: var(--accent);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #ffd4ec, #b0eeff);
+  background: var(--accent-light);
 }
 
 /* Page transition animations */

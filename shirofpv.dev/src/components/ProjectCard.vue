@@ -41,16 +41,16 @@ function getTagClass(tag) {
   <article class="glass-card card-hover rounded-2xl overflow-hidden flex flex-col">
     <div
       class="relative h-40 sm:h-44 flex items-center justify-center overflow-hidden"
-      style="background: linear-gradient(135deg, rgba(180,139,255,0.15) 0%, rgba(255,143,212,0.15) 50%, rgba(191,233,255,0.12) 100%);"
+      style="background: linear-gradient(135deg, rgba(109,94,242,0.18), rgba(109,94,242,0.04));"
     >
-      <div class="absolute w-24 h-24 rounded-full opacity-20 blur-2xl" style="background: #b48bff; top: -10px; left: -10px;"></div>
-      <div class="absolute w-16 h-16 rounded-full opacity-20 blur-2xl" style="background: #ff8fd4; bottom: -5px; right: -5px;"></div>
+      <div class="absolute w-24 h-24 rounded-full opacity-20 blur-2xl" style="background: var(--accent); top: -10px; left: -10px;"></div>
+      <div class="absolute w-16 h-16 rounded-full opacity-20 blur-2xl" style="background: var(--accent); bottom: -5px; right: -5px;"></div>
 
       <div class="relative z-10 flex flex-col items-center gap-2">
-        <svg class="w-10 sm:w-12 h-10 sm:h-12 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #d7b7ff;">
+        <svg class="w-10 sm:w-12 h-10 sm:h-12 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--accent-light);">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" />
         </svg>
-        <span v-if="project.featured" class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background: linear-gradient(90deg, #b48bff, #ff8fd4); color: white;">Featured</span>
+        <span v-if="project.featured" class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background: var(--accent); color: white;">Featured</span>
       </div>
     </div>
 
@@ -74,7 +74,7 @@ function getTagClass(tag) {
         target="_blank"
         rel="noopener noreferrer"
         class="project-link inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-200"
-        style="color: #d7b7ff;"
+        style="color: var(--accent-light);"
       >
         View Project
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,6 +87,6 @@ function getTagClass(tag) {
 
 <style scoped>
 .project-link:hover {
-  color: #ff8fd4 !important;
+  color: var(--accent) !important;
 }
 </style>

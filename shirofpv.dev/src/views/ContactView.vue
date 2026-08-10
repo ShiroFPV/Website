@@ -16,7 +16,7 @@ const socials = [
     handle: '@ShiroFPV',
     url: 'https://github.com/ShiroFPV',
     description: 'Check out my open-source projects and flight controller designs.',
-    color: '#d7b7ff',
+    color: '#8f7ff5',
     icon: '🐙',
   },
   {
@@ -24,7 +24,7 @@ const socials = [
     handle: '@shiro1930',
     url: 'https://discord.gg/PaRHFSmX',
     description: 'Join the community and chat about FPV builds and hardware.',
-    color: '#9bb4ff',
+    color: '#8f7ff5',
     icon: '💬',
   },
   {
@@ -32,7 +32,7 @@ const socials = [
     handle: 'shirofpv@gmail.com',
     url: 'mailto:shirofpv@gmail.com',
     description: 'For collaborations, questions, or just to say hi.',
-    color: '#ff8fd4',
+    color: '#6d5ef2',
     icon: '✉️',
   },
 ]
@@ -78,8 +78,8 @@ async function handleSubmit() {
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <div class="text-center mb-8 sm:mb-12">
-        <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm" style="color: #d7b7ff;">
-          <span class="w-2 h-2 rounded-full" style="background: #ff8fd4;"></span>
+        <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm" style="color: var(--accent-light);">
+          <span class="w-2 h-2 rounded-full" style="background: var(--accent);"></span>
           Get in Touch
         </div>
         <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-3 sm:mb-4">
@@ -104,7 +104,7 @@ async function handleSubmit() {
           >
             <div
               class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
-              style="background: rgba(180,139,255,0.12);"
+              style="background: rgba(109,94,242,0.12);"
             >
               {{ social.icon }}
             </div>
@@ -160,7 +160,7 @@ async function handleSubmit() {
                   required
                   placeholder="Your name"
                   class="w-full px-4 py-3 rounded-xl text-white placeholder-gray-500 text-sm transition-colors focus:outline-none focus:ring-2"
-                  style="background: rgba(255,255,255,0.05); border: 1px solid rgba(180,139,255,0.3);"
+                  style="background: rgba(255,255,255,0.05); border: 1px solid rgba(109,94,242,0.3);"
                 />
               </div>
 
@@ -174,7 +174,7 @@ async function handleSubmit() {
                   required
                   placeholder="your@email.com"
                   class="w-full px-4 py-3 rounded-xl text-white placeholder-gray-500 text-sm transition-colors focus:outline-none focus:ring-2"
-                  style="background: rgba(255,255,255,0.05); border: 1px solid rgba(180,139,255,0.3);"
+                  style="background: rgba(255,255,255,0.05); border: 1px solid rgba(109,94,242,0.3);"
                 />
               </div>
 
@@ -188,7 +188,7 @@ async function handleSubmit() {
                   rows="5"
                   placeholder="What's on your mind?"
                   class="w-full px-4 py-3 rounded-xl text-white placeholder-gray-500 text-sm transition-colors focus:outline-none focus:ring-2 resize-none"
-                  style="background: rgba(255,255,255,0.05); border: 1px solid rgba(180,139,255,0.3);"
+                  style="background: rgba(255,255,255,0.05); border: 1px solid rgba(109,94,242,0.3);"
                 ></textarea>
               </div>
 

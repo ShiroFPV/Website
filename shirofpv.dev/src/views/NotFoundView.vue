@@ -5,8 +5,8 @@ import { RouterLink } from 'vue-router'
 <template>
   <div class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
     <div class="text-center max-w-lg">
-      <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-6 text-xs sm:text-sm" style="color: #d7b7ff;">
-        <span class="w-2 h-2 rounded-full animate-pulse" style="background: #ff8fd4;"></span>
+      <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-6 text-xs sm:text-sm" style="color: var(--accent-light);">
+        <span class="w-2 h-2 rounded-full animate-pulse" style="background: var(--accent);"></span>
         signal lost
       </div>
 

@@ -13,8 +13,8 @@ import { RouterLink } from 'vue-router'
       </div>
 
       <div class="mb-10">
-        <div class="inline-flex items-center gap-2 glass-card px-3 py-1.5 rounded-full mb-4 text-xs" style="color: #d7b7ff;">
-          <span class="w-2 h-2 rounded-full" style="background: #ff8fd4;"></span>
+        <div class="inline-flex items-center gap-2 glass-card px-3 py-1.5 rounded-full mb-4 text-xs" style="color: var(--accent-light);">
+          <span class="w-2 h-2 rounded-full" style="background: var(--accent);"></span>
           UART / Wiring
         </div>
         <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3">
@@ -37,10 +37,10 @@ import { RouterLink } from 'vue-router'
           <p class="text-gray-400 text-sm leading-relaxed">
             Think of it like a conversation — one end talks (TX), the other listens (RX). If both ends are trying to talk on the same wire, nobody hears anything.
           </p>
-          <div class="mt-4 rounded-xl p-4" style="background: rgba(180,139,255,0.1); border: 1px solid rgba(180,139,255,0.25);">
+          <div class="mt-4 rounded-xl p-4" style="background: rgba(109,94,242,0.1); border: 1px solid rgba(109,94,242,0.25);">
             <div class="font-mono text-sm text-center space-y-1">
-              <div><span style="color: #b48bff;">FC RX</span> <span class="text-gray-400">→</span> <span style="color: #ff8fd4;">Device TX</span></div>
-              <div><span style="color: #ff8fd4;">FC TX</span> <span class="text-gray-400">→</span> <span style="color: #b48bff;">Device RX</span></div>
+              <div><span style="color: var(--accent);">FC RX</span> <span class="text-gray-400">→</span> <span style="color: var(--accent);">Device TX</span></div>
+              <div><span style="color: var(--accent);">FC TX</span> <span class="text-gray-400">→</span> <span style="color: var(--accent);">Device RX</span></div>
             </div>
           </div>
         </div>
@@ -51,29 +51,29 @@ import { RouterLink } from 'vue-router'
           </h2>
           <ul class="space-y-3 text-gray-300 text-sm">
             <li class="flex items-start gap-3">
-              <span class="mt-0.5" style="color: #b48bff;">•</span>
+              <span class="mt-0.5" style="color: var(--accent);">•</span>
               <span>Double-check the silkscreen on both the FC and the device — labels can be tiny and easy to misread.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-0.5" style="color: #b48bff;">•</span>
+              <span class="mt-0.5" style="color: var(--accent);">•</span>
               <span>Make sure the correct UART is enabled in Betaflight's Ports tab for whatever protocol you're using (Serial RX, SmartAudio, MSP, etc.).</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-0.5" style="color: #b48bff;">•</span>
+              <span class="mt-0.5" style="color: var(--accent);">•</span>
               <span>Always <strong class="text-white">save and reboot</strong> after changing anything in the Ports tab — changes don't take effect until you do.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-0.5" style="color: #b48bff;">•</span>
+              <span class="mt-0.5" style="color: var(--accent);">•</span>
               <span>Try a different cable if possible. Broken wires in JST connectors are more common than you'd think.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-0.5" style="color: #b48bff;">•</span>
+              <span class="mt-0.5" style="color: var(--accent);">•</span>
               <span>Verify the device is actually getting power — check 5V/3.3V pads depending on what it needs.</span>
             </li>
           </ul>
         </div>
 
-        <div class="glass-card rounded-2xl p-6" style="border-color: rgba(255,143,212,0.2);">
+        <div class="glass-card rounded-2xl p-6" style="border-color: rgba(109,94,242,0.2);">
           <h2 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
             <span>💡</span> Still nothing?
           </h2>
@@ -88,7 +88,7 @@ import { RouterLink } from 'vue-router'
         <RouterLink to="/debugging" class="text-gray-400 hover:text-white transition-colors">
           ← All issues
         </RouterLink>
-        <RouterLink to="/debugging/receiver-not-detected" class="hover:opacity-80 transition-opacity" style="color: #b48bff;">
+        <RouterLink to="/debugging/receiver-not-detected" class="hover:opacity-80 transition-opacity" style="color: var(--accent);">
           Receiver not detected →
         </RouterLink>
       </div>

@@ -13,8 +13,8 @@ import { RouterLink } from 'vue-router'
       </div>
 
       <div class="mb-10">
-        <div class="inline-flex items-center gap-2 glass-card px-3 py-1.5 rounded-full mb-4 text-xs" style="color: #d7b7ff;">
-          <span class="w-2 h-2 rounded-full" style="background: #ff8fd4;"></span>
+        <div class="inline-flex items-center gap-2 glass-card px-3 py-1.5 rounded-full mb-4 text-xs" style="color: var(--accent-light);">
+          <span class="w-2 h-2 rounded-full" style="background: var(--accent);"></span>
           OSD / Analog Video
         </div>
         <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3">
@@ -37,18 +37,18 @@ import { RouterLink } from 'vue-router'
           <p class="text-gray-400 text-sm leading-relaxed mb-4">
             Your FC has dedicated pads for this. The exact labels vary by board but they'll be something like:
           </p>
-          <div class="rounded-xl p-4" style="background: rgba(180,139,255,0.1); border: 1px solid rgba(180,139,255,0.25);">
+          <div class="rounded-xl p-4" style="background: rgba(109,94,242,0.1); border: 1px solid rgba(109,94,242,0.25);">
             <div class="font-mono text-sm space-y-2">
               <div class="flex items-center gap-3">
-                <span style="color: #ff8fd4;">Camera</span>
+                <span style="color: var(--accent);">Camera</span>
                 <span class="text-gray-400">→</span>
-                <span style="color: #b48bff;">CAM</span>
+                <span style="color: var(--accent);">CAM</span>
                 <span class="text-gray-500 text-xs ml-2">(video in to OSD chip)</span>
               </div>
               <div class="flex items-center gap-3">
-                <span style="color: #b48bff;">VTX</span>
+                <span style="color: var(--accent);">VTX</span>
                 <span class="text-gray-400">→</span>
-                <span style="color: #7dd3ff;">VTX</span>
+                <span style="color: var(--accent-light);">VTX</span>
                 <span class="text-gray-500 text-xs ml-2">(video out from OSD chip)</span>
               </div>
             </div>
@@ -63,7 +63,7 @@ import { RouterLink } from 'vue-router'
           <div class="grid grid-cols-2 gap-3 text-sm">
             <div class="rounded-lg p-3" style="background: rgba(255,255,255,0.05);">
               <div class="text-gray-400 text-xs mb-2">Video In (camera side)</div>
-              <div class="space-y-1 font-mono" style="color: #ff8fd4;">
+              <div class="space-y-1 font-mono" style="color: var(--accent);">
                 <div>CAM</div>
                 <div>AVIN</div>
                 <div>CAM_IN</div>
@@ -72,7 +72,7 @@ import { RouterLink } from 'vue-router'
             </div>
             <div class="rounded-lg p-3" style="background: rgba(255,255,255,0.05);">
               <div class="text-gray-400 text-xs mb-2">Video Out (VTX side)</div>
-              <div class="space-y-1 font-mono" style="color: #7dd3ff;">
+              <div class="space-y-1 font-mono" style="color: var(--accent-light);">
                 <div>VTX</div>
                 <div>AVOUT</div>
                 <div>VTX_OUT</div>
@@ -88,19 +88,19 @@ import { RouterLink } from 'vue-router'
           </h2>
           <ul class="space-y-3 text-gray-300 text-sm">
             <li class="flex items-start gap-3">
-              <span class="mt-0.5" style="color: #b48bff;">•</span>
+              <span class="mt-0.5" style="color: var(--accent);">•</span>
               <span>Make sure <strong class="text-white">OSD is enabled</strong> in Betaflight's OSD tab — there's a master toggle at the top of that page.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-0.5" style="color: #b48bff;">•</span>
+              <span class="mt-0.5" style="color: var(--accent);">•</span>
               <span>If you have video but no OSD overlay, the camera is probably wired to the VTX directly — re-route it through the FC's CAM/VTX pads.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-0.5" style="color: #b48bff;">•</span>
+              <span class="mt-0.5" style="color: var(--accent);">•</span>
               <span>If you have OSD overlay but no video, the output side isn't connected — check your FC's VTX/AVOUT pad to your VTX's video input.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-0.5" style="color: #b48bff;">•</span>
+              <span class="mt-0.5" style="color: var(--accent);">•</span>
               <span>Check the FC's wiring diagram — most manufacturers publish a pinout PDF or image.</span>
             </li>
           </ul>
@@ -112,7 +112,7 @@ import { RouterLink } from 'vue-router'
         <RouterLink to="/debugging/no-osd-digital" class="text-gray-400 hover:text-white transition-colors">
           ← No OSD (Digital)
         </RouterLink>
-        <RouterLink to="/debugging/drone-jumping-flipping" class="hover:opacity-80 transition-opacity" style="color: #b48bff;">
+        <RouterLink to="/debugging/drone-jumping-flipping" class="hover:opacity-80 transition-opacity" style="color: var(--accent);">
           Drone jumping/flipping →
         </RouterLink>
       </div>

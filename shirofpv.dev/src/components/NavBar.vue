@@ -43,8 +43,9 @@ function closeMenu() {
             :to="link.path"
             class="relative px-3 lg:px-4 py-2 text-xs lg:text-sm font-medium transition-colors duration-200 min-h-[44px] flex items-center"
             :class="isActive(link.path)
-              ? 'text-white gradient-border'
+              ? 'text-white'
               : 'text-gray-400 hover:text-white'"
+            :style="isActive(link.path) ? 'box-shadow: inset 0 -2px 0 0 var(--accent);' : ''"
           >
             {{ link.name }}
           </RouterLink>
@@ -79,7 +80,7 @@ function closeMenu() {
       leave-from-class="opacity-100 translate-y-0"
       leave-to-class="opacity-0 -translate-y-4"
     >
-       <div v-if="menuOpen" class="md:hidden glass-nav border-t border-purple-500/20">
+       <div v-if="menuOpen" class="md:hidden glass-nav" style="border-top: 1px solid var(--border-subtle);">
         <div class="px-3 sm:px-4 py-2 space-y-1">
           <RouterLink
             v-for="link in navLinks"
@@ -87,8 +88,9 @@ function closeMenu() {
             :to="link.path"
             class="block px-3 py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-colors duration-200 min-h-[44px] flex items-center"
             :class="isActive(link.path)
-              ? 'text-white bg-purple-500/20'
+              ? 'text-white'
               : 'text-gray-400 hover:text-white hover:bg-white/5'"
+            :style="isActive(link.path) ? 'background: var(--accent-soft);' : ''"
             @click="closeMenu"
           >
             {{ link.name }}

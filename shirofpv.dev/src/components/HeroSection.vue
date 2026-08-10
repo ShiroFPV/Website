@@ -19,8 +19,8 @@ onMounted(() => {
       <div class="lg:grid lg:grid-cols-5 lg:gap-12 lg:items-center">
 
         <div class="lg:col-span-3 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm font-medium" style="color: #d7b7ff;">
-            <span class="w-2 h-2 rounded-full animate-pulse" style="background: #ff8fd4;"></span>
+          <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm font-medium" style="color: var(--accent-light);">
+            <span class="w-2 h-2 rounded-full animate-pulse" style="background: var(--accent);"></span>
             still soldering things at 2am
           </div>
 
@@ -30,7 +30,7 @@ onMounted(() => {
 
           <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-4 font-light leading-relaxed max-w-xl mx-auto lg:mx-0">
             I design flight controllers, write firmware, and occasionally fly the things.<br />
-            <span style="color: #d7b7ff;">Open-source, because hoarding schematics is cringe.</span>
+            <span style="color: var(--accent-light);">Open-source, because hoarding schematics is cringe.</span>
           </p>
 
           <div class="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mt-8 sm:mt-10">
@@ -49,19 +49,19 @@ onMounted(() => {
         </div>
 
         <div class="hidden lg:block lg:col-span-2 mt-8 lg:mt-0">
-          <div class="glass-card rounded-2xl p-5" style="border-color: rgba(180,139,255,0.2);">
-            <p class="text-xs font-mono mb-4" style="color: #d7b7ff;">// status.log</p>
+          <div class="glass-card rounded-2xl p-5" style="border-color: rgba(109,94,242,0.2);">
+            <p class="text-xs font-mono mb-4" style="color: var(--accent-light);">// status.log</p>
             <ul class="space-y-3 text-sm">
               <li class="flex items-start gap-3">
-                <span class="font-mono text-xs mt-0.5 flex-shrink-0" style="color: #ff8fd4;">currently:</span>
+                <span class="font-mono text-xs mt-0.5 flex-shrink-0" style="color: var(--accent);">currently:</span>
                 <span class="text-gray-300">fighting an AT32 bug that refuses to die</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="font-mono text-xs mt-0.5 flex-shrink-0" style="color: #7dd3ff;">shipping:</span>
+                <span class="font-mono text-xs mt-0.5 flex-shrink-0" style="color: var(--accent-light);">shipping:</span>
                 <span class="text-gray-300">FC v2 (soon™)</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="font-mono text-xs mt-0.5 flex-shrink-0" style="color: #b48bff;">mood:</span>
+                <span class="font-mono text-xs mt-0.5 flex-shrink-0" style="color: var(--accent);">mood:</span>
                 <span class="text-gray-300">it flies… mostly</span>
               </li>
             </ul>

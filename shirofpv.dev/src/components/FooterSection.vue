@@ -10,7 +10,6 @@ const socials = [
 <template>
   <footer class="relative mt-16">
     <div class="h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-50"></div>
-    <div class="h-px bg-gradient-to-r from-transparent via-pink-500 to-transparent opacity-30 -mt-px"></div>
 
     <div style="background-color: rgba(15,10,26,0.9);" class="py-6 sm:py-8">
       <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
