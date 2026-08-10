@@ -1,5 +1,13 @@
 <script setup>
+import { RouterLink } from 'vue-router'
 import SkillBadge from '../components/SkillBadge.vue'
+
+const bio = [
+  { icon: '⚡', text: 'Designs custom flight controllers on STM32 / AT32, targeting Betaflight compatibility.' },
+  { icon: '🔧', text: 'PCB layout in KiCad, from schematic to finished board.' },
+  { icon: '🌐', text: 'Everything open source — schematics, firmware, and tools alike.' },
+  { icon: '🏳️‍⚧️', text: "Also yes, a femboy who designs flight controllers. The ESCs don't care, and honestly neither should you." },
+]
 
 const skills = [
   { skill: 'PCB Design', icon: '🔧' },
@@ -45,52 +53,67 @@ const timeline = [
 
 <template>
   <div class="pt-24 pb-16">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <div class="text-center mb-12 sm:mb-16">
-        <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm" style="color: var(--accent-light);">
-          <span class="w-2 h-2 rounded-full" style="background: var(--accent);"></span>
-          About Me
-        </div>
-        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-3 sm:mb-4">
-          Hey, I'm <span class="gradient-text">ShiroFPV</span>
-        </h1>
-        <p class="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-          FPV pilot, open-source hardware designer, and microcontroller enthusiast. I design flight controllers, break them, fix them, and then share everything — because hoarding schematics is pointless.
-        </p>
-      </div>
+      <div class="glass-card rounded-2xl overflow-hidden mb-14 sm:mb-16">
+        <div class="h-24 sm:h-32" style="background: linear-gradient(135deg, rgba(109,94,242,0.4), rgba(109,94,242,0.06) 70%);"></div>
 
-      <div class="glass-card rounded-2xl p-4 sm:p-6 md:p-8 mb-10 sm:mb-12">
-        <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
-          <div class="flex justify-center">
+        <div class="px-5 sm:px-8 pb-6 sm:pb-8">
+          <div class="-mt-10 sm:-mt-12 mb-4">
             <div
-              class="w-40 sm:w-48 h-40 sm:h-48 rounded-full flex items-center justify-center text-4xl sm:text-6xl"
-              style="background: linear-gradient(135deg, rgba(109,94,242,0.18), rgba(109,94,242,0.04)); border: 2px solid rgba(109,94,242,0.35);"
+              class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center text-3xl sm:text-4xl"
+              style="background: linear-gradient(135deg, rgba(109,94,242,0.3), rgba(109,94,242,0.06)); border: 4px solid var(--surface);"
             >
               🚁
             </div>
           </div>
 
-          <div>
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">The Story</h2>
-            <p class="text-sm sm:text-base text-gray-300 leading-relaxed mb-3 sm:mb-4">
-              I got into FPV drones and never looked back. What started as a hobby quickly turned into a passion for the hardware itself — understanding every chip, every trace, every millisecond of latency.
+          <div class="mb-5">
+            <div class="flex items-baseline flex-wrap gap-x-2 gap-y-1">
+              <h1 class="text-xl sm:text-2xl font-bold text-white">ShiroFPV</h1>
+              <span class="text-sm" style="color: var(--text-muted);">@shirofpv</span>
+            </div>
+            <p class="text-sm mt-1" style="color: var(--text-secondary);">
+              FPV pilot · Open-source hardware designer · Microcontroller enthusiast
             </p>
-            <p class="text-sm sm:text-base text-gray-300 leading-relaxed mb-3 sm:mb-4">
-              I design custom flight controllers using STM32 and AT32 microcontrollers, targeting Betaflight compatibility and open-source availability. The goal: high-performance hardware that every pilot can use, modify, and improve.
-            </p>
-            <p class="text-sm sm:text-base leading-relaxed" style="color: var(--text-secondary);">
-              Also yes, I'm a femboy who designs flight controllers. The ESCs don't care, and honestly neither should you. 🏳️‍⚧️
-            </p>
+          </div>
+
+          <div class="h-px mb-5" style="background: var(--border-subtle);"></div>
+
+          <ul class="space-y-2.5 mb-5">
+            <li v-for="item in bio" :key="item.text" class="flex items-start gap-2.5 text-sm text-gray-300 leading-relaxed">
+              <span class="flex-shrink-0" aria-hidden="true">{{ item.icon }}</span>
+              <span>{{ item.text }}</span>
+            </li>
+          </ul>
+
+          <div class="h-px mb-4" style="background: var(--border-subtle);"></div>
+
+          <div class="flex items-center justify-between flex-wrap gap-3">
+            <span class="text-xs" style="color: var(--text-muted);">Building FPV hardware since 2022</span>
+            <div class="flex gap-2">
+              <RouterLink to="/contact" class="btn-outline text-xs px-4 py-2">Get in touch</RouterLink>
+              <RouterLink to="/projects" class="btn-primary text-xs px-4 py-2">See projects</RouterLink>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="mb-12 sm:mb-16">
-        <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-6 text-center">
-          What I <span class="gradient-text">Actually Know</span>
-        </h2>
-        <div class="flex flex-wrap gap-2 sm:gap-3 justify-center">
+      <div class="mb-14 sm:mb-16">
+        <h2 class="text-xs font-bold uppercase tracking-wider mb-4" style="color: var(--text-muted);">The Story</h2>
+        <div class="space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed">
+          <p>
+            I got into FPV drones and never looked back. What started as a hobby quickly turned into a passion for the hardware itself — understanding every chip, every trace, every millisecond of latency.
+          </p>
+          <p>
+            I design custom flight controllers using STM32 and AT32 microcontrollers, targeting Betaflight compatibility and open-source availability. The goal: high-performance hardware that every pilot can use, modify, and improve.
+          </p>
+        </div>
+      </div>
+
+      <div class="mb-14 sm:mb-16">
+        <h2 class="text-xs font-bold uppercase tracking-wider mb-4" style="color: var(--text-muted);">What I Actually Know</h2>
+        <div class="flex flex-wrap gap-2 sm:gap-3">
           <SkillBadge
             v-for="item in skills"
             :key="item.skill"
@@ -101,28 +124,19 @@ const timeline = [
       </div>
 
       <div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-10 text-center">
-          The <span class="gradient-text">Journey</span>
-        </h2>
-        <div class="relative">
-          <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px" style="background: var(--accent);"></div>
+        <h2 class="text-xs font-bold uppercase tracking-wider mb-6" style="color: var(--text-muted);">The Journey</h2>
+        <div class="relative pl-7">
+          <div class="absolute left-[5px] top-1.5 bottom-1.5 w-px" style="background: var(--border-strong);"></div>
 
-          <div class="space-y-8">
-            <div
-              v-for="(item, index) in timeline"
-              :key="item.year"
-              class="relative flex items-start gap-6"
-              :class="index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'"
-            >
-              <div class="absolute left-4 md:left-1/2 w-3 h-3 rounded-full -translate-x-1.5 md:-translate-x-1.5 mt-1.5 z-10" style="background: var(--accent);"></div>
-
-              <div class="ml-10 md:ml-0 md:w-5/12" :class="index % 2 === 0 ? 'md:mr-auto md:text-right md:pr-8' : 'md:ml-auto md:text-left md:pl-8'">
-                <div class="glass-card rounded-xl p-5">
-                  <span class="text-sm font-bold" style="color: var(--accent-light);">{{ item.year }}</span>
-                  <h3 class="text-lg font-bold text-white mt-1 mb-2">{{ item.title }}</h3>
-                  <p class="text-gray-400 text-sm leading-relaxed">{{ item.description }}</p>
-                </div>
-              </div>
+          <div class="space-y-7">
+            <div v-for="item in timeline" :key="item.year" class="relative">
+              <div
+                class="absolute -left-7 top-1.5 w-2.5 h-2.5 rounded-full"
+                style="background: var(--accent); box-shadow: 0 0 0 3px var(--bg-base);"
+              ></div>
+              <span class="text-xs font-mono" style="color: var(--accent-light);">{{ item.year }}</span>
+              <h3 class="text-base font-bold text-white mt-1 mb-1.5">{{ item.title }}</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">{{ item.description }}</p>
             </div>
           </div>
         </div>

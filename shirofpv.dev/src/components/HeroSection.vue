@@ -20,7 +20,7 @@ onMounted(() => {
 
         <div class="lg:col-span-3 text-center lg:text-left">
           <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm font-medium" style="color: var(--accent-light);">
-            <span class="w-2 h-2 rounded-full animate-pulse" style="background: var(--accent);"></span>
+            <span class="w-2 h-2 rounded-full" style="background: var(--accent);"></span>
             still soldering things at 2am
           </div>
 

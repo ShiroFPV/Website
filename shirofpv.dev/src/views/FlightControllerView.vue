@@ -120,7 +120,7 @@ const highlights = [
         <div class="max-w-3xl">
           <div>
             <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm font-medium" style="color: var(--accent-light);">
-              <span class="w-2 h-2 rounded-full animate-pulse" style="background: var(--accent);"></span>
+              <span class="w-2 h-2 rounded-full" style="background: var(--accent);"></span>
               Open-Source Hardware
             </div>
             <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6 leading-tight">
