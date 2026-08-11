@@ -1,6 +1,8 @@
 node_modules/
 dist/
+build/
 .svelte-kit/
 .DS_Store
-.envshirofpv.dev/node_modules/
-shirofpv.dev/dist/
+.env
+.env.*
+!.env.example
