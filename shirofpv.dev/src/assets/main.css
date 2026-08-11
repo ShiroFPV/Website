@@ -59,18 +59,6 @@
     margin-inline: auto;
   }
 
-  .pronoun-tag {
-    cursor: pointer;
-  }
-
-  .pronoun-tag summary {
-    list-style: none;
-  }
-
-  .pronoun-tag summary::-webkit-details-marker {
-    display: none;
-  }
-
   .glass-card {
     background: var(--surface);
     border: 1px solid var(--border-subtle);

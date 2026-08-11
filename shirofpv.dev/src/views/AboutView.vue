@@ -72,10 +72,7 @@ const timeline = [
             <div class="flex items-baseline flex-wrap gap-x-2 gap-y-1">
               <h1 class="text-xl sm:text-2xl font-bold text-white">ShiroFPV</h1>
               <span class="text-sm" style="color: var(--text-muted);">@shirofpv</span>
-              <details class="pronoun-tag">
-                <summary class="text-xs px-2 py-0.5 rounded-full" style="color: var(--text-muted); background: var(--surface-hover); border: 1px solid var(--border-subtle);">pronouns</summary>
-                <span class="text-xs ml-2" style="color: var(--text-secondary);">he/him</span>
-              </details>
+              <span class="text-sm" style="color: var(--text-muted);">· he/him/her</span>
             </div>
             <p class="text-sm mt-1" style="color: var(--text-secondary);">
               FPV pilot · Open-source hardware designer · Microcontroller enthusiast
