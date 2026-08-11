@@ -1,6 +1,6 @@
 <template>
   <div class="pt-24 pb-16">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="page-shell-narrow px-4 sm:px-6 lg:px-8">
 
       <div class="mb-8 sm:mb-10">
         <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 text-xs sm:text-sm" style="color: var(--accent-light);">

@@ -23,7 +23,7 @@ function selectTag(tag) {
 
 <template>
   <div class="pt-24 pb-16">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="page-shell px-4 sm:px-6 lg:px-8">
 
       <div class="text-center mb-8 sm:mb-12">
         <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm" style="color: var(--accent-light);">

@@ -12,7 +12,7 @@ const featuredProjects = projects.slice(0, 3)
     <HeroSection />
 
     <section class="py-20 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-6xl mx-auto">
+      <div class="page-shell">
         <div class="text-center mb-8 sm:mb-12">
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-4">
             Things I've <span class="gradient-text">Built</span>

@@ -53,7 +53,7 @@ const timeline = [
 
 <template>
   <div class="pt-24 pb-16">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="page-shell-narrow px-4 sm:px-6 lg:px-8">
 
       <div class="glass-card rounded-2xl overflow-hidden mb-14 sm:mb-16">
         <div class="h-24 sm:h-32" style="background: linear-gradient(135deg, rgba(109,94,242,0.4), rgba(109,94,242,0.06) 70%);"></div>
@@ -72,6 +72,10 @@ const timeline = [
             <div class="flex items-baseline flex-wrap gap-x-2 gap-y-1">
               <h1 class="text-xl sm:text-2xl font-bold text-white">ShiroFPV</h1>
               <span class="text-sm" style="color: var(--text-muted);">@shirofpv</span>
+              <details class="pronoun-tag">
+                <summary class="text-xs px-2 py-0.5 rounded-full" style="color: var(--text-muted); background: var(--surface-hover); border: 1px solid var(--border-subtle);">pronouns</summary>
+                <span class="text-xs ml-2" style="color: var(--text-secondary);">he/him</span>
+              </details>
             </div>
             <p class="text-sm mt-1" style="color: var(--text-secondary);">
               FPV pilot · Open-source hardware designer · Microcontroller enthusiast

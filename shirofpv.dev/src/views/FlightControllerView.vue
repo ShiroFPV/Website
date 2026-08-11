@@ -116,7 +116,7 @@ const highlights = [
         style="background: linear-gradient(135deg, rgba(109,94,242,0.18), rgba(109,94,242,0.04));"
       ></div>
 
-      <div class="relative z-10 max-w-6xl mx-auto">
+      <div class="relative z-10 page-shell">
         <div class="max-w-3xl">
           <div>
             <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm font-medium" style="color: var(--accent-light);">
@@ -150,7 +150,7 @@ const highlights = [
       </div>
     </section>
 
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    <div class="page-shell px-4 sm:px-6 lg:px-8 space-y-16">
 
       <section>
         <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-3">

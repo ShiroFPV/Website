@@ -12,7 +12,7 @@ const socials = [
     <div class="h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-50"></div>
 
     <div style="background-color: rgba(15,10,26,0.9);" class="py-6 sm:py-8">
-      <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+      <div class="page-shell px-3 sm:px-4 md:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
           <div class="flex items-center space-x-2">
             <span class="font-bold gradient-text text-base sm:text-lg">ShiroFPV</span>
