@@ -33,11 +33,7 @@ const specs = [
           <span class="label">Open-source FPV hardware</span>
         </div>
 
-        <h1 class="display headline">
-          I draw the schematic,<br />
-          <span class="grad-text">route the board,</span><br />
-          and fly the thing.
-        </h1>
+        <h1 class="display headline">Shiro<span class="grad-text">FPV</span></h1>
 
         <p class="sub">
           AT32 flight controllers, Betaflight targets, firmware in C —
@@ -120,7 +116,9 @@ const specs = [
 .meta-rule { flex: 0 0 44px; }
 
 .headline {
-  font-size: clamp(2.1rem, 5.6vw, 4.05rem);
+  font-size: clamp(3.4rem, 10.6vw, 9rem);
+  line-height: 0.86;
+  letter-spacing: -0.055em;
   color: var(--text-primary);
   margin-bottom: 26px;
 }
