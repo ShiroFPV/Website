@@ -50,7 +50,7 @@ async function handleSubmit() {
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({
         access_key: WEB3FORMS_ACCESS_KEY,
-        subject: 'New message from shirofpv.dev',
+        subject: 'New message from shirofpv.com',
         from_name: 'ShiroFPV Contact Form',
         name: form.value.name,
         email: form.value.email,

@@ -72,7 +72,7 @@
 		property="og:title"
 		content={config?.target ? `Support Data for ${config.target} | ShiroFPV` : "Betaflight Support Explorer | ShiroFPV"}
 	/>
-	<meta property="og:url" content="https://shirofpv.dev/" />
+	<meta property="og:url" content="https://shirofpv.com/" />
 	<meta property="og:type" content="website" />
 	<meta property="og:description" content={description} />
 	<meta name="theme-color" content="#b48bff" />

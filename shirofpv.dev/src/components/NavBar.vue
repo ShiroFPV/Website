@@ -96,7 +96,7 @@ function closeMenu() {
             {{ link.name }}
           </RouterLink>
           <a
-            href="https://support.shirofpv.dev"
+            href="https://support.shirofpv.com"
             target="_blank"
             rel="noopener noreferrer"
             class="block px-3 py-2.5 rounded-lg text-xs sm:text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-colors duration-200 min-h-[44px] flex items-center"

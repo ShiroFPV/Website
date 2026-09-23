@@ -52,7 +52,7 @@ function setMeta(selector, attr, value) {
 router.afterEach((to) => {
   const title = to.meta.title || 'ShiroFPV'
   const description = to.meta.description || DEFAULT_DESCRIPTION
-  const url = `https://shirofpv.dev${to.fullPath === '/' ? '/' : to.fullPath}`
+  const url = `https://shirofpv.com${to.fullPath === '/' ? '/' : to.fullPath}`
 
   document.title = title
   setMeta('meta[name="description"]', 'content', description)

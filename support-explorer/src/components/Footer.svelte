@@ -12,7 +12,7 @@
 		<!-- Branding -->
 		<div class="flex flex-col items-center sm:items-start gap-1">
 			<a
-				href="https://shirofpv.dev"
+				href="https://shirofpv.com"
 				class="gradient-text font-bold text-base"
 				target="_blank"
 				rel="noopener noreferrer"
@@ -30,12 +30,12 @@
 		<!-- Links -->
 		<div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
 			<a
-				href="https://shirofpv.dev"
+				href="https://shirofpv.com"
 				class="hover:text-primary-400 transition-colors duration-200"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
-				shirofpv.dev
+				shirofpv.com
 			</a>
 			<a
 				href="https://github.com/ShiroFPV/betaflight-support-explorer-but-shirofied"

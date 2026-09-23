@@ -94,7 +94,7 @@ const meta = reactive({ boardName: '', manufacturerId: '' });
 
 const checkStatus = async () => {
   try {
-    const res = await fetch('https://api.shirofpv.dev/');
+    const res = await fetch('https://api.shirofpv.com/');
     apiOnline.value = res.status !== 404;
   } catch {
     apiOnline.value = false;
@@ -106,7 +106,7 @@ onMounted(() => {
 });
 
 async function fetchFromProxy(id) {
-  const workerUrl = `https://api.shirofpv.dev/?id=${id}`;
+  const workerUrl = `https://api.shirofpv.com/?id=${id}`;
   const response = await fetch(workerUrl);
   if (!response.ok) throw new Error("Worker or Betaflight API unreachable");
   return await response.json();

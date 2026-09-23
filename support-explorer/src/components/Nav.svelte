@@ -79,7 +79,7 @@
 	<div class="grid grid-cols-2 lg:grid-cols-[2fr_2fr_2fr] w-full lg:px-8 px-4 gap-3 py-2">
 		<div class="flex justify-start xl:gap-8 lg:gap-4 gap-2 items-center order-1">
 			<a
-				href="https://shirofpv.dev"
+				href="https://shirofpv.com"
 				class="gradient-text font-bold text-lg hidden xl:block"
 				target="_blank"
 				rel="noopener noreferrer"

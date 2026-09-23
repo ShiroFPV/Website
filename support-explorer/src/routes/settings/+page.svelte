@@ -22,7 +22,7 @@
 	<meta name="description" content="Configure the settings for the Betaflight Support Explorer" />
 
 	<meta property="og:title" content="Settings - Betaflight Support Explorer | ShiroFPV" />
-	<meta property="og:url" content="https://shirofpv.dev/settings" />
+	<meta property="og:url" content="https://shirofpv.com/settings" />
 	<meta property="og:type" content="website" />
 	<meta
 		property="og:description"
