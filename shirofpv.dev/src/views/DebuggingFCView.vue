@@ -1,4 +1,5 @@
 <script setup>
+import PageHeader from '../components/PageHeader.vue'
 import { RouterLink } from 'vue-router'
 
 const issues = [
@@ -62,41 +63,63 @@ const issues = [
 </script>
 
 <template>
-  <div class="pt-24 pb-16">
-    <div class="page-shell px-4 sm:px-6 lg:px-8">
+  <div class="pg-pad">
+    <div class="page-shell">
 
-      <div class="text-center mb-12 sm:mb-16">
-        <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm" style="color: var(--accent-light);">
-          <span class="w-2 h-2 rounded-full" style="background: var(--accent);"></span>
-          Betaflight Debugging
-        </div>
-        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-3 sm:mb-4">
-          Debugging Your <span class="gradient-text">Flight Controller</span>
-        </h1>
-        <p class="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto leading-relaxed">
-          Over time I've run into a lot of weird Betaflight issues and figured out how to fix most of them. This is where I'm documenting all of that — specific problems, what causes them, and how to actually solve them.
-        </p>
-      </div>
+      <PageHeader
+        index="05"
+        label="Betaflight Debugging"
+        title="Debugging Your "
+        accent="Flight Controller"
+        sub="Over time I've run into a lot of weird Betaflight issues and figured out how to fix most of them. This is where I'm documenting all of that — specific problems, what causes them, and how to actually solve them."
+      />
 
-      <div class="grid gap-4 sm:gap-5">
-        <RouterLink
-          v-for="issue in issues"
-          :key="issue.slug"
-          :to="`/debugging/${issue.slug}`"
-          class="glass-card rounded-2xl p-5 sm:p-6 card-hover flex items-start gap-4 sm:gap-5 group"
-        >
-          <div class="text-2xl sm:text-3xl flex-shrink-0 mt-0.5">{{ issue.icon }}</div>
-          <div class="flex-1 min-w-0">
-            <div class="flex flex-wrap items-center gap-2 mb-1.5">
-              <span class="text-xs px-2 py-0.5 rounded-full font-medium" :style="`background: ${issue.color}20; color: ${issue.color};`">{{ issue.tag }}</span>
-            </div>
-            <h2 class="text-base sm:text-lg font-bold text-white mb-1.5 group-hover:opacity-80 transition-opacity">{{ issue.title }}</h2>
-            <p class="text-gray-400 text-sm leading-relaxed">{{ issue.desc }}</p>
-          </div>
-          <div class="flex-shrink-0 self-center text-gray-600 group-hover:text-gray-300 transition-colors text-lg">→</div>
-        </RouterLink>
-      </div>
+      <ul class="issues">
+        <li v-for="(issue, i) in issues" :key="issue.slug">
+          <RouterLink :to="`/debugging/${issue.slug}`" class="irow">
+            <span class="irow-i idx">{{ String(i + 1).padStart(2, '0') }}</span>
+            <span class="irow-body">
+              <span class="irow-tag">{{ issue.tag }}</span>
+              <span class="irow-title">{{ issue.title }}</span>
+              <span class="irow-desc">{{ issue.desc }}</span>
+            </span>
+            <span class="irow-arrow" aria-hidden="true">→</span>
+          </RouterLink>
+        </li>
+      </ul>
 
     </div>
   </div>
 </template>
+
+<style scoped>
+.issues { border-top: 1px solid var(--border-subtle); }
+.irow {
+  position: relative; display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto; gap: 18px; align-items: center;
+  padding: 22px 14px 22px 4px; border-bottom: 1px solid var(--border-subtle);
+  transition: background 0.25s ease, padding-left 0.25s ease;
+}
+.irow::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(180deg, var(--violet-light), var(--pink));
+  transform: scaleY(0); transform-origin: top;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.irow:hover { background: rgba(255,255,255,0.022); padding-left: 16px; }
+.irow:hover::before { transform: scaleY(1); }
+.irow-i { align-self: start; padding-top: 5px; transition: color 0.25s; }
+.irow:hover .irow-i { color: var(--pink); }
+.irow-body { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.irow-tag {
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--violet-light);
+}
+.irow-title {
+  font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em;
+  font-size: clamp(1.02rem, 1.9vw, 1.3rem); color: var(--text-primary);
+}
+.irow-desc { font-size: 0.87rem; line-height: 1.55; color: var(--text-muted); max-width: 74ch; }
+.irow-arrow { font-family: var(--font-mono); color: var(--text-muted); transition: transform 0.25s, color 0.25s; }
+.irow:hover .irow-arrow { color: var(--pink); transform: translateX(4px); }
+</style>

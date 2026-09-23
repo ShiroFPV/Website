@@ -108,23 +108,24 @@ const highlights = [
 </script>
 
 <template>
-  <div class="fc-page pt-24 pb-16">
+  <div class="fc-page pg-pad">
 
-    <section class="relative overflow-hidden py-16 px-4 sm:px-6 lg:px-8">
+    <section class="relative overflow-hidden py-16">
       <div
         class="absolute inset-0 opacity-20"
-        style="background: linear-gradient(135deg, rgba(109,94,242,0.18), rgba(109,94,242,0.04));"
+        style="background: linear-gradient(135deg, rgba(124,92,255,0.14), rgba(255,143,199,0.05));"
       ></div>
 
       <div class="relative z-10 page-shell">
         <div class="max-w-3xl">
           <div>
-            <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm font-medium" style="color: var(--accent-light);">
-              <span class="w-2 h-2 rounded-full" style="background: var(--accent);"></span>
-              Open-Source Hardware
+            <div class="fc-meta">
+              <span class="idx">04</span>
+              <span class="rule fc-rule"></span>
+              <span class="label">Open-source hardware</span>
             </div>
-            <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6 leading-tight">
-              ShiroFPV <span class="gradient-text">Flight Controller</span>
+            <h1 class="display fc-title">
+              ShiroFPV <span class="grad-text">Flight Controller</span>
             </h1>
             <p class="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed mb-3">
               My own fully open-source flight controller built around the AT32F435RGT7. Designed in KiCad, targeted at Betaflight, and open for anyone to use or improve.
@@ -150,16 +151,16 @@ const highlights = [
       </div>
     </section>
 
-    <div class="page-shell px-4 sm:px-6 lg:px-8 space-y-16">
+    <div class="page-shell space-y-16">
 
       <section>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(109,94,242,0.2);">🚁</span>
+        <h2 class="display fc-h2 flex items-center gap-3">
+          <span class="sec-n">01</span>
           What's this thing?
         </h2>
         <p class="text-gray-400 text-sm mb-6">The short version of the overview.</p>
         <div class="grid md:grid-cols-2 gap-6">
-          <div class="glass-card rounded-2xl p-6">
+          <div class="glass-card rounded-[4px] p-6">
             <p class="text-gray-300 leading-relaxed mb-4 text-sm sm:text-base">
               I wanted to build my own flight controller from scratch. Not use someone else's design — actually design the PCB, pick the components, route the traces, and get it manufactured. So I did.
             </p>
@@ -167,7 +168,7 @@ const highlights = [
               It's built around the AT32F435RGT7 (an STM32-compatible chip that runs at up to 288 MHz), uses an ICM-20602 gyro, has a BME280 barometer, onboard blackbox flash, USB-C, and targets Betaflight. It's on a standard 30.5×30.5mm stack mount so it drops into pretty much any build.
             </p>
           </div>
-          <div class="glass-card rounded-2xl p-6">
+          <div class="glass-card rounded-[4px] p-6">
             <p class="text-gray-300 leading-relaxed mb-4 text-sm sm:text-base">
               The project started as a personal challenge and turned into something I actually want to fly. After months of PCB revisions in KiCad and a lot of debugging, the board is now stable enough for public release and community feedback.
             </p>
@@ -179,12 +180,12 @@ const highlights = [
       </section>
 
       <section>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(109,94,242,0.2);">🔧</span>
+        <h2 class="display fc-h2 flex items-center gap-3">
+          <span class="sec-n">02</span>
           Hardware Specs
         </h2>
         <p class="text-gray-400 text-sm mb-6">Full specs for the current v2 revision.</p>
-        <div class="glass-card rounded-2xl overflow-hidden">
+        <div class="glass-card rounded-[4px] overflow-hidden">
           <div class="divide-y" style="border-color: rgba(255,255,255,0.04);">
             <div
               v-for="spec in specs"
@@ -197,10 +198,10 @@ const highlights = [
           </div>
         </div>
 
-        <div class="mt-6 glass-card rounded-2xl p-6">
+        <div class="mt-6 glass-card rounded-[4px] p-6">
           <div class="flex items-center justify-between gap-3 mb-4">
             <div class="flex items-center gap-3">
-              <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(109,94,242,0.2);">🧊</span>
+              <span class="sec-n">03</span>
               <h3 class="font-bold text-white">Interactive 3D Model</h3>
             </div>
             <span class="text-xs text-gray-500 hidden sm:inline">drag to rotate · scroll to zoom</span>
@@ -220,7 +221,7 @@ const highlights = [
             ar-modes="webxr scene-viewer quick-look"
             loading="lazy"
             reveal="auto"
-            class="w-full rounded-xl"
+            class="w-full rounded-[3px]"
             style="min-height: 360px; background: linear-gradient(135deg, rgba(109,94,242,0.18), rgba(109,94,242,0.04)); border: 1px solid rgba(109,94,242,0.2); --poster-color: transparent; touch-action: pan-y;"
           >
             <button
@@ -256,17 +257,17 @@ const highlights = [
       </section>
 
       <section>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(109,94,242,0.2);">🚁</span>
+        <h2 class="display fc-h2 flex items-center gap-3">
+          <span class="sec-n">04</span>
           Firmware & Software
         </h2>
         <p class="text-gray-400 text-sm mb-6">It runs Betaflight. Here's what that gets you.</p>
 
-        <div class="glass-card rounded-2xl p-6 mb-6">
+        <div class="glass-card rounded-[4px] p-6 mb-6">
           <div class="flex items-start gap-4 sm:gap-6">
             <div
-              class="w-14 sm:w-16 h-14 sm:h-16 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0"
-              style="background: linear-gradient(135deg, rgba(109,94,242,0.18), rgba(109,94,242,0.04));"
+              class="w-14 sm:w-16 h-14 sm:h-16 rounded-[4px] flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0"
+              style="background: linear-gradient(135deg, rgba(124,92,255,0.14), rgba(255,143,199,0.05));"
             >
               🚁
             </div>
@@ -295,7 +296,7 @@ const highlights = [
             :href="link.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex items-center gap-3 p-4 rounded-xl transition-all duration-200 hover:text-white"
+            class="flex items-center gap-3 p-4 rounded-[3px] transition-all duration-200 hover:text-white"
             style="background: rgba(255,255,255,0.04); border: 1px solid rgba(109,94,242,0.15); color: var(--accent-light);"
           >
             <span class="text-xl">{{ link.icon }}</span>
@@ -305,8 +306,8 @@ const highlights = [
       </section>
 
       <section>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(109,94,242,0.2);">📋</span>
+        <h2 class="display fc-h2 flex items-center gap-3">
+          <span class="sec-n">05</span>
           Setup Guide
         </h2>
         <p class="text-gray-400 text-sm mb-6">Step by step, getting the FC configured and ready to fly.</p>
@@ -316,10 +317,10 @@ const highlights = [
             <div
               v-for="step in setupSteps"
               :key="step.num"
-              class="glass-card rounded-2xl p-5 flex gap-4"
+              class="glass-card rounded-[4px] p-5 flex gap-4"
             >
               <div
-                class="w-11 h-11 rounded-xl flex items-center justify-center text-base font-black flex-shrink-0"
+                class="w-11 h-11 rounded-[3px] flex items-center justify-center text-base font-black flex-shrink-0"
                 :style="`background: ${step.color}20; color: ${step.color};`"
               >
                 {{ step.num }}
@@ -341,7 +342,7 @@ const highlights = [
             </div>
           </div>
 
-          <div class="glass-card rounded-2xl p-6 h-fit">
+          <div class="glass-card rounded-[4px] p-6 h-fit">
             <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
               <span>💡</span> Quick tips
             </h3>
@@ -368,8 +369,8 @@ const highlights = [
       </section>
 
       <section>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(109,94,242,0.2);">💾</span>
+        <h2 class="display fc-h2 flex items-center gap-3">
+          <span class="sec-n">06</span>
           DFU Mode
         </h2>
         <p class="text-gray-400 text-sm mb-6">
@@ -380,13 +381,13 @@ const highlights = [
           <div
             v-for="method in dfuMethods"
             :key="method.title"
-            class="glass-card rounded-2xl p-6 relative overflow-hidden"
+            class="glass-card rounded-[4px] p-6 relative overflow-hidden"
           >
             <div v-if="method.recommended" class="absolute top-4 right-4">
               <span class="text-xs font-bold px-2 py-1 rounded-full" style="background: rgba(109,94,242,0.2); color: var(--accent);">Recommended</span>
             </div>
             <div
-              class="w-11 h-11 rounded-xl flex items-center justify-center text-2xl mb-4"
+              class="w-11 h-11 rounded-[3px] flex items-center justify-center text-2xl mb-4"
               :style="`background: ${method.color}18;`"
             >
               {{ method.icon }}
@@ -408,9 +409,9 @@ const highlights = [
           </div>
         </div>
 
-        <div class="glass-card rounded-2xl p-6 mb-6">
+        <div class="glass-card rounded-[4px] p-6 mb-6">
           <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
-            <span class="w-7 h-7 rounded-lg flex items-center justify-center text-sm" style="background: rgba(109,94,242,0.2);">🔥</span>
+            <span class="sec-n">07</span>
             Flashing in Betaflight Configurator
           </h3>
           <ol class="space-y-3">
@@ -435,13 +436,13 @@ const highlights = [
 
         <div class="space-y-3">
           <h3 class="text-base font-bold text-white flex items-center gap-2">
-            <span class="w-7 h-7 rounded-lg flex items-center justify-center text-sm" style="background: rgba(109,94,242,0.2);">🔧</span>
+            <span class="sec-n">08</span>
             Troubleshooting
           </h3>
           <div
             v-for="item in troubleshooting"
             :key="item.q"
-            class="glass-card rounded-xl p-5"
+            class="glass-card rounded-[3px] p-5"
           >
             <h4 class="font-semibold text-white mb-1.5 text-sm">{{ item.q }}</h4>
             <p class="text-gray-400 text-sm leading-relaxed">{{ item.a }}</p>
@@ -449,7 +450,7 @@ const highlights = [
         </div>
       </section>
 
-      <section class="glass-card rounded-2xl p-6 sm:p-8 text-center relative overflow-hidden">
+      <section class="glass-card rounded-[4px] p-6 sm:p-8 text-center relative overflow-hidden">
         <div class="absolute inset-0 opacity-10" style="background: linear-gradient(135deg, rgba(109,94,242,0.18), rgba(109,94,242,0.04)); background-size: 300% 300%; animation: gradientShift 8s ease infinite;"></div>
         <div class="relative z-10">
           <h2 class="text-xl sm:text-2xl font-bold text-white mb-2">
@@ -472,6 +473,18 @@ const highlights = [
 </template>
 
 <style scoped>
+.sec-n {
+  font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.1em; color: var(--violet-light);
+  border: 1px solid var(--border-strong); border-radius: 2px;
+  padding: 4px 6px; line-height: 1;
+}
+.fc-h2 { font-size: clamp(1.45rem, 2.8vw, 2rem); color: var(--text-primary); margin-bottom: 8px; }
+
+.fc-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.fc-rule { flex: 0 0 44px; }
+.fc-title { font-size: clamp(2rem, 5vw, 3.6rem); color: var(--text-primary); margin-bottom: 18px; }
+
 .fc-page {
   --fc-purple: rgba(109, 94, 242, 1);
   --fc-purple-light: var(--accent-light);

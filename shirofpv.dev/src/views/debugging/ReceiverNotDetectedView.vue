@@ -1,10 +1,11 @@
 <script setup>
+import PageHeader from '../../components/PageHeader.vue'
 import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <div class="pt-24 pb-16">
-    <div class="page-shell-narrow px-4 sm:px-6 lg:px-8">
+  <div class="pg-pad">
+    <div class="page-shell-narrow">
 
       <div class="mb-8">
         <RouterLink to="/debugging" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
@@ -12,22 +13,16 @@ import { RouterLink } from 'vue-router'
         </RouterLink>
       </div>
 
-      <div class="mb-10">
-        <div class="inline-flex items-center gap-2 glass-card px-3 py-1.5 rounded-full mb-4 text-xs" style="color: var(--accent-light);">
-          <span class="w-2 h-2 rounded-full" style="background: var(--accent);"></span>
-          Receiver / Serial RX
-        </div>
-        <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3">
-          Receiver <span class="gradient-text">Not Being Detected</span>
-        </h1>
-        <p class="text-gray-400 leading-relaxed">
-          Your receiver is bound, wired up, powered on — but Betaflight's Receiver tab shows absolutely nothing moving. This is almost always a Ports tab conflict that's easy to miss.
-        </p>
-      </div>
+      <PageHeader
+        label="Receiver / Serial RX"
+        title="Receiver "
+        accent="Not Being Detected"
+        sub="Your receiver is bound, wired up, powered on — but Betaflight's Receiver tab shows absolutely nothing moving. This is almost always a Ports tab conflict that's easy to miss."
+      />
 
       <div class="space-y-6">
 
-        <div class="glass-card rounded-2xl p-6">
+        <div class="glass-card rounded-[4px] p-6">
           <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
             <span>⚠️</span> MSP and Serial RX on the Same UART
           </h2>
@@ -37,7 +32,7 @@ import { RouterLink } from 'vue-router'
           <p class="text-gray-400 text-sm leading-relaxed">
             Betaflight won't warn you about this — it'll just silently not work, which is great for your sanity (it's not).
           </p>
-          <div class="mt-4 rounded-xl p-4 space-y-3" style="background: rgba(109,94,242,0.08); border: 1px solid rgba(109,94,242,0.2);">
+          <div class="mt-4 rounded-[3px] p-4 space-y-3" style="background: rgba(109,94,242,0.08); border: 1px solid rgba(109,94,242,0.2);">
             <div class="flex items-center gap-3 text-sm">
               <span class="text-red-400 font-bold">✗</span>
               <span class="text-gray-300">UART1: <span class="text-red-400">MSP ON</span> + Serial RX ON → receiver won't work</span>
@@ -49,7 +44,7 @@ import { RouterLink } from 'vue-router'
           </div>
         </div>
 
-        <div class="glass-card rounded-2xl p-6">
+        <div class="glass-card rounded-[4px] p-6">
           <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
             <span>🔧</span> How to Fix It
           </h2>
@@ -77,7 +72,7 @@ import { RouterLink } from 'vue-router'
           </ol>
         </div>
 
-        <div class="glass-card rounded-2xl p-6">
+        <div class="glass-card rounded-[4px] p-6">
           <h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
             <span>✅</span> Quick Checks
           </h2>

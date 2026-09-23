@@ -1,10 +1,11 @@
 <script setup>
+import PageHeader from '../../components/PageHeader.vue'
 import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <div class="pt-24 pb-16">
-    <div class="page-shell-narrow px-4 sm:px-6 lg:px-8">
+  <div class="pg-pad">
+    <div class="page-shell-narrow">
 
       <div class="mb-8">
         <RouterLink to="/debugging" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
@@ -12,22 +13,16 @@ import { RouterLink } from 'vue-router'
         </RouterLink>
       </div>
 
-      <div class="mb-10">
-        <div class="inline-flex items-center gap-2 glass-card px-3 py-1.5 rounded-full mb-4 text-xs" style="color: var(--accent-light);">
-          <span class="w-2 h-2 rounded-full" style="background: var(--accent);"></span>
-          OSD / Digital Video
-        </div>
-        <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3">
-          No OSD <span class="gradient-text">(Digital)</span>
-        </h1>
-        <p class="text-gray-400 leading-relaxed">
-          You've got a digital FPV system (DJI, Walksnail, HDZero, etc.) and the OSD just isn't showing up in your goggles. Video is fine but no telemetry overlay. This is almost always a Ports tab thing.
-        </p>
-      </div>
+      <PageHeader
+        label="OSD / Digital Video"
+        title="No OSD "
+        accent="(Digital)"
+        sub="You've got a digital FPV system (DJI, Walksnail, HDZero, etc.) and the OSD just isn't showing up in your goggles. Video is fine but no telemetry overlay. This is almost always a Ports tab thing."
+      />
 
       <div class="space-y-6">
 
-        <div class="glass-card rounded-2xl p-6">
+        <div class="glass-card rounded-[4px] p-6">
           <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
             <span>🖥️</span> Enable VTX (MSP + DisplayPort) in Ports
           </h2>
@@ -39,7 +34,7 @@ import { RouterLink } from 'vue-router'
           </p>
         </div>
 
-        <div class="glass-card rounded-2xl p-6">
+        <div class="glass-card rounded-[4px] p-6">
           <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
             <span>🔧</span> How to Fix It
           </h2>
@@ -67,7 +62,7 @@ import { RouterLink } from 'vue-router'
           </ol>
         </div>
 
-        <div class="glass-card rounded-2xl p-6">
+        <div class="glass-card rounded-[4px] p-6">
           <h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
             <span>✅</span> Quick Checks
           </h2>

@@ -1,21 +1,16 @@
 <template>
-  <div class="pt-24 pb-16">
-    <div class="page-shell-narrow px-4 sm:px-6 lg:px-8">
+  <div class="pg-pad">
+    <div class="page-shell-narrow">
 
-      <div class="mb-8 sm:mb-10">
-        <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 text-xs sm:text-sm" style="color: var(--accent-light);">
-          <span class="w-2 h-2 rounded-full" style="background: var(--accent);"></span>
-          Config Generator
-        </div>
-        <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3">
-          Build a <span class="gradient-text">config.h</span>
-        </h1>
-        <p class="text-sm sm:text-base text-gray-400 max-w-xl leading-relaxed">
-          Pull board metadata from a Betaflight Support ID / build key and generate a ready-to-flash config.h for BF 4.5+.
-        </p>
-      </div>
+      <PageHeader
+        index="06"
+        label="Config Generator"
+        title="Build a "
+        accent="config.h"
+        sub="Pull board metadata from a Betaflight Support ID / build key and generate a ready-to-flash config.h for BF 4.5+."
+      />
 
-      <div class="glass-card rounded-2xl p-5 sm:p-6 md:p-8">
+      <div class="glass-card rounded-[4px] p-5 sm:p-6 md:p-8">
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
           <div class="flex flex-col gap-1.5">
             <label class="text-xs text-gray-400 font-semibold uppercase tracking-wide">Support ID / Build Key</label>
@@ -23,7 +18,7 @@
               v-model="supportId"
               type="text"
               placeholder="1a5a860c..."
-              class="config-field px-3 py-2.5 rounded-xl text-sm text-white placeholder-gray-500 outline-none transition-colors"
+              class="config-field px-3 py-2.5 rounded-[3px] text-sm text-white placeholder-gray-500 outline-none transition-colors"
             />
           </div>
           <div class="flex flex-col gap-1.5">
@@ -32,7 +27,7 @@
               v-model="meta.boardName"
               type="text"
               placeholder="SHIRO_F4"
-              class="config-field px-3 py-2.5 rounded-xl text-sm text-white placeholder-gray-500 outline-none transition-colors"
+              class="config-field px-3 py-2.5 rounded-[3px] text-sm text-white placeholder-gray-500 outline-none transition-colors"
             />
           </div>
           <div class="flex flex-col gap-1.5">
@@ -41,7 +36,7 @@
               v-model="meta.manufacturerId"
               type="text"
               placeholder="SHRO"
-              class="config-field px-3 py-2.5 rounded-xl text-sm text-white placeholder-gray-500 outline-none transition-colors"
+              class="config-field px-3 py-2.5 rounded-[3px] text-sm text-white placeholder-gray-500 outline-none transition-colors"
             />
           </div>
         </div>
@@ -56,7 +51,7 @@
         <button
           @click="generate"
           :disabled="loading"
-          class="config-btn-primary w-full py-3 rounded-xl font-semibold text-sm text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          class="config-btn-primary w-full py-3 rounded-[3px] font-semibold text-sm text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {{ loading ? 'Processing API Data...' : 'Build Configuration' }}
         </button>

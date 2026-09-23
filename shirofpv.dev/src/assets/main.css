@@ -211,6 +211,9 @@
   .animate-gradient { background-size: 300% 300%; animation: gradientShift 8s ease infinite; }
 }
 
+.pg-pad { padding: clamp(48px, 7vw, 92px) 20px clamp(56px, 7vw, 92px); }
+@media (min-width: 640px) { .pg-pad { padding-inline: 32px; } }
+
 /* ── left rail offset (unlayered so it beats Tailwind utilities) ── */
 .has-rail { padding-left: 0; }
 @media (min-width: 1024px) {

@@ -1,10 +1,11 @@
 <script setup>
+import PageHeader from '../../components/PageHeader.vue'
 import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <div class="pt-24 pb-16">
-    <div class="page-shell-narrow px-4 sm:px-6 lg:px-8">
+  <div class="pg-pad">
+    <div class="page-shell-narrow">
 
       <div class="mb-8">
         <RouterLink to="/debugging" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
@@ -12,22 +13,16 @@ import { RouterLink } from 'vue-router'
         </RouterLink>
       </div>
 
-      <div class="mb-10">
-        <div class="inline-flex items-center gap-2 glass-card px-3 py-1.5 rounded-full mb-4 text-xs" style="color: var(--accent-light);">
-          <span class="w-2 h-2 rounded-full" style="background: var(--accent);"></span>
-          Performance / CPU
-        </div>
-        <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3">
-          FC Slow + CPU Load <span class="gradient-text">Extremely High</span>
-        </h1>
-        <p class="text-gray-400 leading-relaxed">
-          Betaflight Configurator is sluggish, the FC feels unresponsive, or you can actually see the CPU load sitting near 100% in the Setup tab. High CPU load can tank your flight performance — the FC is too busy to process gyro and motor data properly.
-        </p>
-      </div>
+      <PageHeader
+        label="Performance / CPU"
+        title="FC Slow + CPU Load "
+        accent="Extremely High"
+        sub="Betaflight Configurator is sluggish, the FC feels unresponsive, or you can actually see the CPU load sitting near 100% in the Setup tab. High CPU load can tank your flight performance — the FC is too busy to process gyro and motor data properly."
+      />
 
       <div class="space-y-6">
 
-        <div class="glass-card rounded-2xl p-6">
+        <div class="glass-card rounded-[4px] p-6">
           <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
             <span>🖥️</span> Why CPU Load Gets This High
           </h2>
@@ -39,19 +34,19 @@ import { RouterLink } from 'vue-router'
           </p>
         </div>
 
-        <div class="glass-card rounded-2xl p-6">
+        <div class="glass-card rounded-[4px] p-6">
           <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
             <span>🔧</span> How to Fix It
           </h2>
           <p class="text-gray-400 text-sm mb-4">You've got two main options — pick whichever fits your setup:</p>
 
           <div class="space-y-4">
-            <div class="rounded-xl p-4" style="background: rgba(109,94,242,0.08); border: 1px solid rgba(109,94,242,0.2);">
+            <div class="rounded-[3px] p-4" style="background: rgba(109,94,242,0.08); border: 1px solid rgba(109,94,242,0.2);">
               <div class="font-semibold text-white text-sm mb-2">Option 1 — Lower the PID loop frequency</div>
               <p class="text-gray-400 text-sm leading-relaxed">Go to Configuration tab → PID Loop Frequency and drop it from 8 kHz to 4 kHz (or even 2 kHz on older hardware). Less iterations per second = less CPU usage. For most builds you won't notice a real difference in flight feel going from 8k to 4k.</p>
             </div>
 
-            <div class="rounded-xl p-4" style="background: rgba(109,94,242,0.08); border: 1px solid rgba(109,94,242,0.2);">
+            <div class="rounded-[3px] p-4" style="background: rgba(109,94,242,0.08); border: 1px solid rgba(109,94,242,0.2);">
               <div class="font-semibold text-white text-sm mb-2">Option 2 — Switch to DSHOT300 + enable bidirectional DSHOT</div>
               <p class="text-gray-400 text-sm leading-relaxed">
                 If your ESC supports bidirectional DSHOT (BLHeli_32, AM32, BlueJay), you can actually save CPU resources by switching to DSHOT300 <em>with</em> bidirectional DSHOT enabled. You're halving the bits-per-second on the DSHOT line, which frees up FC processing overhead. Counterintuitive but it works — the bidirectional protocol is more efficient per transmission than one-way DSHOT600.
@@ -61,7 +56,7 @@ import { RouterLink } from 'vue-router'
           </div>
         </div>
 
-        <div class="glass-card rounded-2xl p-6">
+        <div class="glass-card rounded-[4px] p-6">
           <h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
             <span>✅</span> Quick Checks
           </h2>

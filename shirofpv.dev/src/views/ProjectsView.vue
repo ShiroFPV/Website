@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
-import ProjectCard from '../components/ProjectCard.vue'
+import PageHeader from '../components/PageHeader.vue'
+import ProjectRow from '../components/ProjectRow.vue'
 import { projects } from '../data/projects.js'
 
 const selectedTag = ref(null)
@@ -11,75 +12,86 @@ const allTags = computed(() => {
   return Array.from(tags)
 })
 
-const filteredProjects = computed(() => {
-  if (!selectedTag.value) return projects
-  return projects.filter(p => p.tags.includes(selectedTag.value))
-})
+const filtered = computed(() =>
+  !selectedTag.value ? projects : projects.filter(p => p.tags.includes(selectedTag.value)),
+)
 
-function selectTag(tag) {
-  selectedTag.value = selectedTag.value === tag ? null : tag
-}
+const num = (i) => String(i + 1).padStart(2, '0')
+function selectTag(tag) { selectedTag.value = selectedTag.value === tag ? null : tag }
 </script>
 
 <template>
-  <div class="pt-24 pb-16">
-    <div class="page-shell px-4 sm:px-6 lg:px-8">
+  <div class="pg">
+    <div class="page-shell">
+      <PageHeader
+        index="03"
+        label="Everything"
+        title="Open source "
+        accent="projects"
+        sub="Flight controllers, PCB designs, and firmware — all open source and not going anywhere."
+      />
 
-      <div class="text-center mb-8 sm:mb-12">
-        <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm" style="color: var(--accent-light);">
-          <span class="w-2 h-2 rounded-full" style="background: var(--accent-light);"></span>
-          My Work
+      <div class="filters">
+        <span class="label filters-label">filter</span>
+        <div class="chips">
+          <button class="chip" :class="{ on: selectedTag === null }" @click="selectedTag = null">
+            All <span class="chip-n">{{ projects.length }}</span>
+          </button>
+          <button
+            v-for="tag in allTags" :key="tag"
+            class="chip" :class="{ on: selectedTag === tag }"
+            @click="selectTag(tag)"
+          >{{ tag }}</button>
         </div>
-        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-2 sm:mb-4">
-          Open Source <span class="gradient-text">Projects</span>
-        </h1>
-        <p class="text-sm sm:text-base text-gray-400 max-w-xl mx-auto leading-relaxed">
-          Flight controllers, PCB designs, and firmware — all open source and not going anywhere.
-        </p>
-      </div>
-
-      <div class="flex flex-wrap gap-2 sm:gap-3 justify-center mb-8 sm:mb-10">
-        <button
-          class="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200"
-          :class="selectedTag === null
-            ? 'text-white'
-            : 'glass-card text-gray-400 hover:text-white'"
-          :style="selectedTag === null ? 'background: var(--accent); color: white;' : ''"
-          @click="selectedTag = null"
-        >
-          All
-        </button>
-        <button
-          v-for="tag in allTags"
-          :key="tag"
-          class="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200"
-          :class="selectedTag === tag
-            ? 'text-white'
-            : 'glass-card text-gray-400 hover:text-white'"
-          :style="selectedTag === tag ? 'background: var(--accent); color: white;' : ''"
-          @click="selectTag(tag)"
-        >
-          {{ tag }}
-        </button>
       </div>
 
       <Transition mode="out-in" name="page">
-        <div
-          :key="selectedTag"
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
-        >
-          <ProjectCard
-            v-for="project in filteredProjects"
-            :key="project.id"
-            :project="project"
-          />
-        </div>
+        <ul :key="selectedTag" class="rows">
+          <li v-for="(p, i) in filtered" :key="p.id">
+            <ProjectRow :project="p" :index="num(i)" />
+          </li>
+        </ul>
       </Transition>
 
-      <div v-if="filteredProjects.length === 0" class="text-center py-16">
-        <p class="text-gray-400">No projects match that filter.</p>
-      </div>
-
+      <p v-if="filtered.length === 0" class="empty">
+        Nothing matches <span class="grad-text">{{ selectedTag }}</span>. Try another filter.
+      </p>
     </div>
   </div>
 </template>
+
+<style scoped>
+.pg { padding: clamp(48px, 7vw, 92px) 20px clamp(56px, 7vw, 92px); }
+@media (min-width: 640px) { .pg { padding-inline: 32px; } }
+
+.filters {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px;
+  padding-bottom: 20px; margin-bottom: 4px;
+}
+.filters-label { flex: 0 0 auto; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.chip {
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  border-radius: 2px;
+  padding: 5px 9px;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.chip:hover { color: var(--text-primary); border-color: var(--border-strong); }
+.chip.on {
+  color: var(--pink);
+  border-color: var(--border-hot);
+  background: var(--pink-soft);
+}
+.chip-n { opacity: 0.6; margin-left: 3px; }
+
+.rows { border-top: 1px solid var(--border-subtle); }
+
+.empty {
+  padding: 48px 0; color: var(--text-muted);
+  font-family: var(--font-mono); font-size: 0.85rem;
+}
+</style>

@@ -1,10 +1,11 @@
 <script setup>
+import PageHeader from '../../components/PageHeader.vue'
 import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <div class="pt-24 pb-16">
-    <div class="page-shell-narrow px-4 sm:px-6 lg:px-8">
+  <div class="pg-pad">
+    <div class="page-shell-narrow">
 
       <div class="mb-8">
         <RouterLink to="/debugging" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
@@ -12,22 +13,16 @@ import { RouterLink } from 'vue-router'
         </RouterLink>
       </div>
 
-      <div class="mb-10">
-        <div class="inline-flex items-center gap-2 glass-card px-3 py-1.5 rounded-full mb-4 text-xs" style="color: var(--accent-light);">
-          <span class="w-2 h-2 rounded-full" style="background: var(--accent);"></span>
-          UART / Wiring
-        </div>
-        <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3">
-          No Signal from a <span class="gradient-text">UART Device</span>
-        </h1>
-        <p class="text-gray-400 leading-relaxed">
-          Classic one. You wired up your receiver, VTX, GPS — whatever — plug it in and nothing. No signal, device not showing up, zilch. Nine times out of ten it's the RX/TX lines being the wrong way round.
-        </p>
-      </div>
+      <PageHeader
+        label="UART / Wiring"
+        title="No Signal from a "
+        accent="UART Device"
+        sub="Classic one. You wired up your receiver, VTX, GPS — whatever — plug it in and nothing. No signal, device not showing up, zilch. Nine times out of ten it's the RX/TX lines being the wrong way round."
+      />
 
       <div class="space-y-6">
 
-        <div class="glass-card rounded-2xl p-6">
+        <div class="glass-card rounded-[4px] p-6">
           <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
             <span>🔄</span> RX and TX Are Crossed — On Purpose
           </h2>
@@ -37,7 +32,7 @@ import { RouterLink } from 'vue-router'
           <p class="text-gray-400 text-sm leading-relaxed">
             Think of it like a conversation — one end talks (TX), the other listens (RX). If both ends are trying to talk on the same wire, nobody hears anything.
           </p>
-          <div class="mt-4 rounded-xl p-4" style="background: rgba(109,94,242,0.1); border: 1px solid rgba(109,94,242,0.25);">
+          <div class="mt-4 rounded-[3px] p-4" style="background: rgba(109,94,242,0.1); border: 1px solid rgba(109,94,242,0.25);">
             <div class="font-mono text-sm text-center space-y-1">
               <div><span style="color: var(--accent);">FC RX</span> <span class="text-gray-400">→</span> <span style="color: var(--accent);">Device TX</span></div>
               <div><span style="color: var(--accent);">FC TX</span> <span class="text-gray-400">→</span> <span style="color: var(--accent);">Device RX</span></div>
@@ -45,7 +40,7 @@ import { RouterLink } from 'vue-router'
           </div>
         </div>
 
-        <div class="glass-card rounded-2xl p-6">
+        <div class="glass-card rounded-[4px] p-6">
           <h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
             <span>✅</span> Quick Checks
           </h2>
@@ -73,7 +68,7 @@ import { RouterLink } from 'vue-router'
           </ul>
         </div>
 
-        <div class="glass-card rounded-2xl p-6" style="border-color: rgba(109,94,242,0.2);">
+        <div class="glass-card rounded-[4px] p-6" style="border-color: rgba(109,94,242,0.2);">
           <h2 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
             <span>💡</span> Still nothing?
           </h2>

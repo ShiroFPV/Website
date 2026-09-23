@@ -1,10 +1,11 @@
 <script setup>
+import PageHeader from '../../components/PageHeader.vue'
 import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <div class="pt-24 pb-16">
-    <div class="page-shell-narrow px-4 sm:px-6 lg:px-8">
+  <div class="pg-pad">
+    <div class="page-shell-narrow">
 
       <div class="mb-8">
         <RouterLink to="/debugging" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
@@ -12,22 +13,16 @@ import { RouterLink } from 'vue-router'
         </RouterLink>
       </div>
 
-      <div class="mb-10">
-        <div class="inline-flex items-center gap-2 glass-card px-3 py-1.5 rounded-full mb-4 text-xs" style="color: var(--accent-light);">
-          <span class="w-2 h-2 rounded-full" style="background: var(--accent);"></span>
-          Motors / ESC
-        </div>
-        <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3">
-          Drone Jumping / Flipping <span class="gradient-text">on Arming</span>
-        </h1>
-        <p class="text-gray-400 leading-relaxed">
-          You arm, add a tiny bit of throttle, and your quad immediately lunges in one direction or flips itself. Nothing's broken — it's almost always a DSHOT protocol mismatch or bidirectional DSHOT being enabled on ESCs that don't support it.
-        </p>
-      </div>
+      <PageHeader
+        label="Motors / ESC"
+        title="Drone Jumping / Flipping "
+        accent="on Arming"
+        sub="You arm, add a tiny bit of throttle, and your quad immediately lunges in one direction or flips itself. Nothing's broken — it's almost always a DSHOT protocol mismatch or bidirectional DSHOT being enabled on ESCs that don't support it."
+      />
 
       <div class="space-y-6">
 
-        <div class="glass-card rounded-2xl p-6">
+        <div class="glass-card rounded-[4px] p-6">
           <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
             <span>⚡</span> What's Actually Happening
           </h2>
@@ -35,18 +30,18 @@ import { RouterLink } from 'vue-router'
             When the FC sends motor commands and the ESC doesn't properly receive or process them, you get erratic motor behavior. The two most common causes:
           </p>
           <div class="space-y-3">
-            <div class="rounded-xl p-4" style="background: rgba(109,94,242,0.08); border: 1px solid rgba(109,94,242,0.2);">
+            <div class="rounded-[3px] p-4" style="background: rgba(109,94,242,0.08); border: 1px solid rgba(109,94,242,0.2);">
               <div class="font-semibold text-white text-sm mb-1">Bidirectional DSHOT enabled, ESC doesn't support it</div>
               <p class="text-gray-400 text-sm">Bidirectional DSHOT lets the ESC send RPM data back to the FC (used for RPM filtering). If your ESC firmware doesn't support this feature but it's enabled in Betaflight, the communication breaks down and motors behave unpredictably.</p>
             </div>
-            <div class="rounded-xl p-4" style="background: rgba(109,94,242,0.08); border: 1px solid rgba(109,94,242,0.2);">
+            <div class="rounded-[3px] p-4" style="background: rgba(109,94,242,0.08); border: 1px solid rgba(109,94,242,0.2);">
               <div class="font-semibold text-white text-sm mb-1">DSHOT300 with high PID loop frequency</div>
               <p class="text-gray-400 text-sm">DSHOT300 runs at 300,000 bits/sec. At 8 kHz PID loop, the FC is sending motor updates so fast that DSHOT300 can't keep up — commands get dropped or corrupted. DSHOT600 (600,000 bits/sec) handles high loop rates without breaking a sweat.</p>
             </div>
           </div>
         </div>
 
-        <div class="glass-card rounded-2xl p-6">
+        <div class="glass-card rounded-[4px] p-6">
           <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
             <span>🔧</span> The Fix
           </h2>
@@ -65,13 +60,13 @@ import { RouterLink } from 'vue-router'
               <span>Save → Reboot → test with props off first.</span>
             </li>
           </ol>
-          <div class="mt-4 rounded-xl p-3 text-sm" style="background: rgba(109,94,242,0.08); border: 1px solid rgba(109,94,242,0.2);">
+          <div class="mt-4 rounded-[3px] p-3 text-sm" style="background: rgba(109,94,242,0.08); border: 1px solid rgba(109,94,242,0.2);">
             <span class="font-semibold" style="color: var(--accent);">Note:</span>
             <span class="text-gray-400"> Bidirectional DSHOT requires specific ESC firmware (BLHeli_32, AM32, or BLHeli_S with JESC/BlueJay). If you're not sure, assume it's not supported.</span>
           </div>
         </div>
 
-        <div class="glass-card rounded-2xl p-6">
+        <div class="glass-card rounded-[4px] p-6">
           <h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
             <span>✅</span> Quick Checks
           </h2>
