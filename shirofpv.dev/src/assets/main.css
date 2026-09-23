@@ -16,6 +16,9 @@
   --text-secondary: #a39dc0;
   --text-muted: #726c8c;
   --danger: #ef5a6f;
+
+  /* Height of the domain-migration bar; set at runtime, 0 when dismissed. */
+  --domain-notice-h: 0px;
 }
 
 @layer base {
@@ -175,6 +178,17 @@
 .page-leave-to {
   opacity: 0;
   transform: translateY(-16px);
+}
+
+/* Domain migration bar offsets.
+   The bar is fixed above the fixed navbar, so nothing in the flow reserves
+   space for it — push the nav and the page down by its measured height. */
+.has-domain-notice .glass-nav {
+  top: var(--domain-notice-h);
+}
+
+.has-domain-notice main {
+  padding-top: var(--domain-notice-h);
 }
 
 /* Orb animations — hidden */
