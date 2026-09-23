@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { targetConfigUrl } from "$lib/configUrl"
 	import type { PageData } from "./$types"
 	import { Icon } from "@steeze-ui/svelte-icon"
 	import { Download, BookOpen, FileScan, Github } from "@steeze-ui/lucide-icons"
@@ -116,7 +117,7 @@
 										<span>View Target</span>
 									</a>
 									<a
-										href={`https://github.com/betaflight/config/blob/master/configs/${config.target}/config.h`}
+										href={targetConfigUrl(config.target, config.manufacturer)}
 										class="btn preset-filled-primary-500 btn-sm"
 									>
 										<span><Icon src={Github} size="1rem" /></span>

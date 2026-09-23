@@ -5,6 +5,7 @@
 	import { Icon } from "@steeze-ui/svelte-icon"
 	import { Github } from "@steeze-ui/lucide-icons"
 	import TargetReleases from "$components/TargetReleases.svelte"
+	import { targetConfigUrl } from "$lib/configUrl"
 	// console.log(page.params.target)
 	const targetName = page.params.target
 
@@ -53,7 +54,7 @@
 			{/if}
 		</div>
 		<a
-			href={`https://github.com/betaflight/config/blob/master/configs/${targetName}/config.h`}
+			href={target.url ?? targetConfigUrl(targetName, manufacturer?.id)}
 			class="btn preset-filled-primary-500"
 		>
 			Open in GitHub
