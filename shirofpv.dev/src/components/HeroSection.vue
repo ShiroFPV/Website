@@ -34,14 +34,14 @@ const specs = [
         </div>
 
         <h1 class="display headline">
-          I design<br />
-          <span class="grad-text">flight controllers</span><br />
-          that actually fly.
+          I draw the schematic,<br />
+          <span class="grad-text">route the board,</span><br />
+          and fly the thing.
         </h1>
 
         <p class="sub">
-          PCB layout in KiCad, firmware in C, and a stubborn refusal to ship
-          anything I wouldn't put in my own quad.
+          AT32 flight controllers, Betaflight targets, firmware in C —
+          and a stubborn refusal to ship anything I wouldn't fly myself.
           <span class="sub-dim">Open-source, because hoarding schematics is cringe.</span>
         </p>
 
@@ -120,7 +120,7 @@ const specs = [
 .meta-rule { flex: 0 0 44px; }
 
 .headline {
-  font-size: clamp(2.6rem, 7.4vw, 5.1rem);
+  font-size: clamp(2.1rem, 5.6vw, 4.05rem);
   color: var(--text-primary);
   margin-bottom: 26px;
 }
