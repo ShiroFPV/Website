@@ -1,125 +1,168 @@
 <script setup>
+import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import PageHeader from '../components/PageHeader.vue'
-import { RouterLink } from 'vue-router'
+
+import UartNoSignal from '../components/debug/UartNoSignal.vue'
+import ReceiverNotDetected from '../components/debug/ReceiverNotDetected.vue'
+import NoOsdDigital from '../components/debug/NoOsdDigital.vue'
+import NoOsdAnalog from '../components/debug/NoOsdAnalog.vue'
+import DroneJumpingFlipping from '../components/debug/DroneJumpingFlipping.vue'
+import FcHighCpu from '../components/debug/FcHighCpu.vue'
+import SticksInverted from '../components/debug/SticksInverted.vue'
 
 const issues = [
-  {
-    slug: 'uart-no-signal',
-    icon: '🔄',
-    tag: 'UART / Wiring',
-    title: 'No signal from a UART device',
+  { slug: 'uart-no-signal', tag: 'UART / Wiring', title: 'No signal from a UART device',
     desc: "Wired up your receiver, VTX, or GPS and nothing's coming through? RX/TX being crossed the wrong way is the usual suspect.",
-    color: '#6d5ef2',
-  },
-  {
-    slug: 'receiver-not-detected',
-    icon: '📡',
-    tag: 'Receiver',
-    title: 'Receiver not being detected',
-    desc: 'Receiver is bound, wired correctly, but Betaflight shows nothing moving. MSP and Serial RX on the same UART will kill your signal.',
-    color: '#6d5ef2',
-  },
-  {
-    slug: 'no-osd-digital',
-    icon: '🖥️',
-    tag: 'OSD / Digital',
-    title: 'No OSD (Digital)',
-    desc: "Got video in your digital goggles but no OSD overlay? VTX MSP + DisplayPort needs to be enabled in the Ports tab.",
-    color: '#8f7ff5',
-  },
-  {
-    slug: 'no-osd-analog',
-    icon: '📹',
-    tag: 'OSD / Analog',
-    title: 'No OSD (Analog)',
-    desc: "Analog video is fine but no overlay, or the OSD chip isn't getting the feed at all. Your camera and VTX need to be routed through the FC's OSD pads.",
-    color: '#8f7ff5',
-  },
-  {
-    slug: 'drone-jumping-flipping',
-    icon: '⚡',
-    tag: 'Motors / ESC',
-    title: 'Drone jumping / flipping on arming',
-    desc: "Arms and immediately lunges or flips. Usually DSHOT300 being too slow for your PID loop frequency, or bidirectional DSHOT enabled on an ESC that doesn't support it.",
-    color: '#6d5ef2',
-  },
-  {
-    slug: 'fc-high-cpu',
-    icon: '💻',
-    tag: 'Performance',
-    title: 'FC slow + CPU load extremely high',
-    desc: 'CPU sitting near 100%, FC feels sluggish, flight performance is off. Lower the PID loop frequency or switch to DSHOT300 + bidirectional DSHOT if your ESC supports it.',
-    color: '#8f7ff5',
-  },
-  {
-    slug: 'sticks-inverted',
-    icon: '🎮',
-    tag: 'Receiver / Channel Map',
-    title: 'Sticks inverted / channel mapping wrong',
-    desc: 'Push throttle and pitch moves. Roll and yaw are swapped. Classic channel map mismatch — switching between TAER and AETR usually sorts it.',
-    color: '#6d5ef2',
-  },
+    component: UartNoSignal },
+  { slug: 'receiver-not-detected', tag: 'Receiver', title: 'Receiver not being detected',
+    desc: 'Bound and wired correctly, but Betaflight shows nothing moving. MSP and Serial RX on the same UART will kill your signal.',
+    component: ReceiverNotDetected },
+  { slug: 'no-osd-digital', tag: 'OSD / Digital', title: 'No OSD (Digital)',
+    desc: 'Video in your digital goggles but no OSD overlay? VTX MSP + DisplayPort needs enabling in the Ports tab.',
+    component: NoOsdDigital },
+  { slug: 'no-osd-analog', tag: 'OSD / Analog', title: 'No OSD (Analog)',
+    desc: "Analog video is fine but no overlay, or the OSD chip isn't getting the feed. Camera and VTX need routing through the FC's OSD pads.",
+    component: NoOsdAnalog },
+  { slug: 'drone-jumping-flipping', tag: 'Motors / ESC', title: 'Drone jumping / flipping on arming',
+    desc: "Arms and immediately lunges or flips. Usually DSHOT300 too slow for your PID loop, or bidirectional DSHOT on an ESC that doesn't support it.",
+    component: DroneJumpingFlipping },
+  { slug: 'fc-high-cpu', tag: 'Performance', title: 'FC slow + CPU load extremely high',
+    desc: 'CPU near 100%, FC sluggish, flight performance off. Lower the PID loop frequency or move to DSHOT300 + bidirectional DSHOT.',
+    component: FcHighCpu },
+  { slug: 'sticks-inverted', tag: 'Receiver / Channel Map', title: 'Sticks inverted / channel mapping wrong',
+    desc: 'Push throttle and pitch moves. Roll and yaw swapped. Channel map mismatch — TAER vs AETR usually sorts it.',
+    component: SticksInverted },
 ]
+
+const num = (i) => String(i + 1).padStart(2, '0')
+const active = ref(issues[0].slug)
+let observer
+
+onMounted(async () => {
+  observer = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) active.value = e.target.id
+      }
+    },
+    // fire when a section reaches the upper third of the viewport
+    { rootMargin: '-15% 0px -70% 0px', threshold: 0 },
+  )
+  await nextTick()
+  issues.forEach((i) => {
+    const el = document.getElementById(i.slug)
+    if (el) observer.observe(el)
+  })
+
+})
+
+onBeforeUnmount(() => observer?.disconnect())
 </script>
 
 <template>
-  <div class="pg-pad">
+  <div class="pg-pad" id="top">
     <div class="page-shell">
-
       <PageHeader
         index="05"
-        label="Betaflight Debugging"
-        title="Debugging Your "
-        accent="Flight Controller"
-        sub="Over time I've run into a lot of weird Betaflight issues and figured out how to fix most of them. This is where I'm documenting all of that — specific problems, what causes them, and how to actually solve them."
+        label="Betaflight debugging"
+        title="Debugging your "
+        accent="flight controller"
+        sub="Every weird Betaflight problem I've hit and how I actually fixed it. One page — scroll it, or jump straight to your symptom."
       />
 
-      <ul class="issues">
-        <li v-for="(issue, i) in issues" :key="issue.slug">
-          <RouterLink :to="`/debugging/${issue.slug}`" class="irow">
-            <span class="irow-i idx">{{ String(i + 1).padStart(2, '0') }}</span>
-            <span class="irow-body">
-              <span class="irow-tag">{{ issue.tag }}</span>
-              <span class="irow-title">{{ issue.title }}</span>
-              <span class="irow-desc">{{ issue.desc }}</span>
-            </span>
-            <span class="irow-arrow" aria-hidden="true">→</span>
-          </RouterLink>
-        </li>
-      </ul>
+      <div class="dbg">
+        <!-- shortcuts -->
+        <nav class="toc" aria-label="Jump to issue">
+          <span class="label toc-h">Jump to</span>
+          <ol class="toc-list">
+            <li v-for="(iss, i) in issues" :key="iss.slug">
+              <a :href="`#${iss.slug}`" class="toc-a" :class="{ on: active === iss.slug }">
+                <span class="toc-n">{{ num(i) }}</span>
+                <span class="toc-t">{{ iss.title }}</span>
+              </a>
+            </li>
+          </ol>
+        </nav>
 
+        <!-- all the guides, stacked -->
+        <div class="guides">
+          <section v-for="(iss, i) in issues" :key="iss.slug" :id="iss.slug" class="guide">
+            <header class="g-head">
+              <div class="g-meta">
+                <span class="idx">{{ num(i) }}</span>
+                <span class="rule g-rule"></span>
+                <span class="label">{{ iss.tag }}</span>
+              </div>
+              <h2 class="display g-title">{{ iss.title }}</h2>
+              <p class="g-desc">{{ iss.desc }}</p>
+            </header>
+
+            <component :is="iss.component" />
+
+            <a href="#top" class="g-top">↑ back to top</a>
+          </section>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.issues { border-top: 1px solid var(--border-subtle); }
-.irow {
-  position: relative; display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto; gap: 18px; align-items: center;
-  padding: 22px 14px 22px 4px; border-bottom: 1px solid var(--border-subtle);
-  transition: background 0.25s ease, padding-left 0.25s ease;
+.dbg { display: grid; grid-template-columns: 1fr; gap: 32px; }
+@media (min-width: 1080px) {
+  .dbg { grid-template-columns: 210px minmax(0, 1fr); gap: 52px; align-items: start; }
 }
-.irow::before {
-  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
-  background: linear-gradient(180deg, var(--violet-light), var(--pink));
-  transform: scaleY(0); transform-origin: top;
-  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+
+/* ── shortcuts ── */
+.toc {
+  position: sticky; top: 68px; z-index: 20;
+  background: var(--bg-base);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-subtle);
 }
-.irow:hover { background: rgba(255,255,255,0.022); padding-left: 16px; }
-.irow:hover::before { transform: scaleY(1); }
-.irow-i { align-self: start; padding-top: 5px; transition: color 0.25s; }
-.irow:hover .irow-i { color: var(--pink); }
-.irow-body { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
-.irow-tag {
-  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--violet-light);
+@media (min-width: 1080px) {
+  .toc { top: 28px; border-bottom: 0; padding: 0; }
 }
-.irow-title {
-  font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em;
-  font-size: clamp(1.02rem, 1.9vw, 1.3rem); color: var(--text-primary);
+.toc-h { display: block; margin-bottom: 10px; }
+
+.toc-list { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+.toc-list::-webkit-scrollbar { display: none; }
+@media (min-width: 1080px) {
+  .toc-list { flex-direction: column; gap: 1px; overflow: visible; }
 }
-.irow-desc { font-size: 0.87rem; line-height: 1.55; color: var(--text-muted); max-width: 74ch; }
-.irow-arrow { font-family: var(--font-mono); color: var(--text-muted); transition: transform 0.25s, color 0.25s; }
-.irow:hover .irow-arrow { color: var(--pink); transform: translateX(4px); }
+
+.toc-a {
+  display: flex; align-items: baseline; gap: 8px;
+  padding: 7px 9px; border-radius: 2px; white-space: nowrap;
+  border-left: 2px solid transparent;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+}
+@media (min-width: 1080px) { .toc-a { white-space: normal; } }
+.toc-a:hover { background: rgba(255, 255, 255, 0.03); }
+
+.toc-n { font-family: var(--font-mono); font-size: 0.58rem; font-weight: 700; color: var(--text-muted); }
+.toc-t { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.04em; color: var(--text-secondary); line-height: 1.4; }
+
+.toc-a.on { border-left-color: var(--pink); background: var(--violet-soft); }
+.toc-a.on .toc-n { color: var(--pink); }
+.toc-a.on .toc-t { color: var(--text-primary); }
+
+/* ── guides ── */
+.guides { min-width: 0; }
+.guide { padding-bottom: clamp(44px, 6vw, 76px); scroll-margin-top: 90px; }
+.guide + .guide { border-top: 1px solid var(--border-subtle); padding-top: clamp(40px, 5vw, 64px); }
+
+.g-head { margin-bottom: 24px; }
+.g-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.g-rule { flex: 0 0 34px; }
+.g-title { font-size: clamp(1.5rem, 3.2vw, 2.15rem); color: var(--text-primary); margin-bottom: 10px; }
+.g-desc { color: var(--text-secondary); line-height: 1.65; font-size: 0.95rem; max-width: 62ch; }
+
+.g-top {
+  display: inline-block; margin-top: 22px;
+  font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-muted);
+  transition: color 0.2s;
+}
+.g-top:hover { color: var(--pink); }
 </style>

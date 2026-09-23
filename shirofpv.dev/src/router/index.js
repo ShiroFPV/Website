@@ -6,13 +6,6 @@ import ContactView from '../views/ContactView.vue'
 import FlightControllerView from '../views/FlightControllerView.vue'
 import DebuggingFCView from '../views/DebuggingFCView.vue'
 import ConfigCreatorView from '../views/ConfigCreator.vue'
-import UartNoSignalView from '../views/debugging/UartNoSignalView.vue'
-import ReceiverNotDetectedView from '../views/debugging/ReceiverNotDetectedView.vue'
-import NoOsdDigitalView from '../views/debugging/NoOsdDigitalView.vue'
-import NoOsdAnalogView from '../views/debugging/NoOsdAnalogView.vue'
-import DroneJumpingFlippingView from '../views/debugging/DroneJumpingFlippingView.vue'
-import FcHighCpuView from '../views/debugging/FcHighCpuView.vue'
-import SticksInvertedView from '../views/debugging/SticksInvertedView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
 const DEFAULT_DESCRIPTION =
@@ -24,14 +17,8 @@ const routes = [
   { path: '/projects', component: ProjectsView, meta: { title: 'ShiroFPV — Projects', description: 'Open-source flight controllers, firmware, and tools built by ShiroFPV.' } },
   { path: '/contact', component: ContactView, meta: { title: 'ShiroFPV — Contact', description: 'Get in touch with ShiroFPV — collaborations, hardware questions, or just to talk FPV.' } },
   { path: '/flight-controller', component: FlightControllerView, meta: { title: 'ShiroFPV — Flight Controller', description: 'The ShiroFPV flight controller: open-source AT32F435 board for Betaflight. Specs, setup guide, DFU/flashing, and troubleshooting.' } },
+  { path: '/debugging/:slug', redirect: (to) => ({ path: '/debugging', hash: '#' + to.params.slug }) },
   { path: '/debugging', component: DebuggingFCView, meta: { title: 'ShiroFPV — Debugging your FC', description: 'Practical guides for debugging common flight controller problems — UART, receivers, OSD, CPU load, and more.' } },
-  { path: '/debugging/uart-no-signal', component: UartNoSignalView, meta: { title: 'ShiroFPV — No Signal from UART Device', description: 'Fix a UART device that shows no signal on your flight controller.' } },
-  { path: '/debugging/receiver-not-detected', component: ReceiverNotDetectedView, meta: { title: 'ShiroFPV — Receiver Not Detected', description: 'Troubleshoot a receiver that is not detected in Betaflight.' } },
-  { path: '/debugging/no-osd-digital', component: NoOsdDigitalView, meta: { title: 'ShiroFPV — No OSD (Digital)', description: 'Fix a missing OSD on digital FPV systems.' } },
-  { path: '/debugging/no-osd-analog', component: NoOsdAnalogView, meta: { title: 'ShiroFPV — No OSD (Analog)', description: 'Fix a missing OSD on analog FPV systems.' } },
-  { path: '/debugging/drone-jumping-flipping', component: DroneJumpingFlippingView, meta: { title: 'ShiroFPV — Drone Jumping/Flipping on Arming', description: 'Diagnose a quad that jumps or flips over on arming — motor order and direction.' } },
-  { path: '/debugging/fc-high-cpu', component: FcHighCpuView, meta: { title: 'ShiroFPV — FC High CPU Load', description: 'Reduce high CPU load on your flight controller.' } },
-  { path: '/debugging/sticks-inverted', component: SticksInvertedView, meta: { title: 'ShiroFPV — Sticks Inverted / Channel Map', description: 'Fix inverted sticks and wrong channel mapping in Betaflight.' } },
   { path: '/config-gen', component: ConfigCreatorView, meta: { title: 'ShiroFPV — Config Generator', description: 'Generate a Betaflight 4.5+ config.h from a Support ID or build key.' } },
   { path: '/:pathMatch(.*)*', component: NotFoundView, meta: { title: 'ShiroFPV — Page Not Found', description: DEFAULT_DESCRIPTION } },
 ]
@@ -39,7 +26,9 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior() {
+  scrollBehavior(to, from, saved) {
+    if (to.hash) return { el: to.hash, top: 90 }
+    if (saved) return saved
     return { top: 0 }
   },
 })
