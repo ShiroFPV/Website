@@ -121,7 +121,7 @@
 
 <Accordion collapsible>
 	<Accordion.Item
-		classes="glass-card card-hover rounded-2xl"
+		classes="glass-card card-hover rounded-[4px]"
 		controlHover="hover:bg-primary-500/10"
 		value="commonSettings"
 		panelClasses="px-4 py-4"
@@ -173,7 +173,7 @@
 											</button>
 										</Tooltip.Trigger>
 										<Tooltip.Content
-											class="p-2 rounded-xl border-2 border-surface-500 preset-filled-surface-400-600"
+											class="p-2 rounded-[3px] border-2 border-surface-500 preset-filled-surface-400-600"
 										>
 											<span>Hide this problem</span>
 										</Tooltip.Content>

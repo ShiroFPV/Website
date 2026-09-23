@@ -13,7 +13,7 @@
 </script>
 
 <div
-	class="glass-card card-hover rounded-2xl lg:p-4 p-3 flex gap-4 justify-between items-center overflow-hidden"
+	class="glass-card card-hover rounded-[4px] lg:p-4 p-3 flex gap-4 justify-between items-center overflow-hidden"
 >
 	<div class="gap-2 flex items-center min-w-0">
 		<a href={`${base}/targets/${target.target}`} class="fancy-link w-fit h-fit truncate shrink"
@@ -24,7 +24,7 @@
 				<span class="text-xs! badge preset-tonal-tertiary shrink-0">{target.manufacturerId}</span>
 			</Tooltip.Trigger>
 			<Tooltip.Content sideOffset={12}>
-				<span class="p-2 rounded-xl border-2 border-surface-500 preset-filled-surface-400-600"
+				<span class="p-2 rounded-[3px] border-2 border-surface-500 preset-filled-surface-400-600"
 					>{target.manufacturer}</span
 				>
 			</Tooltip.Content>
@@ -37,7 +37,7 @@
 					</span>
 				</Tooltip.Trigger>
 				<Tooltip.Content sideOffset={12}>
-					<span class="p-2 rounded-xl border-2 border-surface-500 preset-filled-surface-400-600"
+					<span class="p-2 rounded-[3px] border-2 border-surface-500 preset-filled-surface-400-600"
 						>Officially Supported</span
 					>
 				</Tooltip.Content>
@@ -49,7 +49,7 @@
 			href={`https://github.com/betaflight/config/blob/master/configs/${target.target}/config.h`}
 			target="_blank"
 			rel="noopener noreferrer"
-			class="hover:text-primary-500 w-fit h-fit bg-transparent hover:bg-primary-500/10 aspect-square p-1 rounded-lg"
+			class="hover:text-primary-500 w-fit h-fit bg-transparent hover:bg-primary-500/10 aspect-square p-1 rounded-[3px]"
 		>
 			<Icon src={Github} size="1.5rem" />
 		</a>

@@ -64,7 +64,7 @@
 	<CodeBlock
 		code={target.content}
 		lang="c"
-		classes="glass-card rounded-2xl overflow-scroll"
+		classes="glass-card rounded-[4px] overflow-scroll"
 		preClasses="[&>pre]:!bg-transparent"
 	/>
 </div>

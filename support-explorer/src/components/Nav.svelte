@@ -80,12 +80,10 @@
 		<div class="flex justify-start xl:gap-8 lg:gap-4 gap-2 items-center order-1">
 			<a
 				href="https://shirofpv.com"
-				class="gradient-text font-bold text-lg hidden xl:block"
+				class="font-bold text-lg hidden xl:block text-surface-50"
 				target="_blank"
 				rel="noopener noreferrer"
-			>
-				ShiroFPV
-			</a>
+			>Shiro<span class="gradient-text">FPV</span></a>
 			<span class="border-surface-500 vr hidden xl:block"></span>
 			<a href="{base}/" class="h-fit fancy-link" data-active={page.url.pathname === base + "/"}>home</a>
 			<a
@@ -136,7 +134,7 @@
 				</span>
 			</a>
 			<a
-				href="https://github.com/ShiroFPV/betaflight-support-explorer-but-shirofied"
+				href="https://github.com/ShiroFPV/Website"
 				class="h-fit fancy-link flex gap-1 items-center"
 				target="_blank"
 				rel="noopener noreferrer"

@@ -87,7 +87,7 @@
 	{/if}
 
 	{#if !build}
-		<div class="glass-card rounded-2xl p-4 flex flex-col gap-2 border border-warning-500/30">
+		<div class="glass-card rounded-[4px] p-4 flex flex-col gap-2 border border-warning-500/30">
 			<header class="card-header text-warning-500 h3 font-bold">Locally Built Firmware</header>
 			<p class="text-base">No Cloud Build Key found. Build info is unavailable, but support data is shown below.</p>
 		</div>
@@ -96,7 +96,7 @@
 	<div class="grid md:grid-cols-2 grid-cols-1 gap-6">
 		<div class="flex flex-col w-full gap-6">
 			{#if config && request}
-				<div class="glass-card card-hover rounded-2xl p-4 flex flex-col gap-4">
+				<div class="glass-card card-hover rounded-[4px] p-4 flex flex-col gap-4">
 					<header class="card-header text-primary-500 h3 font-bold">Firmware</header>
 					<section class="text-lg">
 						<div class="flex flex-col">
@@ -151,7 +151,7 @@
 			{/if}
 
 			{#if build}
-				<div class="glass-card card-hover rounded-2xl p-4 flex flex-col gap-4">
+				<div class="glass-card card-hover rounded-[4px] p-4 flex flex-col gap-4">
 					<header class="card-header text-primary-500 h3 font-bold">Build</header>
 					<section class="text-lg">
 						<div class="flex flex-row items-center w-full justify-between">
@@ -195,7 +195,7 @@
 			{/if}
 
 			{#if problem}
-				<div class="glass-card card-hover rounded-2xl p-4 flex flex-col gap-4">
+				<div class="glass-card card-hover rounded-[4px] p-4 flex flex-col gap-4">
 					<header class="card-header text-primary-500 h3 font-bold">Problem Description</header>
 					<section class="text-lg">
 						<blockquote class="blockquote text-base">{problem}</blockquote>
@@ -204,7 +204,7 @@
 			{/if}
 
 			{#if ArmingDisableFlags.length > 0}
-				<div class="glass-card card-hover rounded-2xl p-4 flex flex-col gap-4">
+				<div class="glass-card card-hover rounded-[4px] p-4 flex flex-col gap-4">
 					<header class="card-header text-primary-500 h3 font-bold">Arming Disable Flags</header>
 					<section class="text-lg">
 						<div class="flex flex-row flex-wrap gap-2">
@@ -217,7 +217,7 @@
 			{/if}
 
 			{#if dma && Object.keys(dma).length > 0}
-				<div class="glass-card card-hover rounded-2xl p-4 flex flex-col gap-4">
+				<div class="glass-card card-hover rounded-[4px] p-4 flex flex-col gap-4">
 					<header class="card-header text-primary-500 h3 font-bold">DMA</header>
 					<section class="text-lg">
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -248,7 +248,7 @@
 
 		<div class="flex flex-col w-full gap-6">
 			{#if request}
-				<div class="glass-card card-hover rounded-2xl p-4 flex flex-col gap-4">
+				<div class="glass-card card-hover rounded-[4px] p-4 flex flex-col gap-4">
 					<header class="card-header text-primary-500 h3 font-bold">Options</header>
 					<section class="text-lg">
 						<div class="flex gap-2 flex-row flex-wrap">
@@ -261,7 +261,7 @@
 			{/if}
 
 			{#if status}
-				<div class="glass-card card-hover rounded-2xl p-4 flex flex-col gap-4">
+				<div class="glass-card card-hover rounded-[4px] p-4 flex flex-col gap-4">
 					<header class="card-header text-primary-500 h3 font-bold">Hardware</header>
 					<section class="text-lg">
 						{#if config}
@@ -291,7 +291,7 @@
 						</div>
 					</section>
 				</div>
-				<div class="glass-card card-hover rounded-2xl p-4 flex flex-col gap-4">
+				<div class="glass-card card-hover rounded-[4px] p-4 flex flex-col gap-4">
 					<header class="card-header text-primary-500 h3 font-bold">Status</header>
 					<section class="text-lg">
 						<div class="flex flex-row">
@@ -342,7 +342,7 @@
 			{/if}
 
 			{#if timer}
-				<div class="glass-card card-hover rounded-2xl p-4 flex flex-col gap-4">
+				<div class="glass-card card-hover rounded-[4px] p-4 flex flex-col gap-4">
 					<header class="card-header text-primary-500 h3 font-bold">Timers</header>
 					<section class="text-lg">
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -391,7 +391,7 @@
 	{#if commonSettings}
 		<Accordion collapsible>
 			<Accordion.Item
-				classes="glass-card card-hover rounded-2xl"
+				classes="glass-card card-hover rounded-[4px]"
 				controlHover="hover:bg-primary-500/10"
 				value="commonSettings"
 			>
@@ -423,7 +423,7 @@
 	{#if dump}
 		<Accordion collapsible>
 			<Accordion.Item
-				classes="glass-card card-hover rounded-2xl"
+				classes="glass-card card-hover rounded-[4px]"
 				controlHover="hover:bg-primary-500/10"
 				value="dump"
 			>

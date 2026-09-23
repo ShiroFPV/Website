@@ -4,7 +4,7 @@
 
 <footer
 	class="mt-16 relative"
-	style="border-top: 1px solid; border-image: linear-gradient(90deg, transparent, #ffb4e0, #9ee8ff, #ffd0ea, transparent) 1;"
+	style="border-top: 1px solid; border-image: linear-gradient(90deg, transparent, #7c5cff 30%, #ff8fc7 68%, transparent) 1;"
 >
 	<div
 		class="px-8 py-10 max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-surface-300"
@@ -13,12 +13,10 @@
 		<div class="flex flex-col items-center sm:items-start gap-1">
 			<a
 				href="https://shirofpv.com"
-				class="gradient-text font-bold text-base"
+				class="font-bold text-base text-surface-50"
 				target="_blank"
 				rel="noopener noreferrer"
-			>
-				ShiroFPV
-			</a>
+			>Shiro<span class="gradient-text">FPV</span></a>
 			<span class="text-surface-400 text-xs">
 				Betaflight Support Explorer
 			</span>
@@ -38,7 +36,7 @@
 				shirofpv.com
 			</a>
 			<a
-				href="https://github.com/ShiroFPV/betaflight-support-explorer-but-shirofied"
+				href="https://github.com/ShiroFPV/Website"
 				class="hover:text-primary-400 transition-colors duration-200"
 				target="_blank"
 				rel="noopener noreferrer"

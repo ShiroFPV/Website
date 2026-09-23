@@ -11,15 +11,15 @@
 	--base-font-weight: normal;
 	--base-font-style: normal;
 	--base-letter-spacing: 0em;
-	--heading-font-color: var(--color-primary-500);
-	--heading-font-color-dark: var(--color-primary-400);
+	--heading-font-color: var(--color-surface-950);
+	--heading-font-color-dark: var(--color-surface-50);
 	--heading-font-family:
-		Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		"Bricolage Grotesque", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
 		"Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
 		"Segoe UI Symbol", "Noto Color Emoji";
 	--heading-font-weight: bold;
 	--heading-font-style: normal;
-	--heading-letter-spacing: inherit;
+	--heading-letter-spacing: -0.03em;
 	--anchor-font-color: var(--color-primary-500);
 	--anchor-font-color-dark: var(--color-primary-400);
 	--anchor-font-family: inherit;
@@ -33,26 +33,26 @@
 	--anchor-text-decoration-active: none;
 	--anchor-text-decoration-focus: none;
 	--spacing: 0.25rem;
-	--radius-base: 1rem;
-	--radius-container: 1rem;
-	--default-border-width: 2px;
+	--radius-base: 0.25rem;
+	--radius-container: 0.25rem;
+	--default-border-width: 1px;
 	--default-divide-width: 2px;
 	--default-ring-width: 2px;
 	--body-background-color: var(--color-surface-50);
 	--body-background-color-dark: var(--color-surface-950);
 
 	/* Primary: Purple (#b48bff range) */
-	--color-primary-50: oklch(97% 0.04 296deg);
-	--color-primary-100: oklch(93% 0.08 296deg);
-	--color-primary-200: oklch(89% 0.13 296deg);
-	--color-primary-300: oklch(84% 0.17 296deg);
-	--color-primary-400: oklch(79% 0.21 296deg);
-	--color-primary-500: oklch(73% 0.22 296deg);
-	--color-primary-600: oklch(67% 0.21 296deg);
-	--color-primary-700: oklch(60% 0.19 296deg);
-	--color-primary-800: oklch(54% 0.17 296deg);
-	--color-primary-900: oklch(47% 0.15 296deg);
-	--color-primary-950: oklch(40% 0.13 296deg);
+	--color-primary-50: oklch(97% 0.02 288deg);
+	--color-primary-100: oklch(93% 0.05 288deg);
+	--color-primary-200: oklch(88% 0.09 288deg);
+	--color-primary-300: oklch(82% 0.13 288deg);
+	--color-primary-400: oklch(74% 0.17 288deg);
+	--color-primary-500: oklch(64% 0.21 288deg);
+	--color-primary-600: oklch(57% 0.20 288deg);
+	--color-primary-700: oklch(49% 0.18 288deg);
+	--color-primary-800: oklch(41% 0.15 288deg);
+	--color-primary-900: oklch(34% 0.13 288deg);
+	--color-primary-950: oklch(27% 0.11 288deg);
 	--color-primary-contrast-dark: oklch(0% 0 none);
 	--color-primary-contrast-light: oklch(100% 0 none);
 	--color-primary-contrast-50: var(--color-primary-contrast-dark);
@@ -94,17 +94,17 @@
 	--color-secondary-contrast-950: var(--color-secondary-contrast-light);
 
 	/* Tertiary: Pink (#ff8fd4 range) */
-	--color-tertiary-50: oklch(97% 0.02 336deg);
-	--color-tertiary-100: oklch(93% 0.05 336deg);
-	--color-tertiary-200: oklch(89% 0.08 336deg);
-	--color-tertiary-300: oklch(85% 0.11 336deg);
-	--color-tertiary-400: oklch(81% 0.14 336deg);
-	--color-tertiary-500: oklch(77% 0.17 336deg);
-	--color-tertiary-600: oklch(71% 0.16 336deg);
-	--color-tertiary-700: oklch(65% 0.15 336deg);
-	--color-tertiary-800: oklch(59% 0.13 336deg);
-	--color-tertiary-900: oklch(52% 0.12 336deg);
-	--color-tertiary-950: oklch(45% 0.10 336deg);
+	--color-tertiary-50: oklch(97% 0.02 352deg);
+	--color-tertiary-100: oklch(93% 0.05 352deg);
+	--color-tertiary-200: oklch(88% 0.09 352deg);
+	--color-tertiary-300: oklch(82% 0.13 352deg);
+	--color-tertiary-400: oklch(74% 0.17 352deg);
+	--color-tertiary-500: oklch(64% 0.16 352deg);
+	--color-tertiary-600: oklch(57% 0.15 352deg);
+	--color-tertiary-700: oklch(49% 0.13 352deg);
+	--color-tertiary-800: oklch(41% 0.10 352deg);
+	--color-tertiary-900: oklch(34% 0.08 352deg);
+	--color-tertiary-950: oklch(27% 0.06 352deg);
 	--color-tertiary-contrast-dark: oklch(0% 0 none);
 	--color-tertiary-contrast-light: oklch(100% 0 none);
 	--color-tertiary-contrast-50: var(--color-tertiary-contrast-dark);

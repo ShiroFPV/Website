@@ -127,7 +127,7 @@
 
 	<!-- Stats bar -->
 	{#if $previousIds.length > 0}
-		<div class="glass-card rounded-2xl px-5 py-3 flex gap-6 items-center text-sm w-fit animate-fade-in-up">
+		<div class="glass-card rounded-[4px] px-5 py-3 flex gap-6 items-center text-sm w-fit animate-fade-in-up">
 			<div class="flex items-center gap-2">
 				<span class="text-primary-400 font-semibold">{$previousIds.length}</span>
 				<span class="text-surface-300">saved ID{$previousIds.length !== 1 ? "s" : ""}</span>
@@ -151,7 +151,7 @@
 	{#if $previousIds.length === 0}
 		<!-- Empty state -->
 		<div class="flex flex-col items-center justify-center py-24 gap-6 animate-fade-in-up">
-			<div class="glass-card rounded-3xl p-8 flex flex-col items-center gap-4 text-center max-w-md">
+			<div class="glass-card rounded-[5px] p-8 flex flex-col items-center gap-4 text-center max-w-md">
 				<div class="text-primary-400 opacity-60">
 					<Icon src={Inbox} size="4rem" />
 				</div>
@@ -166,7 +166,7 @@
 		<div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-6">
 			{#each $previousIds as id (id.createdAt)}
 				<div
-					class="glass-card card-hover rounded-2xl group relative p-4 flex flex-col gap-4 animate-fade-in-up"
+					class="glass-card card-hover rounded-[4px] group relative p-4 flex flex-col gap-4 animate-fade-in-up"
 				>
 					<!-- Delete button -->
 					<div
