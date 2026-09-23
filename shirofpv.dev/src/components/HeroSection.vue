@@ -116,7 +116,7 @@ const specs = [
 .meta-rule { flex: 0 0 44px; }
 
 .headline {
-  font-size: clamp(3.4rem, 10.6vw, 9rem);
+  font-size: clamp(2.6rem, 7.4vw, 6.3rem);
   line-height: 0.86;
   letter-spacing: -0.055em;
   color: var(--text-primary);
