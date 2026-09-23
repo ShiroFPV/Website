@@ -38,7 +38,7 @@ onMounted(() => {
               See what I've built
             </RouterLink>
             <a
-              href="https://support.shirofpv.dev"
+              href="https://support.shirofpv.com"
               target="_blank"
               rel="noopener noreferrer"
               class="btn-outline text-base w-full sm:w-auto text-center"
