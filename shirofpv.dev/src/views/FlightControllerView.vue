@@ -1,4 +1,21 @@
 <script setup>
+import { ref } from 'vue'
+
+const boards = [
+  { id: 'v1', name: 'V1', size: '30.5 × 30.5 mm', mcu: 'AT32F435RGT7', note: 'Analog + digital', status: 'Released', ready: true },
+  { id: 'v2', name: 'V2', size: '20 × 20 mm', mcu: 'AT32F435 48-pin', note: 'Digital video only', status: 'In development', ready: false },
+]
+const board = ref('v1')
+
+const tabs = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'specs',    label: 'Specs' },
+  { id: 'setup',    label: 'Setup' },
+  { id: 'boot',     label: 'Boot mode' },
+  { id: 'trouble',  label: 'Troubleshooting' },
+]
+const tab = ref('overview')
+
 const specs = [
   { label: 'Microcontroller', value: 'AT32F435RGT7 (288 MHz)' },
   { label: 'Gyroscope', value: 'ICM-20602' },
@@ -158,9 +175,44 @@ const highlights = [
       </div>
     </section>
 
-    <div class="page-shell space-y-16">
+    <div class="page-shell">
 
-      <section>
+      <!-- ── pick a board ─────────────────────────── -->
+      <div class="boards">
+        <button
+          v-for="b in boards"
+          :key="b.id"
+          type="button"
+          class="board"
+          :class="{ on: board === b.id }"
+          :aria-pressed="board === b.id"
+          @click="board = b.id"
+        >
+          <span class="board-top">
+            <span class="board-name">{{ b.name }}</span>
+            <span class="board-state" :class="{ soon: !b.ready }">{{ b.status }}</span>
+          </span>
+          <span class="board-size">{{ b.size }}</span>
+          <span class="board-meta">{{ b.mcu }} · {{ b.note }}</span>
+        </button>
+      </div>
+
+      <!-- ── V1 ───────────────────────────────────── -->
+      <div v-show="board === 'v1'">
+        <nav class="tabs" aria-label="Board sections">
+          <button
+            v-for="t in tabs"
+            :key="t.id"
+            type="button"
+            class="tab"
+            :class="{ on: tab === t.id }"
+            :aria-pressed="tab === t.id"
+            @click="tab = t.id"
+          >{{ t.label }}</button>
+        </nav>
+
+        <div class="panel-wrap">
+          <section v-show="tab === 'overview'" class="space-y-16">
         <h2 class="display fc-h2 flex items-center gap-3">
           <span class="sec-n">01</span>
           What's this thing?
@@ -182,26 +234,6 @@ const highlights = [
             <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
               Everything — schematics, PCB layout, and firmware configuration — is now in the public repo. If you want to build, review, or fork it, you can.
             </p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2 class="display fc-h2 flex items-center gap-3">
-          <span class="sec-n">02</span>
-          Hardware Specs
-        </h2>
-        <p class="text-gray-400 text-sm mb-6">Full specs for the current v2 revision.</p>
-        <div class="glass-card rounded-[4px] overflow-hidden">
-          <div class="divide-y" style="border-color: rgba(255,255,255,0.04);">
-            <div
-              v-for="spec in specs"
-              :key="spec.label"
-              class="flex flex-col sm:flex-row items-start sm:items-center px-5 py-3.5 gap-2 sm:gap-4"
-            >
-              <dt class="w-full sm:w-52 text-xs sm:text-sm font-semibold flex-shrink-0" style="color: var(--accent-light);">{{ spec.label }}</dt>
-              <dd class="text-xs sm:text-sm text-gray-300">{{ spec.value }}</dd>
-            </div>
           </div>
         </div>
 
@@ -261,9 +293,29 @@ const highlights = [
             </a>
           </div>
         </div>
-      </section>
+          </section>
 
-      <section>
+          <section v-show="tab === 'specs'">
+        <h2 class="display fc-h2 flex items-center gap-3">
+          <span class="sec-n">02</span>
+          Hardware Specs
+        </h2>
+        <p class="text-gray-400 text-sm mb-6">Full specs for the current v2 revision.</p>
+        <div class="glass-card rounded-[4px] overflow-hidden">
+          <div class="divide-y" style="border-color: rgba(255,255,255,0.04);">
+            <div
+              v-for="spec in specs"
+              :key="spec.label"
+              class="flex flex-col sm:flex-row items-start sm:items-center px-5 py-3.5 gap-2 sm:gap-4"
+            >
+              <dt class="w-full sm:w-52 text-xs sm:text-sm font-semibold flex-shrink-0" style="color: var(--accent-light);">{{ spec.label }}</dt>
+              <dd class="text-xs sm:text-sm text-gray-300">{{ spec.value }}</dd>
+            </div>
+          </div>
+        </div>
+          </section>
+
+          <section v-show="tab === 'setup'" class="space-y-16">
         <h2 class="display fc-h2 flex items-center gap-3">
           <span class="sec-n">04</span>
           Firmware & Software
@@ -310,9 +362,7 @@ const highlights = [
             <span class="font-medium text-sm">{{ link.name }}</span>
           </a>
         </div>
-      </section>
 
-      <section>
         <h2 class="display fc-h2 flex items-center gap-3">
           <span class="sec-n">05</span>
           Setup Guide
@@ -373,9 +423,34 @@ const highlights = [
             </ul>
           </div>
         </div>
-      </section>
 
-      <section>
+        <div class="glass-card rounded-[4px] p-6 mb-6">
+          <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
+            <span class="sec-n">07</span>
+            Flashing in Betaflight Configurator
+          </h3>
+          <ol class="space-y-3">
+            <li class="flex items-start gap-3 text-sm text-gray-300">
+              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(109,94,242,0.2); color: var(--accent-light);">1</span>
+              Go to the <strong>Firmware Flasher</strong> tab.
+            </li>
+            <li class="flex items-start gap-3 text-sm text-gray-300">
+              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(109,94,242,0.2); color: var(--accent-light);">2</span>
+              Select <strong>ShiroFPV</strong> from the board dropdown, or load the local .hex.
+            </li>
+            <li class="flex items-start gap-3 text-sm text-gray-300">
+              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(109,94,242,0.2); color: var(--accent-light);">3</span>
+              Check <strong>Full chip erase</strong> if you're reflashing or switching versions.
+            </li>
+            <li class="flex items-start gap-3 text-sm text-gray-300">
+              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(109,94,242,0.2); color: var(--accent-light);">4</span>
+              Click <strong>Flash Firmware</strong> and wait for the progress bar. FC will reboot when done.
+            </li>
+          </ol>
+        </div>
+          </section>
+
+          <section v-show="tab === 'boot'">
         <h2 class="display fc-h2 flex items-center gap-3">
           <span class="sec-n">06</span>
           DFU Mode
@@ -415,32 +490,9 @@ const highlights = [
             </ol>
           </div>
         </div>
+          </section>
 
-        <div class="glass-card rounded-[4px] p-6 mb-6">
-          <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
-            <span class="sec-n">07</span>
-            Flashing in Betaflight Configurator
-          </h3>
-          <ol class="space-y-3">
-            <li class="flex items-start gap-3 text-sm text-gray-300">
-              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(109,94,242,0.2); color: var(--accent-light);">1</span>
-              Go to the <strong>Firmware Flasher</strong> tab.
-            </li>
-            <li class="flex items-start gap-3 text-sm text-gray-300">
-              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(109,94,242,0.2); color: var(--accent-light);">2</span>
-              Select <strong>ShiroFPV</strong> from the board dropdown, or load the local .hex.
-            </li>
-            <li class="flex items-start gap-3 text-sm text-gray-300">
-              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(109,94,242,0.2); color: var(--accent-light);">3</span>
-              Check <strong>Full chip erase</strong> if you're reflashing or switching versions.
-            </li>
-            <li class="flex items-start gap-3 text-sm text-gray-300">
-              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(109,94,242,0.2); color: var(--accent-light);">4</span>
-              Click <strong>Flash Firmware</strong> and wait for the progress bar. FC will reboot when done.
-            </li>
-          </ol>
-        </div>
-
+          <section v-show="tab === 'trouble'">
         <div class="space-y-3">
           <h3 class="text-base font-bold text-white flex items-center gap-2">
             <span class="sec-n">08</span>
@@ -455,8 +507,12 @@ const highlights = [
             <p class="text-gray-400 text-sm leading-relaxed">{{ item.a }}</p>
           </div>
         </div>
-      </section>
+          </section>
+        </div>
+      </div>
 
+      <!-- ── V2 ───────────────────────────────────── -->
+      <div v-show="board === 'v2'">
       <section class="v2">
         <h2 class="display fc-h2 flex items-center gap-3">
           <span class="sec-n">09</span>
@@ -490,6 +546,7 @@ const highlights = [
           Follow it on GitHub
         </a>
       </section>
+      </div>
 
       <section class="glass-card rounded-[4px] p-6 sm:p-8 text-center relative overflow-hidden">
         <div class="absolute inset-0 opacity-10" style="background: linear-gradient(135deg, rgba(109,94,242,0.18), rgba(109,94,242,0.04)); background-size: 300% 300%; animation: gradientShift 8s ease infinite;"></div>
@@ -514,6 +571,66 @@ const highlights = [
 </template>
 
 <style scoped>
+/* ── board picker ── */
+.boards {
+  display: grid; gap: 12px; grid-template-columns: 1fr;
+  margin-bottom: 28px;
+}
+@media (min-width: 640px) { .boards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.board {
+  display: flex; flex-direction: column; gap: 6px;
+  text-align: left; padding: 16px 18px;
+  border: 1px solid var(--border-subtle); border-radius: 4px;
+  background: linear-gradient(168deg, var(--surface), var(--bg-elevated));
+  transition: border-color 0.22s ease, transform 0.22s ease, background 0.22s ease;
+}
+.board:hover { border-color: var(--border-strong); transform: translateY(-1px); }
+.board.on { border-color: var(--border-hot); background: linear-gradient(168deg, var(--surface-hover), var(--bg-elevated)); }
+
+.board-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.board-name {
+  font-family: var(--font-display); font-weight: 800; letter-spacing: -0.03em;
+  font-size: 1.35rem; color: var(--text-primary); line-height: 1;
+}
+.board.on .board-name {
+  background: linear-gradient(105deg, var(--violet-light), var(--pink));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.board-state {
+  font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.13em;
+  text-transform: uppercase; white-space: nowrap;
+  color: var(--violet-light); border: 1px solid var(--border-strong);
+  border-radius: 2px; padding: 3px 7px;
+}
+.board-state.soon { color: var(--pink); border-color: var(--border-hot); background: var(--pink-soft); }
+.board-size { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-primary); }
+.board-meta { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.04em; color: var(--text-muted); }
+
+/* ── tabs ── */
+.tabs {
+  display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: clamp(26px, 3.5vw, 44px);
+}
+.tabs::-webkit-scrollbar { display: none; }
+
+.tab {
+  position: relative; white-space: nowrap;
+  padding: 11px 14px;
+  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.09em;
+  text-transform: uppercase; color: var(--text-muted);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.tab:hover { color: var(--text-primary); background: rgba(255, 255, 255, 0.03); }
+.tab.on { color: var(--text-primary); }
+.tab.on::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+  background: linear-gradient(90deg, var(--violet-light), var(--pink));
+}
+
+.panel-wrap { min-height: 320px; }
+
 .v2 { border-top: 1px solid var(--border-subtle); padding-top: clamp(30px, 4vw, 48px); }
 .v2-tag {
   font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.14em;
