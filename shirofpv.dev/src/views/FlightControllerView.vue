@@ -14,6 +14,13 @@ const specs = [
   { label: 'Current Version', value: 'v2' },
 ]
 
+const v2Specs = [
+  { label: 'Microcontroller', value: 'AT32F435, 48-pin package' },
+  { label: 'Form Factor', value: '20 × 20 mm stack mount' },
+  { label: 'Analog OSD', value: 'None — digital video only' },
+  { label: 'Firmware', value: 'Betaflight' },
+]
+
 const setupSteps = [
   {
     num: '01',
@@ -450,6 +457,40 @@ const highlights = [
         </div>
       </section>
 
+      <section class="v2">
+        <h2 class="display fc-h2 flex items-center gap-3">
+          <span class="sec-n">09</span>
+          V2 — 20 × 20
+          <span class="v2-tag">coming soon</span>
+        </h2>
+        <p class="v2-lead">
+          A smaller sibling for builds a 30.5 stack won&rsquo;t fit. Still on the bench —
+          here&rsquo;s what&rsquo;s decided so far.
+        </p>
+
+        <dl class="v2-specs">
+          <div v-for="sp in v2Specs" :key="sp.label" class="v2-row">
+            <dt>{{ sp.label }}</dt>
+            <dd>{{ sp.value }}</dd>
+          </div>
+        </dl>
+
+        <p class="v2-note">
+          Dropping the analog OSD chip is what buys the space — if you fly analog and want an
+          on-screen display, V1 is still the board. Gyro, baro, blackbox, UART count and power
+          stage are all still being worked out.
+        </p>
+
+        <a
+          href="https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection/tree/main/V2_20x20_SFVPF435"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-outline"
+        >
+          Follow it on GitHub
+        </a>
+      </section>
+
       <section class="glass-card rounded-[4px] p-6 sm:p-8 text-center relative overflow-hidden">
         <div class="absolute inset-0 opacity-10" style="background: linear-gradient(135deg, rgba(109,94,242,0.18), rgba(109,94,242,0.04)); background-size: 300% 300%; animation: gradientShift 8s ease infinite;"></div>
         <div class="relative z-10">
@@ -473,6 +514,27 @@ const highlights = [
 </template>
 
 <style scoped>
+.v2 { border-top: 1px solid var(--border-subtle); padding-top: clamp(30px, 4vw, 48px); }
+.v2-tag {
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--pink);
+  background: var(--pink-soft); border: 1px solid var(--border-hot);
+  border-radius: 2px; padding: 4px 8px; white-space: nowrap;
+}
+.v2-lead { color: var(--text-secondary); line-height: 1.65; font-size: 0.95rem; max-width: 62ch; margin-bottom: 22px; }
+.v2-specs { border-top: 1px solid var(--border-subtle); margin-bottom: 20px; }
+.v2-row {
+  display: grid; grid-template-columns: 1fr; gap: 2px;
+  padding: 12px 0; border-bottom: 1px solid var(--border-subtle);
+}
+@media (min-width: 640px) { .v2-row { grid-template-columns: 190px 1fr; gap: 18px; align-items: baseline; } }
+.v2-row dt {
+  font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--violet-light);
+}
+.v2-row dd { color: var(--text-primary); font-size: 0.93rem; }
+.v2-note { color: var(--text-muted); font-size: 0.88rem; line-height: 1.62; max-width: 66ch; margin-bottom: 22px; }
+
 .sec-n {
   font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700;
   letter-spacing: 0.1em; color: var(--violet-light);
