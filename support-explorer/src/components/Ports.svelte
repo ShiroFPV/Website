@@ -106,7 +106,7 @@
 
 <Accordion collapsible>
 	<Accordion.Item
-		classes="glass-card card-hover rounded-2xl"
+		classes="glass-card card-hover rounded-[4px]"
 		controlHover="hover:bg-primary-500/10"
 		value="ports"
 	>

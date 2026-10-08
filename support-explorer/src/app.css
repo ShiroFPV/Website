@@ -34,30 +34,26 @@
 	}
 	::selection {
 		background-color: var(--color-primary-500);
-		color: white;
+		color: #1b1c1f;
 		@supports (color: color-mix(in lab, red, red)) {
 			background-color: color-mix(in srgb, var(--color-primary-500) 90%, transparent);
 		}
 	}
 
-	/* Custom scrollbar: pink→blue gradient thumb */
 	::-webkit-scrollbar {
-		width: 8px;
-		height: 8px;
+		width: 10px;
+		height: 10px;
 	}
 	::-webkit-scrollbar-track {
-		background: #161225;
+		background: #1b1c1f;
 	}
 	::-webkit-scrollbar-thumb {
-		background: linear-gradient(180deg, #ff8fd4, #7dd3ff);
-		border-radius: 4px;
+		background: #3a3b40;
+		border: 3px solid #1b1c1f;
+		border-radius: 999px;
 	}
-	::-webkit-scrollbar-thumb:hover {
-		background: linear-gradient(180deg, #ff5fbf, #77f2ff);
-	}
-	/* Firefox scrollbar */
 	* {
-		scrollbar-color: #ff8fd4 #161225;
+		scrollbar-color: #3a3b40 #1b1c1f;
 		scrollbar-width: thin;
 	}
 }
@@ -65,67 +61,40 @@
 @layer utilities {
 }
 
-/* Body: ShiroFPV radial gradient background */
+/* Body: graphite, matches shirofpv.com */
 body {
-	background:
-		radial-gradient(circle at 18% -10%, rgba(255, 185, 229, 0.22) 0%, transparent 45%),
-		radial-gradient(circle at 88% 0%, rgba(152, 226, 255, 0.2) 0%, transparent 48%),
-		linear-gradient(180deg, #1e1730 0%, #19142a 52%, #130f21 100%);
+	background: #1b1c1f;
 	min-height: 100vh;
+	-webkit-font-smoothing: antialiased;
 }
 
-/* Glassmorphism utility classes */
 .glass-card {
-	background: rgba(255, 255, 255, 0.08);
-	backdrop-filter: blur(16px);
-	-webkit-backdrop-filter: blur(16px);
-	border: 1px solid rgba(255, 199, 232, 0.28);
+	background: transparent;
+	border: 1px solid #2f3035;
 }
 
 .glass-nav {
-	background: rgba(24, 18, 39, 0.78);
-	backdrop-filter: blur(20px);
-	-webkit-backdrop-filter: blur(20px);
-	border-bottom: 1px solid rgba(255, 173, 218, 0.35);
+	background: color-mix(in srgb, #1b1c1f 86%, transparent);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border-bottom: 1px solid #2f3035;
 }
 
-/* Gradient text */
 .gradient-text {
-	background: linear-gradient(135deg, #ffd0ea 0%, #9ee8ff 55%, #ffb4e0 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
+	color: inherit;
 }
 
-/* Card hover effect */
 .card-hover {
-	transition:
-		transform 0.2s ease,
-		box-shadow 0.2s ease;
+	transition: background-color 0.2s ease;
 }
 .card-hover:hover {
-	transform: translateY(-4px);
-	box-shadow: 0 8px 32px rgba(180, 139, 255, 0.2);
+	background-color: #25262a;
+	border-color: #404147;
 }
 
-/* Floating orb decorations */
+/* Floating orbs retired — flat ground + single bloom instead */
 .orb {
-	position: absolute;
-	border-radius: 50%;
-	filter: blur(80px);
-	pointer-events: none;
-	animation: float 6s ease-in-out infinite;
-}
-.orb-purple {
-	background: rgba(180, 139, 255, 0.25);
-}
-.orb-pink {
-	background: rgba(255, 143, 212, 0.2);
-	animation-delay: -2s;
-}
-.orb-blue {
-	background: rgba(125, 211, 255, 0.18);
-	animation-delay: -4s;
+	display: none !important;
 }
 
 /* Animations */
@@ -211,12 +180,12 @@ body {
 }
 .fancy-link:hover {
 	background-size: 100% 100%;
-	color: white;
+	color: #1b1c1f;
 }
 
 .fancy-link[data-active="true"] {
 	background-size: 100% 100%;
-	color: white;
+	color: #1b1c1f;
 	font-weight: 600;
 }
 
@@ -249,7 +218,7 @@ body {
 }
 
 [data-theme="shirofpvtheme"] .card.preset-tonal-secondary {
-	border-color: rgba(255, 199, 232, 0.2);
+	border-color: #2f3035;
 	border-width: 1px;
 }
 
@@ -277,4 +246,9 @@ body {
 .input-group {
 	background-color: var(--color-surface-50-950);
 	color: var(--color-surface-950-50);
+}
+
+/* mono face for data + code */
+code, kbd, pre, samp, .mono {
+	font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }

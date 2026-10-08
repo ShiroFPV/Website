@@ -79,13 +79,11 @@
 	<div class="grid grid-cols-2 lg:grid-cols-[2fr_2fr_2fr] w-full lg:px-8 px-4 gap-3 py-2">
 		<div class="flex justify-start xl:gap-8 lg:gap-4 gap-2 items-center order-1">
 			<a
-				href="https://shirofpv.dev"
-				class="gradient-text font-bold text-lg hidden xl:block"
+				href="https://shirofpv.com"
+				class="font-semibold text-base hidden xl:block text-surface-50"
 				target="_blank"
 				rel="noopener noreferrer"
-			>
-				ShiroFPV
-			</a>
+			>ShiroFPV</a>
 			<span class="border-surface-500 vr hidden xl:block"></span>
 			<a href="{base}/" class="h-fit fancy-link" data-active={page.url.pathname === base + "/"}>home</a>
 			<a
@@ -136,7 +134,7 @@
 				</span>
 			</a>
 			<a
-				href="https://github.com/ShiroFPV/betaflight-support-explorer-but-shirofied"
+				href="https://github.com/ShiroFPV/Website"
 				class="h-fit fancy-link flex gap-1 items-center"
 				target="_blank"
 				rel="noopener noreferrer"

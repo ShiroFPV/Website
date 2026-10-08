@@ -1,4 +1,21 @@
 <script setup>
+import { ref } from 'vue'
+
+const boards = [
+  { id: 'v1', name: 'V1', size: '30.5 × 30.5 mm', mcu: 'AT32F435RGT7', note: 'Analog + digital', status: 'Released', ready: true },
+  { id: 'v2', name: 'V2', size: '20 × 20 mm', mcu: 'AT32F435 48-pin', note: 'Digital video only', status: 'In development', ready: false },
+]
+const board = ref('v1')
+
+const tabs = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'specs',    label: 'Specs' },
+  { id: 'setup',    label: 'Setup' },
+  { id: 'boot',     label: 'Boot mode' },
+  { id: 'trouble',  label: 'Troubleshooting' },
+]
+const tab = ref('overview')
+
 const specs = [
   { label: 'Microcontroller', value: 'AT32F435RGT7 (288 MHz)' },
   { label: 'Gyroscope', value: 'ICM-20602' },
@@ -14,57 +31,63 @@ const specs = [
   { label: 'Current Version', value: 'v2' },
 ]
 
+const v2Specs = [
+  { label: 'Microcontroller', value: 'AT32F435, 48-pin package' },
+  { label: 'Form Factor', value: '20 × 20 mm stack mount' },
+  { label: 'Analog OSD', value: 'None — digital video only' },
+  { label: 'Firmware', value: 'Betaflight' },
+]
+
 const setupSteps = [
   {
     num: '01',
     title: 'Get Betaflight Configurator',
     desc: 'Grab the latest version from the web app.',
     link: { text: 'Open Configurator', url: 'https://app.betaflight.com/#' },
-    color: '#6d5ef2',
+    color: '#d4d5d9',
   },
   {
     num: '02',
     title: 'Flash the Firmware',
     desc: 'Connect via USB-C while holding the boot button (or use the DFU method below). In Betaflight Configurator go to Firmware Flasher, select the ShiroFPV target — right now you need to load a local .hex which is available on the GitHub repo — and flash.',
     link: null,
-    color: '#6d5ef2',
+    color: '#d4d5d9',
   },
   {
     num: '03',
     title: 'Configure Ports',
     desc: 'Ports tab. Enable the UART connected to your receiver (e.g. UART1 for ELRS, UART2 for VTX SmartAudio). Save and reboot.',
     link: null,
-    color: '#8f7ff5',
+    color: '#e9e9eb',
   },
   {
     num: '04',
     title: 'Set Up Your Receiver',
     desc: 'In the Configuration tab pick your RC protocol (CRSF, SBUS, iBus, etc.) and verify your channels are moving correctly in the Receiver tab.',
     link: null,
-    color: '#8f7ff5',
+    color: '#e9e9eb',
   },
   {
     num: '05',
     title: 'Motor Direction & Order',
     desc: 'In the Motors tab check spin direction with props off. Use BLHeli / BL32 / AM32 Configurator to set the correct direction for your prop config. Pick your DSHOT protocol here too, and decide whether you want bidirectional DSHOT.',
     link: null,
-    color: '#6d5ef2',
+    color: '#d4d5d9',
   },
   {
     num: '06',
     title: 'Calibrate & Tune PIDs',
     desc: 'Run accelerometer calibration in the Setup tab. Start with the default PID tune and go from there.',
     link: null,
-    color: '#6d5ef2',
+    color: '#d4d5d9',
   },
 ]
 
 const dfuMethods = [
   {
-    icon: '🔘',
     title: 'Boot Button',
     recommended: true,
-    color: '#6d5ef2',
+    color: '#d4d5d9',
     steps: [
       'Unplug the FC from USB.',
       'Hold down the BOOT button.',
@@ -74,10 +97,9 @@ const dfuMethods = [
     ],
   },
   {
-    icon: '📌',
     title: 'Boot Pads',
     recommended: false,
-    color: '#6d5ef2',
+    color: '#d4d5d9',
     steps: [
       'Find the BOOT and GND pads on the PCB (pinout is on the GitHub repo).',
       'Short BOOT to GND with a jumper wire or tweezer.',
@@ -89,9 +111,9 @@ const dfuMethods = [
 ]
 
 const firmwareLinks = [
-  { name: 'Betaflight Configurator', url: 'https://app.betaflight.com/#', icon: '🛠️' },
-  { name: 'Betaflight Firmware (ShiroFPV build)', url: 'https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection/tree/main/V1_30x30_SFVPF435/Release', icon: '📦' },
-  { name: 'FC Hardware Repo', url: 'https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection', icon: '🐙' },
+  { name: 'Betaflight Configurator', url: 'https://app.betaflight.com/#', },
+  { name: 'Betaflight Firmware (ShiroFPV build)', url: 'https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection/tree/main/V1_30x30_SFVPF435/Release', },
+  { name: 'FC Hardware Repo', url: 'https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection', },
 ]
 
 const troubleshooting = [
@@ -108,23 +130,24 @@ const highlights = [
 </script>
 
 <template>
-  <div class="fc-page pt-24 pb-16">
+  <div class="fc-page pg-pad">
 
-    <section class="relative overflow-hidden py-16 px-4 sm:px-6 lg:px-8">
+    <section class="relative overflow-hidden py-16">
       <div
         class="absolute inset-0 opacity-20"
-        style="background: linear-gradient(135deg, rgba(109,94,242,0.18), rgba(109,94,242,0.04));"
+        style="background: linear-gradient(135deg, rgba(233, 233, 235, 0.084), rgba(233, 233, 235, 0.03));"
       ></div>
 
       <div class="relative z-10 page-shell">
         <div class="max-w-3xl">
           <div>
-            <div class="inline-flex items-center gap-2 glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm font-medium" style="color: var(--accent-light);">
-              <span class="w-2 h-2 rounded-full" style="background: var(--accent);"></span>
-              Open-Source Hardware
+            <div class="fc-meta">
+              <span class="idx">04</span>
+              <span class="rule fc-rule"></span>
+              <span class="label">Open-source hardware</span>
             </div>
-            <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6 leading-tight">
-              ShiroFPV <span class="gradient-text">Flight Controller</span>
+            <h1 class="display fc-title">
+              ShiroFPV <span class="grad-text">Flight Controller</span>
             </h1>
             <p class="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed mb-3">
               My own fully open-source flight controller built around the AT32F435RGT7. Designed in KiCad, targeted at Betaflight, and open for anyone to use or improve.
@@ -141,7 +164,7 @@ const highlights = [
             </div>
             <ul class="mt-6 grid gap-2 text-sm text-gray-300">
               <li v-for="item in highlights" :key="item" class="flex items-center gap-2">
-                <span class="fc-highlight-icon inline-flex w-5 h-5 items-center justify-center rounded-full text-xs" aria-hidden="true">✓</span>
+                <span class="w-1 h-1 rounded-full flex-shrink-0" style="background: var(--text-muted);" aria-hidden="true"></span>
                 {{ item }}
               </li>
             </ul>
@@ -150,16 +173,51 @@ const highlights = [
       </div>
     </section>
 
-    <div class="page-shell px-4 sm:px-6 lg:px-8 space-y-16">
+    <div class="page-shell">
 
-      <section>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(109,94,242,0.2);">🚁</span>
+      <!-- ── pick a board ─────────────────────────── -->
+      <div class="boards">
+        <button
+          v-for="b in boards"
+          :key="b.id"
+          type="button"
+          class="board"
+          :class="{ on: board === b.id }"
+          :aria-pressed="board === b.id"
+          @click="board = b.id"
+        >
+          <span class="board-top">
+            <span class="board-name">{{ b.name }}</span>
+            <span class="board-state" :class="{ soon: !b.ready }">{{ b.status }}</span>
+          </span>
+          <span class="board-size">{{ b.size }}</span>
+          <span class="board-meta">{{ b.mcu }} · {{ b.note }}</span>
+        </button>
+      </div>
+
+      <!-- ── V1 ───────────────────────────────────── -->
+      <div v-show="board === 'v1'">
+        <nav class="tabs" aria-label="Board sections">
+          <button
+            v-for="t in tabs"
+            :key="t.id"
+            type="button"
+            class="tab"
+            :class="{ on: tab === t.id }"
+            :aria-pressed="tab === t.id"
+            @click="tab = t.id"
+          >{{ t.label }}</button>
+        </nav>
+
+        <div class="panel-wrap">
+          <section v-show="tab === 'overview'" class="space-y-16">
+        <h2 class="display fc-h2 flex items-center gap-3">
+          <span class="sec-n">01</span>
           What's this thing?
         </h2>
         <p class="text-gray-400 text-sm mb-6">The short version of the overview.</p>
         <div class="grid md:grid-cols-2 gap-6">
-          <div class="glass-card rounded-2xl p-6">
+          <div class="glass-card rounded-[4px] p-6">
             <p class="text-gray-300 leading-relaxed mb-4 text-sm sm:text-base">
               I wanted to build my own flight controller from scratch. Not use someone else's design — actually design the PCB, pick the components, route the traces, and get it manufactured. So I did.
             </p>
@@ -167,7 +225,7 @@ const highlights = [
               It's built around the AT32F435RGT7 (an STM32-compatible chip that runs at up to 288 MHz), uses an ICM-20602 gyro, has a BME280 barometer, onboard blackbox flash, USB-C, and targets Betaflight. It's on a standard 30.5×30.5mm stack mount so it drops into pretty much any build.
             </p>
           </div>
-          <div class="glass-card rounded-2xl p-6">
+          <div class="glass-card rounded-[4px] p-6">
             <p class="text-gray-300 leading-relaxed mb-4 text-sm sm:text-base">
               The project started as a personal challenge and turned into something I actually want to fly. After months of PCB revisions in KiCad and a lot of debugging, the board is now stable enough for public release and community feedback.
             </p>
@@ -176,31 +234,11 @@ const highlights = [
             </p>
           </div>
         </div>
-      </section>
 
-      <section>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(109,94,242,0.2);">🔧</span>
-          Hardware Specs
-        </h2>
-        <p class="text-gray-400 text-sm mb-6">Full specs for the current v2 revision.</p>
-        <div class="glass-card rounded-2xl overflow-hidden">
-          <div class="divide-y" style="border-color: rgba(255,255,255,0.04);">
-            <div
-              v-for="spec in specs"
-              :key="spec.label"
-              class="flex flex-col sm:flex-row items-start sm:items-center px-5 py-3.5 gap-2 sm:gap-4"
-            >
-              <dt class="w-full sm:w-52 text-xs sm:text-sm font-semibold flex-shrink-0" style="color: var(--accent-light);">{{ spec.label }}</dt>
-              <dd class="text-xs sm:text-sm text-gray-300">{{ spec.value }}</dd>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-6 glass-card rounded-2xl p-6">
+        <div class="mt-6 glass-card rounded-[4px] p-6">
           <div class="flex items-center justify-between gap-3 mb-4">
             <div class="flex items-center gap-3">
-              <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(109,94,242,0.2);">🧊</span>
+              <span class="sec-n">03</span>
               <h3 class="font-bold text-white">Interactive 3D Model</h3>
             </div>
             <span class="text-xs text-gray-500 hidden sm:inline">drag to rotate · scroll to zoom</span>
@@ -220,19 +258,18 @@ const highlights = [
             ar-modes="webxr scene-viewer quick-look"
             loading="lazy"
             reveal="auto"
-            class="w-full rounded-xl"
-            style="min-height: 360px; background: linear-gradient(135deg, rgba(109,94,242,0.18), rgba(109,94,242,0.04)); border: 1px solid rgba(109,94,242,0.2); --poster-color: transparent; touch-action: pan-y;"
+            class="w-full rounded-[3px]"
+            style="min-height: 360px; background: linear-gradient(135deg, rgba(233, 233, 235, 0.108), rgba(233, 233, 235, 0.024)); border: 1px solid rgba(233, 233, 235, 0.12); --poster-color: transparent; touch-action: pan-y;"
           >
             <button
               slot="ar-button"
               class="absolute bottom-4 right-4 text-xs font-semibold px-3 py-1.5 rounded-full transition-colors duration-200 hover:text-white"
-              style="background: rgba(109,94,242,0.2); color: var(--accent-light); border: 1px solid rgba(109,94,242,0.3);"
+              style="background: rgba(233, 233, 235, 0.12); color: var(--accent-light); border: 1px solid rgba(233, 233, 235, 0.18);"
             >
-              📱 View in AR
+View in AR
             </button>
             <div slot="poster" class="w-full h-full flex items-center justify-center">
               <div class="text-center">
-                <div class="text-4xl mb-3 opacity-40">🧊</div>
                 <p class="text-gray-500 text-sm">Loading 3D model…</p>
               </div>
             </div>
@@ -253,23 +290,37 @@ const highlights = [
             </a>
           </div>
         </div>
-      </section>
+          </section>
 
-      <section>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(109,94,242,0.2);">🚁</span>
+          <section v-show="tab === 'specs'">
+        <h2 class="display fc-h2 flex items-center gap-3">
+          <span class="sec-n">02</span>
+          Hardware Specs
+        </h2>
+        <p class="text-gray-400 text-sm mb-6">Full specs for the current v2 revision.</p>
+        <div class="glass-card rounded-[4px] overflow-hidden">
+          <div class="divide-y" style="border-color: rgba(255,255,255,0.04);">
+            <div
+              v-for="spec in specs"
+              :key="spec.label"
+              class="flex flex-col sm:flex-row items-start sm:items-center px-5 py-3.5 gap-2 sm:gap-4"
+            >
+              <dt class="w-full sm:w-52 text-xs sm:text-sm font-semibold flex-shrink-0" style="color: var(--accent-light);">{{ spec.label }}</dt>
+              <dd class="text-xs sm:text-sm text-gray-300">{{ spec.value }}</dd>
+            </div>
+          </div>
+        </div>
+          </section>
+
+          <section v-show="tab === 'setup'" class="space-y-16">
+        <h2 class="display fc-h2 flex items-center gap-3">
+          <span class="sec-n">04</span>
           Firmware & Software
         </h2>
         <p class="text-gray-400 text-sm mb-6">It runs Betaflight. Here's what that gets you.</p>
 
-        <div class="glass-card rounded-2xl p-6 mb-6">
+        <div class="glass-card rounded-[4px] p-6 mb-6">
           <div class="flex items-start gap-4 sm:gap-6">
-            <div
-              class="w-14 sm:w-16 h-14 sm:h-16 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0"
-              style="background: linear-gradient(135deg, rgba(109,94,242,0.18), rgba(109,94,242,0.04));"
-            >
-              🚁
-            </div>
             <div>
               <h3 class="text-xl font-bold text-white mb-2">Betaflight</h3>
               <p class="text-sm sm:text-base text-gray-300 leading-relaxed mb-3">
@@ -295,18 +346,15 @@ const highlights = [
             :href="link.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex items-center gap-3 p-4 rounded-xl transition-all duration-200 hover:text-white"
-            style="background: rgba(255,255,255,0.04); border: 1px solid rgba(109,94,242,0.15); color: var(--accent-light);"
+            class="flex items-center gap-3 p-4 rounded-[3px] transition-all duration-200 hover:text-white"
+            style="background: rgba(255,255,255,0.04); border: 1px solid rgba(233, 233, 235, 0.09); color: var(--accent-light);"
           >
-            <span class="text-xl">{{ link.icon }}</span>
             <span class="font-medium text-sm">{{ link.name }}</span>
           </a>
         </div>
-      </section>
 
-      <section>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(109,94,242,0.2);">📋</span>
+        <h2 class="display fc-h2 flex items-center gap-3">
+          <span class="sec-n">05</span>
           Setup Guide
         </h2>
         <p class="text-gray-400 text-sm mb-6">Step by step, getting the FC configured and ready to fly.</p>
@@ -316,10 +364,10 @@ const highlights = [
             <div
               v-for="step in setupSteps"
               :key="step.num"
-              class="glass-card rounded-2xl p-5 flex gap-4"
+              class="glass-card rounded-[4px] p-5 flex gap-4"
             >
               <div
-                class="w-11 h-11 rounded-xl flex items-center justify-center text-base font-black flex-shrink-0"
+                class="w-11 h-11 rounded-[3px] flex items-center justify-center text-base font-black flex-shrink-0"
                 :style="`background: ${step.color}20; color: ${step.color};`"
               >
                 {{ step.num }}
@@ -341,35 +389,60 @@ const highlights = [
             </div>
           </div>
 
-          <div class="glass-card rounded-2xl p-6 h-fit">
+          <div class="glass-card rounded-[4px] p-6 h-fit">
             <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
-              <span>💡</span> Quick tips
+              Quick tips
             </h3>
             <ul class="space-y-3">
               <li class="flex items-start gap-2 text-sm text-gray-400 leading-relaxed">
-                <span class="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style="background: rgba(109,94,242,0.2); color: var(--accent);">1</span>
+                <span class="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">1</span>
                 Remove props before connecting USB or testing motors. Always.
               </li>
               <li class="flex items-start gap-2 text-sm text-gray-400 leading-relaxed">
-                <span class="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style="background: rgba(109,94,242,0.2); color: var(--accent);">2</span>
+                <span class="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">2</span>
                 Use DSHOT600 for best ESC communication.
               </li>
               <li class="flex items-start gap-2 text-sm text-gray-400 leading-relaxed">
-                <span class="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style="background: rgba(109,94,242,0.2); color: var(--accent);">3</span>
+                <span class="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">3</span>
                 Enable bidirectional DSHOT for RPM filtering — it helps a lot with propwash.
               </li>
               <li class="flex items-start gap-2 text-sm text-gray-400 leading-relaxed">
-                <span class="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style="background: rgba(109,94,242,0.2); color: var(--accent);">4</span>
+                <span class="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">4</span>
                 Save a diff backup after each successful tune. You'll thank yourself later.
               </li>
             </ul>
           </div>
         </div>
-      </section>
 
-      <section>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-base" style="background: rgba(109,94,242,0.2);">💾</span>
+        <div class="glass-card rounded-[4px] p-6 mb-6">
+          <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
+            <span class="sec-n">07</span>
+            Flashing in Betaflight Configurator
+          </h3>
+          <ol class="space-y-3">
+            <li class="flex items-start gap-3 text-sm text-gray-300">
+              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(233, 233, 235, 0.12); color: var(--accent-light);">1</span>
+              Go to the <strong>Firmware Flasher</strong> tab.
+            </li>
+            <li class="flex items-start gap-3 text-sm text-gray-300">
+              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(233, 233, 235, 0.12); color: var(--accent-light);">2</span>
+              Select <strong>ShiroFPV</strong> from the board dropdown, or load the local .hex.
+            </li>
+            <li class="flex items-start gap-3 text-sm text-gray-300">
+              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(233, 233, 235, 0.12); color: var(--accent-light);">3</span>
+              Check <strong>Full chip erase</strong> if you're reflashing or switching versions.
+            </li>
+            <li class="flex items-start gap-3 text-sm text-gray-300">
+              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(233, 233, 235, 0.12); color: var(--accent-light);">4</span>
+              Click <strong>Flash Firmware</strong> and wait for the progress bar. FC will reboot when done.
+            </li>
+          </ol>
+        </div>
+          </section>
+
+          <section v-show="tab === 'boot'">
+        <h2 class="display fc-h2 flex items-center gap-3">
+          <span class="sec-n">06</span>
           DFU Mode
         </h2>
         <p class="text-gray-400 text-sm mb-6">
@@ -380,16 +453,10 @@ const highlights = [
           <div
             v-for="method in dfuMethods"
             :key="method.title"
-            class="glass-card rounded-2xl p-6 relative overflow-hidden"
+            class="glass-card rounded-[4px] p-6 relative overflow-hidden"
           >
             <div v-if="method.recommended" class="absolute top-4 right-4">
-              <span class="text-xs font-bold px-2 py-1 rounded-full" style="background: rgba(109,94,242,0.2); color: var(--accent);">Recommended</span>
-            </div>
-            <div
-              class="w-11 h-11 rounded-xl flex items-center justify-center text-2xl mb-4"
-              :style="`background: ${method.color}18;`"
-            >
-              {{ method.icon }}
+              <span class="text-xs font-bold px-2 py-1 rounded-full" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">Recommended</span>
             </div>
             <h3 class="text-base font-bold text-white mb-3">{{ method.title }}</h3>
             <ol class="space-y-2">
@@ -407,50 +474,66 @@ const highlights = [
             </ol>
           </div>
         </div>
+          </section>
 
-        <div class="glass-card rounded-2xl p-6 mb-6">
-          <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
-            <span class="w-7 h-7 rounded-lg flex items-center justify-center text-sm" style="background: rgba(109,94,242,0.2);">🔥</span>
-            Flashing in Betaflight Configurator
-          </h3>
-          <ol class="space-y-3">
-            <li class="flex items-start gap-3 text-sm text-gray-300">
-              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(109,94,242,0.2); color: var(--accent-light);">1</span>
-              Go to the <strong>Firmware Flasher</strong> tab.
-            </li>
-            <li class="flex items-start gap-3 text-sm text-gray-300">
-              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(109,94,242,0.2); color: var(--accent-light);">2</span>
-              Select <strong>ShiroFPV</strong> from the board dropdown, or load the local .hex.
-            </li>
-            <li class="flex items-start gap-3 text-sm text-gray-300">
-              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(109,94,242,0.2); color: var(--accent-light);">3</span>
-              Check <strong>Full chip erase</strong> if you're reflashing or switching versions.
-            </li>
-            <li class="flex items-start gap-3 text-sm text-gray-300">
-              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5" style="background: rgba(109,94,242,0.2); color: var(--accent-light);">4</span>
-              Click <strong>Flash Firmware</strong> and wait for the progress bar. FC will reboot when done.
-            </li>
-          </ol>
-        </div>
-
+          <section v-show="tab === 'trouble'">
         <div class="space-y-3">
           <h3 class="text-base font-bold text-white flex items-center gap-2">
-            <span class="w-7 h-7 rounded-lg flex items-center justify-center text-sm" style="background: rgba(109,94,242,0.2);">🔧</span>
+            <span class="sec-n">08</span>
             Troubleshooting
           </h3>
           <div
             v-for="item in troubleshooting"
             :key="item.q"
-            class="glass-card rounded-xl p-5"
+            class="glass-card rounded-[3px] p-5"
           >
             <h4 class="font-semibold text-white mb-1.5 text-sm">{{ item.q }}</h4>
             <p class="text-gray-400 text-sm leading-relaxed">{{ item.a }}</p>
           </div>
         </div>
-      </section>
+          </section>
+        </div>
+      </div>
 
-      <section class="glass-card rounded-2xl p-6 sm:p-8 text-center relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10" style="background: linear-gradient(135deg, rgba(109,94,242,0.18), rgba(109,94,242,0.04)); background-size: 300% 300%; animation: gradientShift 8s ease infinite;"></div>
+      <!-- ── V2 ───────────────────────────────────── -->
+      <div v-show="board === 'v2'">
+      <section class="v2">
+        <h2 class="display fc-h2 flex items-center gap-3">
+          <span class="sec-n">09</span>
+          V2 — 20 × 20
+          <span class="v2-tag">coming soon</span>
+        </h2>
+        <p class="v2-lead">
+          A smaller sibling for builds a 30.5 stack won&rsquo;t fit. Still on the bench —
+          here&rsquo;s what&rsquo;s decided so far.
+        </p>
+
+        <dl class="v2-specs">
+          <div v-for="sp in v2Specs" :key="sp.label" class="v2-row">
+            <dt>{{ sp.label }}</dt>
+            <dd>{{ sp.value }}</dd>
+          </div>
+        </dl>
+
+        <p class="v2-note">
+          Dropping the analog OSD chip is what buys the space — if you fly analog and want an
+          on-screen display, V1 is still the board. Gyro, baro, blackbox, UART count and power
+          stage are all still being worked out.
+        </p>
+
+        <a
+          href="https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection/tree/main/V2_20x20_SFVPF435"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-outline"
+        >
+          Follow it on GitHub
+        </a>
+      </section>
+      </div>
+
+      <section class="glass-card rounded-[4px] p-6 sm:p-8 text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background: linear-gradient(135deg, rgba(233, 233, 235, 0.108), rgba(233, 233, 235, 0.024)); background-size: 300% 300%; animation: gradientShift 8s ease infinite;"></div>
         <div class="relative z-10">
           <h2 class="text-xl sm:text-2xl font-bold text-white mb-2">
             Want to dig into the design?
@@ -472,16 +555,109 @@ const highlights = [
 </template>
 
 <style scoped>
+/* ── board picker ── */
+.boards {
+  display: grid; gap: 12px; grid-template-columns: 1fr;
+  margin-bottom: 28px;
+}
+@media (min-width: 640px) { .boards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.board {
+  display: flex; flex-direction: column; gap: 6px;
+  text-align: left; padding: 16px 18px;
+  border: 1px solid var(--border-subtle); border-radius: 4px;
+  background: linear-gradient(168deg, var(--surface), var(--bg-elevated));
+  transition: border-color 0.22s ease, transform 0.22s ease, background 0.22s ease;
+}
+.board:hover { border-color: var(--border-strong); transform: translateY(-1px); }
+.board.on { border-color: var(--border-hot); background: linear-gradient(168deg, var(--surface-hover), var(--bg-elevated)); }
+
+.board-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.board-name {
+  font-family: var(--font-display); font-weight: 800; letter-spacing: -0.03em;
+  font-size: 1.35rem; color: var(--text-primary); line-height: 1;
+}
+.board.on .board-name {
+  background: linear-gradient(105deg, var(--violet-light), var(--pink));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.board-state {
+  font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.13em;
+  text-transform: uppercase; white-space: nowrap;
+  color: var(--violet-light); border: 1px solid var(--border-strong);
+  border-radius: 2px; padding: 3px 7px;
+}
+.board-state.soon { color: var(--pink); border-color: var(--border-hot); background: var(--pink-soft); }
+.board-size { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-primary); }
+.board-meta { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.04em; color: var(--text-muted); }
+
+/* ── tabs ── */
+.tabs {
+  display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: clamp(26px, 3.5vw, 44px);
+}
+.tabs::-webkit-scrollbar { display: none; }
+
+.tab {
+  position: relative; white-space: nowrap;
+  padding: 11px 14px;
+  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.09em;
+  text-transform: uppercase; color: var(--text-muted);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.tab:hover { color: var(--text-primary); background: rgba(255, 255, 255, 0.03); }
+.tab.on { color: var(--text-primary); }
+.tab.on::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+  background: linear-gradient(90deg, var(--violet-light), var(--pink));
+}
+
+.panel-wrap { min-height: 320px; }
+
+.v2 { border-top: 1px solid var(--border-subtle); padding-top: clamp(30px, 4vw, 48px); }
+.v2-tag {
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--pink);
+  background: var(--pink-soft); border: 1px solid var(--border-hot);
+  border-radius: 2px; padding: 4px 8px; white-space: nowrap;
+}
+.v2-lead { color: var(--text-secondary); line-height: 1.65; font-size: 0.95rem; max-width: 62ch; margin-bottom: 22px; }
+.v2-specs { border-top: 1px solid var(--border-subtle); margin-bottom: 20px; }
+.v2-row {
+  display: grid; grid-template-columns: 1fr; gap: 2px;
+  padding: 12px 0; border-bottom: 1px solid var(--border-subtle);
+}
+@media (min-width: 640px) { .v2-row { grid-template-columns: 190px 1fr; gap: 18px; align-items: baseline; } }
+.v2-row dt {
+  font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--violet-light);
+}
+.v2-row dd { color: var(--text-primary); font-size: 0.93rem; }
+.v2-note { color: var(--text-muted); font-size: 0.88rem; line-height: 1.62; max-width: 66ch; margin-bottom: 22px; }
+
+.sec-n {
+  font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.1em; color: var(--violet-light);
+  border: 1px solid var(--border-strong); border-radius: 2px;
+  padding: 4px 6px; line-height: 1;
+}
+.fc-h2 { font-size: clamp(1.45rem, 2.8vw, 2rem); color: var(--text-primary); margin-bottom: 8px; }
+
+.fc-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.fc-rule { flex: 0 0 44px; }
+.fc-title { font-size: clamp(2rem, 5vw, 3.6rem); color: var(--text-primary); margin-bottom: 18px; }
+
 .fc-page {
-  --fc-purple: rgba(109, 94, 242, 1);
+  --fc-purple: rgba(233, 233, 235, 0.85);
   --fc-purple-light: var(--accent-light);
-  --fc-purple-glow: rgba(109, 94, 242, 0.18);
-  --fc-purple-soft: rgba(109, 94, 242, 0.08);
-  --fc-purple-mid: rgba(109, 94, 242, 0.24);
-  --fc-pink-soft: rgba(109, 94, 242, 0.08);
-  --fc-pink-mid: rgba(109, 94, 242, 0.22);
+  --fc-purple-glow: rgba(233, 233, 235, 0.108);
+  --fc-purple-soft: rgba(233, 233, 235, 0.048);
+  --fc-purple-mid: rgba(233, 233, 235, 0.144);
+  --fc-pink-soft: rgba(233, 233, 235, 0.048);
+  --fc-pink-mid: rgba(233, 233, 235, 0.132);
   --fc-cyan: var(--accent-light);
-  --fc-cyan-soft: rgba(109, 94, 242, 0.2);
+  --fc-cyan-soft: rgba(233, 233, 235, 0.12);
   --fc-board-size: 78%;
   /* Keep a slight isometric perspective while preserving chip/readability labels. */
   --fc-rotate-x: 18deg;
@@ -499,8 +675,8 @@ const highlights = [
   width: min(var(--fc-board-size), 320px); /* tuned so board remains fully visible at Tailwind sm/md/lg breakpoints (640/768/1024px) */
   aspect-ratio: 1;
   border-radius: 20px;
-  background: linear-gradient(145deg, rgba(19, 21, 34, 0.95), rgba(11, 11, 22, 0.95));
-  border: 1px solid rgba(109, 94, 242, 0.35);
+  background: linear-gradient(145deg, rgba(27, 28, 31, 0.95), rgba(27, 28, 31, 0.95));
+  border: 1px solid rgba(233, 233, 235, 0.21);
   transform-style: preserve-3d;
   transform: rotateX(var(--fc-rotate-x)) rotateZ(var(--fc-rotate-z));
   box-shadow: 0 30px 45px rgba(2, 3, 10, 0.55), inset 0 0 0 1px var(--fc-pink-mid);
@@ -510,7 +686,7 @@ const highlights = [
 .fc-board-grid {
   position: absolute;
   inset: 12%;
-  background-image: linear-gradient(rgba(109, 94, 242, 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(109, 94, 242, 0.12) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(233, 233, 235, 0.072) 1px, transparent 1px), linear-gradient(90deg, rgba(233, 233, 235, 0.072) 1px, transparent 1px);
   background-size: var(--fc-grid-size) var(--fc-grid-size);
   transform: translateZ(2px);
 }
@@ -523,8 +699,8 @@ const highlights = [
   font-weight: 700;
   letter-spacing: 0.05em;
   color: var(--accent-light);
-  border: 1px solid rgba(109, 94, 242, 0.3);
-  background: rgba(9, 19, 30, 0.85);
+  border: 1px solid rgba(233, 233, 235, 0.18);
+  background: rgba(27, 28, 31, 0.85);
   box-shadow: 0 10px 16px rgba(0, 0, 0, 0.35);
 }
 
@@ -551,8 +727,8 @@ const highlights = [
   width: 24px;
   height: 24px;
   border-radius: 999px;
-  border: 2px solid rgba(109, 94, 242, 0.7);
-  box-shadow: inset 0 0 0 1px rgba(109, 94, 242, 0.4);
+  border: 2px solid rgba(233, 233, 235, 0.42);
+  box-shadow: inset 0 0 0 1px rgba(233, 233, 235, 0.24);
 }
 
 .fc-pad-1 { top: 10%; left: 10%; transform: translateZ(7px); }

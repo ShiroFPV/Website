@@ -2,40 +2,33 @@
 const year = new Date().getFullYear()
 
 const socials = [
-  { name: 'GitHub', url: 'https://github.com/ShiroFPV', icon: 'github' },
-  { name: 'Discord', url: 'https://discord.gg/PaRHFSmX', icon: 'discord' },
+  { name: 'GitHub', url: 'https://github.com/ShiroFPV' },
+  { name: 'Discord', url: 'https://discord.gg/PaRHFSmX' },
+  { name: 'Support', url: 'https://support.shirofpv.com' },
 ]
 </script>
 
 <template>
-  <footer class="relative mt-16">
-    <div class="h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-50"></div>
-
-    <div style="background-color: rgba(15,10,26,0.9);" class="py-6 sm:py-8">
-      <div class="page-shell px-3 sm:px-4 md:px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
-          <div class="flex items-center space-x-2">
-            <span class="font-bold gradient-text text-base sm:text-lg">ShiroFPV</span>
-          </div>
-
-          <div class="flex items-center space-x-4 sm:space-x-6">
-            <a
-              v-for="social in socials"
-              :key="social.name"
-              :href="social.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-gray-400 hover:text-purple-400 transition-colors duration-200 text-xs sm:text-sm min-h-[44px] flex items-center"
-            >
-              {{ social.name }}
-            </a>
-          </div>
-
-          <p class="text-gray-500 text-xs sm:text-sm">
-            © {{ year }} ShiroFPV — built with Vue + stubbornness
-          </p>
-        </div>
-      </div>
+  <footer class="ft">
+    <div class="page-shell ft-inner">
+      <p><strong>ShiroFPV</strong> FPV hardware, open source. © {{ year }}</p>
+      <nav class="ft-links">
+        <a v-for="s in socials" :key="s.name" :href="s.url" target="_blank" rel="noopener noreferrer">{{ s.name }}</a>
+      </nav>
     </div>
   </footer>
 </template>
+
+<style scoped>
+.ft { margin-top: auto; border-top: 1px solid var(--border-subtle); }
+.ft-inner {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;
+  padding: 32px 20px 40px;
+  font-size: 0.85rem; color: var(--text-muted);
+}
+@media (min-width: 640px) { .ft-inner { padding-inline: 32px; } }
+.ft-inner strong { color: var(--text-primary); font-weight: 500; margin-right: 6px; }
+.ft-links { display: flex; gap: 22px; }
+.ft-links a { transition: color 0.2s; }
+.ft-links a:hover { color: var(--text-primary); }
+</style>

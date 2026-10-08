@@ -4,7 +4,7 @@
 
 <footer
 	class="mt-16 relative"
-	style="border-top: 1px solid; border-image: linear-gradient(90deg, transparent, #ffb4e0, #9ee8ff, #ffd0ea, transparent) 1;"
+	style="border-top: 1px solid #2f3035;"
 >
 	<div
 		class="px-8 py-10 max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-surface-300"
@@ -12,13 +12,11 @@
 		<!-- Branding -->
 		<div class="flex flex-col items-center sm:items-start gap-1">
 			<a
-				href="https://shirofpv.dev"
-				class="gradient-text font-bold text-base"
+				href="https://shirofpv.com"
+				class="font-medium text-base text-surface-50"
 				target="_blank"
 				rel="noopener noreferrer"
-			>
-				ShiroFPV
-			</a>
+			>ShiroFPV</a>
 			<span class="text-surface-400 text-xs">
 				Betaflight Support Explorer
 			</span>
@@ -30,16 +28,16 @@
 		<!-- Links -->
 		<div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
 			<a
-				href="https://shirofpv.dev"
-				class="hover:text-primary-400 transition-colors duration-200"
+				href="https://shirofpv.com"
+				class="hover:text-surface-50 transition-colors duration-200"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
-				shirofpv.dev
+				shirofpv.com
 			</a>
 			<a
-				href="https://github.com/ShiroFPV/betaflight-support-explorer-but-shirofied"
-				class="hover:text-primary-400 transition-colors duration-200"
+				href="https://github.com/ShiroFPV/Website"
+				class="hover:text-surface-50 transition-colors duration-200"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
@@ -47,13 +45,13 @@
 			</a>
 			<a
 				href="{base}/"
-				class="hover:text-primary-400 transition-colors duration-200"
+				class="hover:text-surface-50 transition-colors duration-200"
 			>
 				Home
 			</a>
 			<a
 				href="{base}/targets"
-				class="hover:text-primary-400 transition-colors duration-200"
+				class="hover:text-surface-50 transition-colors duration-200"
 			>
 				Targets
 			</a>

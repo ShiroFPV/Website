@@ -112,70 +112,39 @@ function dismiss() {
 
 <style scoped>
 .domain-notice {
-  background: linear-gradient(
-    90deg,
-    var(--accent-soft) 0%,
-    var(--bg-elevated) 55%,
-    var(--bg-elevated) 100%
-  );
-  border-bottom: 1px solid var(--accent-border);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .notice-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 999px;
-  background: var(--accent-light);
-  box-shadow: 0 0 0 3px var(--accent-soft);
+  width: 6px; height: 6px; border-radius: 999px;
+  background: var(--text-secondary);
 }
 
 .notice-link {
-  color: var(--accent-light);
-  font-weight: 600;
-  text-underline-offset: 2px;
-}
-
-.notice-link:hover {
+  color: var(--text-primary);
   text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-decoration-thickness: 1px;
 }
+.notice-link:hover { text-decoration-color: var(--text-primary); }
 
 .notice-cta {
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.25rem 0.7rem;
-  border-radius: 0.4rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  border: 1px solid var(--accent-border);
-  background: var(--accent-soft);
-  transition: background 0.2s ease, border-color 0.2s ease;
+  align-items: center; gap: 6px;
+  padding: 5px 12px;
+  font-size: 0.82rem; font-weight: 500;
+  color: var(--bg-base);
+  background: var(--text-primary);
+  border-radius: 8px;
+  transition: opacity 0.2s ease;
 }
-
-.notice-cta:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-}
+.notice-cta:hover { opacity: 0.85; }
 
 .notice-close {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 0.375rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 8px;
   color: var(--text-muted);
   transition: color 0.2s ease, background 0.2s ease;
 }
-
-.notice-close:hover {
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.06);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .notice-cta,
-  .notice-close {
-    transition: none;
-  }
-}
+.notice-close:hover { color: var(--text-primary); background: var(--surface-hover); }
 </style>

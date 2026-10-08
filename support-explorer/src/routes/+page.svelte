@@ -106,10 +106,10 @@
 	<meta name="description" content={description} />
 
 	<meta property="og:title" content="Betaflight Support Explorer | ShiroFPV" />
-	<meta property="og:url" content="https://shirofpv.dev/" />
+	<meta property="og:url" content="https://shirofpv.com/" />
 	<meta property="og:type" content="website" />
 	<meta property="og:description" content={description} />
-	<meta name="theme-color" content="#b48bff" />
+	<meta name="theme-color" content="#1b1c1f" />
 </svelte:head>
 
 <svelte:document onkeydown={handleKeyDown} />
@@ -119,15 +119,12 @@
 	in:fly={{ x: 500, duration: 400 }}
 >
 	<!-- Decorative floating orbs -->
-	<div class="orb orb-purple w-96 h-96 -top-24 -left-24 opacity-50" aria-hidden="true"></div>
-	<div class="orb orb-pink w-64 h-64 top-1/3 -right-16 opacity-40" aria-hidden="true"></div>
-	<div class="orb orb-blue w-80 h-80 bottom-1/4 left-1/3 opacity-30" aria-hidden="true"></div>
 
-	<h1 class="gradient-text font-bold h1 lg:pt-24">Previous IDs</h1>
+	<h1 class="font-medium h1 lg:pt-24">Previous IDs</h1>
 
 	<!-- Stats bar -->
 	{#if $previousIds.length > 0}
-		<div class="glass-card rounded-2xl px-5 py-3 flex gap-6 items-center text-sm w-fit animate-fade-in-up">
+		<div class="glass-card rounded-[4px] px-5 py-3 flex gap-6 items-center text-sm w-fit animate-fade-in-up">
 			<div class="flex items-center gap-2">
 				<span class="text-primary-400 font-semibold">{$previousIds.length}</span>
 				<span class="text-surface-300">saved ID{$previousIds.length !== 1 ? "s" : ""}</span>
@@ -151,7 +148,7 @@
 	{#if $previousIds.length === 0}
 		<!-- Empty state -->
 		<div class="flex flex-col items-center justify-center py-24 gap-6 animate-fade-in-up">
-			<div class="glass-card rounded-3xl p-8 flex flex-col items-center gap-4 text-center max-w-md">
+			<div class="glass-card rounded-[5px] p-8 flex flex-col items-center gap-4 text-center max-w-md">
 				<div class="text-primary-400 opacity-60">
 					<Icon src={Inbox} size="4rem" />
 				</div>
@@ -166,7 +163,7 @@
 		<div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-6">
 			{#each $previousIds as id (id.createdAt)}
 				<div
-					class="glass-card card-hover rounded-2xl group relative p-4 flex flex-col gap-4 animate-fade-in-up"
+					class="glass-card card-hover rounded-[4px] group relative p-4 flex flex-col gap-4 animate-fade-in-up"
 				>
 					<!-- Delete button -->
 					<div

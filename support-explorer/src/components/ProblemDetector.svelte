@@ -5,6 +5,8 @@
 	import { EyeOff, X } from "@steeze-ui/lucide-icons"
 	import { Icon } from "@steeze-ui/svelte-icon"
 	import { settings } from "$lib/stores/settings"
+	import { guideForProblem } from "$lib/problems/guides"
+	import { BookOpen } from "@steeze-ui/lucide-icons"
 	import { Switch } from "@skeletonlabs/skeleton-svelte"
 	interface Props {
 		problems: Problem[]
@@ -121,7 +123,7 @@
 
 <Accordion collapsible>
 	<Accordion.Item
-		classes="glass-card card-hover rounded-2xl"
+		classes="glass-card card-hover rounded-[4px]"
 		controlHover="hover:bg-primary-500/10"
 		value="commonSettings"
 		panelClasses="px-4 py-4"
@@ -173,7 +175,7 @@
 											</button>
 										</Tooltip.Trigger>
 										<Tooltip.Content
-											class="p-2 rounded-xl border-2 border-surface-500 preset-filled-surface-400-600"
+											class="p-2 rounded-[3px] border-2 border-surface-500 preset-filled-surface-400-600"
 										>
 											<span>Hide this problem</span>
 										</Tooltip.Content>
@@ -183,6 +185,19 @@
 									<!-- eslint-disable-next-line svelte/no-at-html-tags - it gets sanitized on the server, should be safe... I hope -->
 									{@html problem.description}
 								</div>
+								{#if guideForProblem(problem.id)}
+									{@const guide = guideForProblem(problem.id)}
+									<a
+										href={guide!.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="guide-link"
+									>
+										<Icon src={BookOpen} size="0.95rem" />
+										<span>Read the fix: {guide!.label}</span>
+										<span aria-hidden="true">&rarr;</span>
+									</a>
+								{/if}
 							</div>
 						{/each}
 					{/each}
@@ -198,3 +213,28 @@
 		{/snippet}
 	</Accordion.Item>
 </Accordion>
+
+<style>
+	.guide-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		width: fit-content;
+		margin-top: 0.35rem;
+		padding: 0.4rem 0.6rem;
+		border-radius: 3px;
+		border: 1px solid rgba(233, 233, 235, 0.38);
+		background: rgba(233, 233, 235, 0.13);
+		color: #e9e9eb;
+		font-family: "JetBrains Mono", ui-monospace, monospace;
+		font-size: 0.7rem;
+		letter-spacing: 0.04em;
+		transition:
+			background 0.2s ease,
+			color 0.2s ease;
+	}
+	.guide-link:hover {
+		background: rgba(233, 233, 235, 0.22);
+		color: #e9e9eb;
+	}
+</style>

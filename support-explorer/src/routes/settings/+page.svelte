@@ -22,13 +22,13 @@
 	<meta name="description" content="Configure the settings for the Betaflight Support Explorer" />
 
 	<meta property="og:title" content="Settings - Betaflight Support Explorer | ShiroFPV" />
-	<meta property="og:url" content="https://shirofpv.dev/settings" />
+	<meta property="og:url" content="https://shirofpv.com/settings" />
 	<meta property="og:type" content="website" />
 	<meta
 		property="og:description"
 		content="Configure the settings for the Betaflight Support Explorer"
 	/>
-	<meta name="theme-color" content="#b48bff" />
+	<meta name="theme-color" content="#1b1c1f" />
 </svelte:head>
 
 <div
@@ -39,7 +39,7 @@
 
 	<div class="grid md:grid-cols-2 grid-cols-1 gap-6">
 		<div class="flex flex-col w-full gap-6">
-			<div class="glass-card card-hover rounded-2xl p-4 flex flex-col gap-4">
+			<div class="glass-card card-hover rounded-[4px] p-4 flex flex-col gap-4">
 				<header class="h3 font-bold">ID Preview Card</header>
 				<section class="text-lg flex flex-col gap-2">
 					<div class="flex gap-2 flex-row flex-wrap">
@@ -64,7 +64,7 @@
 				</section>
 			</div>
 
-			<div class="glass-card card-hover rounded-2xl p-4 flex flex-col gap-4">
+			<div class="glass-card card-hover rounded-[4px] p-4 flex flex-col gap-4">
 				<header class="h3 font-bold">Parsing</header>
 				<section class="text-lg flex flex-col gap-2">
 					<div class="flex gap-2 flex-row flex-wrap">
@@ -88,7 +88,7 @@
 		</div>
 
 		<div class="flex flex-col w-full gap-6">
-			<div class="glass-card card-hover rounded-2xl p-4 flex flex-col gap-4">
+			<div class="glass-card card-hover rounded-[4px] p-4 flex flex-col gap-4">
 				<header class="h3 font-bold">Problem Detection</header>
 
 				<section class="text-lg flex flex-col gap-2">

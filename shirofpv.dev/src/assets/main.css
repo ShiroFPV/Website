@@ -1,203 +1,198 @@
 @import "tailwindcss";
 
-:root {
-  --bg-base: #0d0b14;
-  --bg-elevated: #14111d;
-  --surface: #18141f;
-  --surface-hover: #1f1a2c;
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-strong: rgba(255, 255, 255, 0.14);
-  --accent: #6d5ef2;
-  --accent-light: #8f7ff5;
-  --accent-dark: #5747d1;
-  --accent-soft: rgba(109, 94, 242, 0.14);
-  --accent-border: rgba(109, 94, 242, 0.32);
-  --text-primary: #f4f2fa;
-  --text-secondary: #a39dc0;
-  --text-muted: #726c8c;
-  --danger: #ef5a6f;
+/* ShiroFPV — graphite. One sans family, quiet sizes, no colour accent.
+   Mono only for real data. */
 
-  /* Height of the domain-migration bar; set at runtime, 0 when dismissed. */
+:root {
+  /* graphite — soft charcoal, light grey type, no colour accent */
+  --bg-base: #1b1c1f;
+  --bg-deep: #161719;
+  --bg-elevated: #202124;
+  --surface: #25262a;
+  --surface-hover: #2a2b30;
+
+  --border-subtle: #2f3035;
+  --border-strong: #404147;
+  --border-hot: #55565d;
+
+  --ink: #e9e9eb;
+  --hi: #d4d5d9;
+  --hi-soft: rgba(233, 233, 235, 0.06);
+
+  /* legacy names → all mapped onto the neutral palette */
+  --copper: var(--hi);
+  --copper-light: var(--ink);
+  --copper-soft: var(--hi-soft);
+  --violet: var(--hi);
+  --violet-light: var(--ink);
+  --violet-dark: #a3a4aa;
+  --violet-soft: var(--hi-soft);
+  --pink: var(--hi);
+  --pink-light: var(--ink);
+  --pink-soft: var(--hi-soft);
+  --accent: var(--hi);
+  --accent-light: var(--ink);
+  --accent-dark: #a3a4aa;
+  --accent-soft: var(--hi-soft);
+  --accent-border: var(--border-strong);
+
+  --text-primary: #e9e9eb;
+  --text-secondary: #a3a4aa;
+  --text-muted: #70727a;
+  --danger: #e0645a;
+
+  --rail-w: 0px;
+  --nav-h: 60px;
   --domain-notice-h: 0px;
+
+  --font-display: "Inter Tight", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-body: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 @layer base {
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
   body {
     color: var(--text-primary);
-    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
     background: var(--bg-base);
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
   }
 
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
-    opacity: 0.03;
-    mix-blend-mode: overlay;
-  }
+  ::selection { background: var(--ink); color: var(--bg-base); }
+
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.02em; }
+
+  a { text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
 }
 
 @layer components {
-  .page-shell {
-    width: 100%;
-    max-width: 1400px;
-    margin-inline: auto;
+  .page-shell { width: 100%; max-width: 1080px; margin-inline: auto; }
+  .page-shell-narrow { width: 100%; max-width: 760px; margin-inline: auto; }
+
+  /* ── type ─────────────────────────────────────────── */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
   }
 
-  .page-shell-narrow {
-    width: 100%;
-    max-width: 900px;
-    margin-inline: auto;
+  /* emphasis is just weight and full-strength ink */
+  .grad-text, .gradient-text { color: var(--text-primary); }
+
+  .label {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--text-muted);
   }
 
+  .idx {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .rule { height: 1px; width: 100%; background: var(--border-subtle); }
+
+  /* ── surfaces ─────────────────────────────────────── */
   .glass-card {
-    background: var(--surface);
+    background: var(--bg-elevated);
     border: 1px solid var(--border-subtle);
   }
 
-  .glass-nav {
-    background: var(--bg-elevated);
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .gradient-text {
-    color: var(--accent-light);
-  }
-
-  .gradient-border {
+  .panel {
     position: relative;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    transition: border-color 0.2s ease;
   }
+  .panel:hover { border-color: var(--border-strong); }
 
-  .gradient-border::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--accent);
-    border-radius: 2px;
-  }
+  .ticked::before, .ticked::after { content: none; }
 
+  /* ── controls ─────────────────────────────────────── */
   .btn-primary {
-    @apply px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold transition-all duration-300 min-h-[44px] flex items-center justify-center;
-    background: var(--accent);
-    color: #fff;
+    @apply inline-flex items-center justify-center gap-2 px-[18px] font-medium min-h-[40px];
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    border-radius: 8px;
+    color: var(--bg-base);
+    background: var(--text-primary);
+    transition: opacity 0.2s ease;
   }
-
-  .btn-primary:hover {
-    background: var(--accent-light);
-    transform: translateY(-1px);
-  }
-
-  .btn-primary:active {
-    background: var(--accent-dark);
-    transform: translateY(0);
-  }
+  .btn-primary:hover { opacity: 0.85; }
 
   .btn-outline {
-    @apply px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold transition-all duration-300 min-h-[44px] flex items-center justify-center;
-    border: 1px solid var(--border-strong);
-    color: var(--text-secondary);
+    @apply inline-flex items-center justify-center gap-2 px-[18px] font-medium min-h-[40px];
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    background: transparent;
+    transition: border-color 0.2s, background 0.2s;
   }
+  .btn-outline:hover { border-color: var(--border-strong); background: var(--surface); }
 
-  .btn-outline:hover {
-    border-color: var(--accent);
-    color: var(--accent-light);
-    background: rgba(255, 255, 255, 0.03);
-  }
+  .glow-purple, .glow-pink { box-shadow: none; }
 
-  .btn-outline:active {
-    transform: translateY(0);
-  }
+  .card-hover { transition: border-color 0.2s ease; }
+  .card-hover:hover { border-color: var(--border-strong); }
 
-  .glow-purple,
-  .glow-pink {
-    box-shadow: 0 8px 24px rgba(109, 94, 242, 0.18);
-  }
-
-  .card-hover {
-    @apply transition-all duration-300;
-  }
-
-  .card-hover:hover {
-    transform: translateY(-3px);
-    border-color: var(--accent-border);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  .gradient-border { position: relative; }
+  .gradient-border::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 1px;
+    background: var(--copper);
   }
 }
 
 @layer utilities {
-  .animate-gradient {
-    background-size: 300% 300%;
-    animation: gradientShift 8s ease infinite;
-  }
+  .mono { font-family: var(--font-mono); }
+  .animate-gradient { animation: none; }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
+.pg-pad { padding: clamp(48px, 7vw, 92px) 20px clamp(56px, 7vw, 92px); }
+@media (min-width: 640px) { .pg-pad { padding-inline: 32px; } }
 
-::-webkit-scrollbar-track {
-  background: var(--surface);
-}
+/* ── left rail offset (unlayered so it beats Tailwind utilities) ── */
 
-::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  border-radius: 3px;
-}
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-light);
-}
+.has-domain-notice header.nav { top: var(--domain-notice-h); }
+.has-domain-notice nav.sheet { top: calc(var(--nav-h) + var(--domain-notice-h)); }
+.has-domain-notice main { padding-top: var(--domain-notice-h); }
 
-/* Page transition animations */
-.page-enter-active,
-.page-leave-active {
-  transition: all 0.35s ease;
-}
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: #3a3b40; border: 3px solid var(--bg-base); border-radius: 999px; }
 
-.page-enter-from {
-  opacity: 0;
-  transform: translateY(16px);
-}
+.page-enter-active, .page-leave-active { transition: opacity 0.25s ease, transform 0.25s ease; }
+.page-enter-from { opacity: 0; transform: translateY(6px); }
+.page-leave-to { opacity: 0; transform: translateY(0); }
 
-.page-leave-to {
-  opacity: 0;
-  transform: translateY(-16px);
-}
-
-/* Domain migration bar offsets.
-   The bar is fixed above the fixed navbar, so nothing in the flow reserves
-   space for it — push the nav and the page down by its measured height. */
-.has-domain-notice .glass-nav {
-  top: var(--domain-notice-h);
-}
-
-.has-domain-notice main {
-  padding-top: var(--domain-notice-h);
-}
-
-/* Orb animations — hidden */
-.orb {
-  display: none !important;
-}
+.orb { display: none !important; }
 
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
 }

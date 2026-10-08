@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shirofpv.dev/sitemap.xml
+Sitemap: https://shirofpv.com/sitemap.xml
