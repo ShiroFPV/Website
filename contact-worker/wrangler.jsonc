@@ -1,0 +1,10 @@
+{
+  "name": "contact-form",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": false,
+  "routes": [{ "pattern": "contact.shirofpv.com", "custom_domain": true }],
+  "vars": { "DESTINATION": "shirofpv@gmail.com" },
+  "send_email": [{ "name": "EMAIL", "destination_address": "shirofpv@gmail.com" }]
+  // TURNSTILE_SECRET is a secret: `wrangler secret put TURNSTILE_SECRET`
+}

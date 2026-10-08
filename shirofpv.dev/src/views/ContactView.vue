@@ -1,10 +1,33 @@
 <script setup>
 import PageHeader from '../components/PageHeader.vue'
-import { ref } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-// Get a free access key at https://web3forms.com (enter your email, they send the key).
-// Paste it here — submissions are emailed straight to you, no backend required.
-const WEB3FORMS_ACCESS_KEY = '20b7ab87-6ba7-4159-bb07-ed3ac0ab5d03'
+// Messages go to a Cloudflare Worker (contact-worker/ in this repo), which checks
+// Turnstile and emails them to me. The site key is public by design.
+const CONTACT_ENDPOINT = 'https://contact.shirofpv.com/'
+const TURNSTILE_SITE_KEY = '0x4AAAAAAFRZEXoICISwobSJ'
+
+const turnstileEl = ref(null)
+let widgetId = null
+
+function renderTurnstile() {
+  if (!window.turnstile || !turnstileEl.value || widgetId !== null) return
+  widgetId = window.turnstile.render(turnstileEl.value, { sitekey: TURNSTILE_SITE_KEY, theme: 'dark' })
+}
+
+onMounted(() => {
+  if (window.turnstile) return renderTurnstile()
+  const s = document.createElement('script')
+  s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'
+  s.async = true
+  s.onload = renderTurnstile
+  document.head.appendChild(s)
+})
+
+onBeforeUnmount(() => {
+  if (widgetId !== null) window.turnstile?.remove(widgetId)
+  widgetId = null
+})
 
 const form = ref({ name: '', email: '', message: '', botcheck: '' })
 const submitted = ref(false)
@@ -43,27 +66,34 @@ async function handleSubmit() {
   submitError.value = ''
 
   try {
-    const response = await fetch('https://api.web3forms.com/submit', {
+    const turnstileToken = widgetId !== null ? window.turnstile.getResponse(widgetId) : ''
+    if (!turnstileToken) {
+      submitError.value = 'Please wait for the spam check to finish, then try again.'
+      return
+    }
+
+    const response = await fetch(CONTACT_ENDPOINT, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        access_key: WEB3FORMS_ACCESS_KEY,
-        subject: 'New message from shirofpv.com',
-        from_name: 'ShiroFPV Contact Form',
         name: form.value.name,
         email: form.value.email,
         message: form.value.message,
+        turnstileToken,
       }),
     })
 
-    const result = await response.json()
+    const result = await response.json().catch(() => ({}))
     if (!result.success) {
-      throw new Error(result.message || 'Form submission failed')
+      window.turnstile?.reset(widgetId)
+      submitError.value = result.message || 'Could not send message right now. Please try again in a moment.'
+      return
     }
 
     submitted.value = true
     form.value = { name: '', email: '', message: '', botcheck: '' }
   } catch {
+    window.turnstile?.reset(widgetId)
     submitError.value = 'Could not send message right now. Please try again in a moment.'
   } finally {
     isSubmitting.value = false
@@ -176,6 +206,8 @@ async function handleSubmit() {
                   style="background: rgba(255,255,255,0.05); border: 1px solid rgba(233, 233, 235, 0.18);"
                 ></textarea>
               </div>
+
+              <div ref="turnstileEl" class="min-h-[65px]"></div>
 
               <p v-if="submitError" class="text-sm text-red-300">{{ submitError }}</p>
 
