@@ -80,10 +80,10 @@
 		<div class="flex justify-start xl:gap-8 lg:gap-4 gap-2 items-center order-1">
 			<a
 				href="https://shirofpv.com"
-				class="font-bold text-lg hidden xl:block text-surface-50"
+				class="font-semibold text-base hidden xl:block text-surface-50"
 				target="_blank"
 				rel="noopener noreferrer"
-			>Shiro<span class="gradient-text">FPV</span></a>
+			>ShiroFPV</a>
 			<span class="border-surface-500 vr hidden xl:block"></span>
 			<a href="{base}/" class="h-fit fancy-link" data-active={page.url.pathname === base + "/"}>home</a>
 			<a

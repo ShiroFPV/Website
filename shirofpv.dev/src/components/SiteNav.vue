@@ -10,7 +10,6 @@ const links = [
   { label: 'Projects',          path: '/projects' },
   { label: 'Flight controller', path: '/flight-controller' },
   { label: 'Debugging',         path: '/debugging' },
-  { label: 'Config',            path: '/config-gen' },
 ]
 
 const isActive = (p) => route.path === p || route.path.startsWith(p + '/')
@@ -20,7 +19,7 @@ watch(() => route.path, () => { open.value = false })
 <template>
   <header class="nav">
     <div class="page-shell nav-inner">
-      <RouterLink to="/" class="mark" aria-label="ShiroFPV home">Shiro<em>FPV</em></RouterLink>
+      <RouterLink to="/" class="mark" aria-label="ShiroFPV home">ShiroFPV</RouterLink>
 
       <nav class="links" aria-label="Main">
         <RouterLink v-for="l in links" :key="l.path" :to="l.path"
@@ -61,40 +60,34 @@ watch(() => route.path, () => { open.value = false })
 }
 @media (min-width: 640px) { .nav-inner { padding: 0 32px; } }
 
-.mark {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-}
-.mark em { font-style: italic; color: var(--copper-light); }
+.mark { font-weight: 600; letter-spacing: -0.02em; color: var(--text-primary); }
 
 .links { display: none; }
 @media (min-width: 960px) {
-  .links { display: flex; align-items: center; gap: 28px; }
+  .links { display: flex; align-items: center; gap: 26px; }
 }
 
 .link {
   position: relative;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text-secondary);
   transition: color 0.2s ease;
 }
 .link:hover, .link.is-active { color: var(--text-primary); }
 .link.is-active::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px;
-  background: var(--copper);
+  content: ""; position: absolute; left: 0; right: 0; bottom: -20px; height: 1px;
+  background: var(--text-primary);
 }
 
 .say-hi {
-  font-size: 0.88rem; font-weight: 500;
-  padding: 7px 16px;
-  border: 1px solid var(--border-strong);
-  border-radius: 999px;
+  font-size: 0.84rem; font-weight: 500;
+  padding: 6px 14px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
   color: var(--text-primary);
   transition: border-color 0.2s, background 0.2s;
 }
-.say-hi:hover { border-color: var(--text-secondary); background: rgba(237, 232, 223, 0.04); }
+.say-hi:hover { border-color: var(--border-strong); background: var(--surface); }
 
 .burger {
   width: 40px; height: 40px; display: flex; flex-direction: column;
@@ -119,13 +112,12 @@ watch(() => route.path, () => { open.value = false })
 .sheet-item {
   display: block;
   padding: 14px 0;
-  font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: 1.05rem;
   color: var(--text-secondary);
   border-bottom: 1px solid var(--border-subtle);
 }
 .sheet-item:last-child { border-bottom: 0; }
-.sheet-item.is-active { color: var(--text-primary); font-style: italic; }
+.sheet-item.is-active { color: var(--text-primary); }
 
 .sheet-enter-active, .sheet-leave-active { transition: opacity 0.2s ease, transform 0.2s ease; }
 .sheet-enter-from, .sheet-leave-to { opacity: 0; transform: translateY(-6px); }

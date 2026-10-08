@@ -109,7 +109,7 @@
 	<meta property="og:url" content="https://shirofpv.com/" />
 	<meta property="og:type" content="website" />
 	<meta property="og:description" content={description} />
-	<meta name="theme-color" content="#b48bff" />
+	<meta name="theme-color" content="#1b1c1f" />
 </svelte:head>
 
 <svelte:document onkeydown={handleKeyDown} />
@@ -119,11 +119,8 @@
 	in:fly={{ x: 500, duration: 400 }}
 >
 	<!-- Decorative floating orbs -->
-	<div class="orb orb-purple w-96 h-96 -top-24 -left-24 opacity-50" aria-hidden="true"></div>
-	<div class="orb orb-pink w-64 h-64 top-1/3 -right-16 opacity-40" aria-hidden="true"></div>
-	<div class="orb orb-blue w-80 h-80 bottom-1/4 left-1/3 opacity-30" aria-hidden="true"></div>
 
-	<h1 class="gradient-text font-bold h1 lg:pt-24">Previous IDs</h1>
+	<h1 class="font-medium h1 lg:pt-24">Previous IDs</h1>
 
 	<!-- Stats bar -->
 	{#if $previousIds.length > 0}

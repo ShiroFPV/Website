@@ -183,7 +183,7 @@
 	<meta property="og:url" content="https://shirofpv.com/" />
 	<meta property="og:type" content="website" />
 	<meta property="og:description" content={description} />
-	<meta name="theme-color" content="#b48bff" />
+	<meta name="theme-color" content="#1b1c1f" />
 </svelte:head>
 
 <div

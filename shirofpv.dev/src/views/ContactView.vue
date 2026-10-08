@@ -17,24 +17,21 @@ const socials = [
     handle: '@ShiroFPV',
     url: 'https://github.com/ShiroFPV',
     description: 'Check out my open-source projects and flight controller designs.',
-    color: '#8f7ff5',
-    icon: '🐙',
+    color: '#e9e9eb',
   },
   {
     name: 'Discord',
     handle: '@shiro1930',
     url: 'https://discord.gg/PaRHFSmX',
     description: 'Join the community and chat about FPV builds and hardware.',
-    color: '#8f7ff5',
-    icon: '💬',
+    color: '#e9e9eb',
   },
   {
     name: 'Email',
     handle: 'shirofpv@gmail.com',
     url: 'mailto:shirofpv@gmail.com',
     description: 'For collaborations, questions, or just to say hi.',
-    color: '#6d5ef2',
-    icon: '✉️',
+    color: '#d4d5d9',
   },
 ]
 
@@ -97,12 +94,6 @@ async function handleSubmit() {
             rel="noopener noreferrer"
             class="glass-card card-hover rounded-[4px] p-5 flex items-start gap-4 block"
           >
-            <div
-              class="w-12 h-12 rounded-[3px] flex items-center justify-center text-2xl flex-shrink-0"
-              style="background: rgba(109,94,242,0.12);"
-            >
-              {{ social.icon }}
-            </div>
             <div>
               <div class="flex items-center gap-2 mb-1">
                 <span class="font-bold text-white">{{ social.name }}</span>
@@ -118,7 +109,6 @@ async function handleSubmit() {
 
           <Transition name="page" mode="out-in">
             <div v-if="submitted" class="glass-card rounded-[4px] p-8 text-center">
-              <div class="text-5xl mb-4">💜</div>
               <h3 class="text-xl font-bold text-white mb-2">Message received!</h3>
               <p class="text-gray-400">Thanks for reaching out. I'll get back to you soon.</p>
               <button
@@ -155,7 +145,7 @@ async function handleSubmit() {
                   required
                   placeholder="Your name"
                   class="w-full px-4 py-3 rounded-[3px] text-white placeholder-gray-500 text-sm transition-colors focus:outline-none focus:ring-2"
-                  style="background: rgba(255,255,255,0.05); border: 1px solid rgba(109,94,242,0.3);"
+                  style="background: rgba(255,255,255,0.05); border: 1px solid rgba(233, 233, 235, 0.18);"
                 />
               </div>
 
@@ -169,7 +159,7 @@ async function handleSubmit() {
                   required
                   placeholder="your@email.com"
                   class="w-full px-4 py-3 rounded-[3px] text-white placeholder-gray-500 text-sm transition-colors focus:outline-none focus:ring-2"
-                  style="background: rgba(255,255,255,0.05); border: 1px solid rgba(109,94,242,0.3);"
+                  style="background: rgba(255,255,255,0.05); border: 1px solid rgba(233, 233, 235, 0.18);"
                 />
               </div>
 
@@ -183,14 +173,14 @@ async function handleSubmit() {
                   rows="5"
                   placeholder="What's on your mind?"
                   class="w-full px-4 py-3 rounded-[3px] text-white placeholder-gray-500 text-sm transition-colors focus:outline-none focus:ring-2 resize-none"
-                  style="background: rgba(255,255,255,0.05); border: 1px solid rgba(109,94,242,0.3);"
+                  style="background: rgba(255,255,255,0.05); border: 1px solid rgba(233, 233, 235, 0.18);"
                 ></textarea>
               </div>
 
               <p v-if="submitError" class="text-sm text-red-300">{{ submitError }}</p>
 
               <button :disabled="isSubmitting" type="submit" class="btn-primary text-white w-full text-sm font-semibold disabled:opacity-70 disabled:cursor-not-allowed">
-                {{ isSubmitting ? 'Sending...' : 'Send Message ✉️' }}
+                {{ isSubmitting ? 'Sending...' : 'Send Message' }}
               </button>
             </form>
           </Transition>

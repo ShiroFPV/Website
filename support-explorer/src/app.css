@@ -34,30 +34,26 @@
 	}
 	::selection {
 		background-color: var(--color-primary-500);
-		color: white;
+		color: #1b1c1f;
 		@supports (color: color-mix(in lab, red, red)) {
 			background-color: color-mix(in srgb, var(--color-primary-500) 90%, transparent);
 		}
 	}
 
-	/* Custom scrollbar: pink→blue gradient thumb */
 	::-webkit-scrollbar {
-		width: 8px;
-		height: 8px;
+		width: 10px;
+		height: 10px;
 	}
 	::-webkit-scrollbar-track {
-		background: #07050d;
+		background: #1b1c1f;
 	}
 	::-webkit-scrollbar-thumb {
-		background: linear-gradient(180deg, #7c5cff, #ff8fc7);
-		border-radius: 4px;
+		background: #3a3b40;
+		border: 3px solid #1b1c1f;
+		border-radius: 999px;
 	}
-	::-webkit-scrollbar-thumb:hover {
-		background: linear-gradient(180deg, #a68cff, #ffb3da);
-	}
-	/* Firefox scrollbar */
 	* {
-		scrollbar-color: #7c5cff #07050d;
+		scrollbar-color: #3a3b40 #1b1c1f;
 		scrollbar-width: thin;
 	}
 }
@@ -65,65 +61,35 @@
 @layer utilities {
 }
 
-/* Body: matches shirofpv.com — violet ground, one bloom, film grain */
+/* Body: graphite, matches shirofpv.com */
 body {
-	background: #0a0711;
+	background: #1b1c1f;
 	min-height: 100vh;
-}
-body::after {
-	content: "";
-	position: fixed;
-	top: -18vh;
-	left: -10vw;
-	width: 70vw;
-	height: 70vh;
-	pointer-events: none;
-	z-index: 0;
-	background: radial-gradient(circle, rgba(124, 92, 255, 0.13), transparent 62%);
-	filter: blur(28px);
-}
-body::before {
-	content: "";
-	position: fixed;
-	inset: 0;
-	pointer-events: none;
-	z-index: 1;
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
-	opacity: 0.035;
-	mix-blend-mode: overlay;
+	-webkit-font-smoothing: antialiased;
 }
 
-/* Glassmorphism utility classes */
 .glass-card {
-	background: linear-gradient(168deg, #161027, #120d1d);
-	border: 1px solid rgba(168, 142, 255, 0.11);
+	background: transparent;
+	border: 1px solid #2f3035;
 }
 
 .glass-nav {
-	background: color-mix(in srgb, #120d1d 88%, transparent);
+	background: color-mix(in srgb, #1b1c1f 86%, transparent);
 	backdrop-filter: blur(12px);
 	-webkit-backdrop-filter: blur(12px);
-	border-bottom: 1px solid rgba(168, 142, 255, 0.11);
+	border-bottom: 1px solid #2f3035;
 }
 
-/* Gradient text */
 .gradient-text {
-	background: linear-gradient(105deg, #a68cff 0%, #ff8fc7 92%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
+	color: inherit;
 }
 
-/* Card hover effect */
 .card-hover {
-	transition:
-		transform 0.2s ease,
-		box-shadow 0.2s ease;
+	transition: background-color 0.2s ease;
 }
 .card-hover:hover {
-	transform: translateY(-2px);
-	border-color: rgba(168, 142, 255, 0.26);
-	box-shadow: 0 10px 40px rgba(124, 92, 255, 0.16);
+	background-color: #25262a;
+	border-color: #404147;
 }
 
 /* Floating orbs retired — flat ground + single bloom instead */
@@ -214,12 +180,12 @@ body::before {
 }
 .fancy-link:hover {
 	background-size: 100% 100%;
-	color: white;
+	color: #1b1c1f;
 }
 
 .fancy-link[data-active="true"] {
 	background-size: 100% 100%;
-	color: white;
+	color: #1b1c1f;
 	font-weight: 600;
 }
 
@@ -252,7 +218,7 @@ body::before {
 }
 
 [data-theme="shirofpvtheme"] .card.preset-tonal-secondary {
-	border-color: rgba(255, 199, 232, 0.2);
+	border-color: #2f3035;
 	border-width: 1px;
 }
 
@@ -282,7 +248,7 @@ body::before {
 	color: var(--color-surface-950-50);
 }
 
-/* mono face for data + code, matching shirofpv.com */
+/* mono face for data + code */
 code, kbd, pre, samp, .mono {
 	font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }

@@ -28,7 +28,7 @@
 		property="og:description"
 		content="Configure the settings for the Betaflight Support Explorer"
 	/>
-	<meta name="theme-color" content="#b48bff" />
+	<meta name="theme-color" content="#1b1c1f" />
 </svelte:head>
 
 <div

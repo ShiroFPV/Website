@@ -40,7 +40,7 @@
 		property="og:description"
 		content="Explore Betaflight support data with ease. Paste your support ID to analyse firmware configuration, detect issues, and browse targets."
 	/>
-	<meta name="theme-color" content="#b48bff" />
+	<meta name="theme-color" content="#1b1c1f" />
 </svelte:head>
 
 <!-- Padding top for the fixed navbar -->

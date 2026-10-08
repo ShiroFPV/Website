@@ -18,12 +18,12 @@
       <p class="text-gray-400 text-sm mb-4">You've got two main options — pick whichever fits your setup:</p>
 
       <div class="space-y-4">
-        <div class="rounded-[3px] p-4" style="background: rgba(109,94,242,0.08); border: 1px solid rgba(109,94,242,0.2);">
+        <div class="rounded-[3px] p-4" style="background: rgba(233, 233, 235, 0.048); border: 1px solid rgba(233, 233, 235, 0.12);">
           <div class="font-semibold text-white text-sm mb-2">Option 1 — Lower the PID loop frequency</div>
           <p class="text-gray-400 text-sm leading-relaxed">Go to Configuration tab → PID Loop Frequency and drop it from 8 kHz to 4 kHz (or even 2 kHz on older hardware). Less iterations per second = less CPU usage. For most builds you won't notice a real difference in flight feel going from 8k to 4k.</p>
         </div>
 
-        <div class="rounded-[3px] p-4" style="background: rgba(109,94,242,0.08); border: 1px solid rgba(109,94,242,0.2);">
+        <div class="rounded-[3px] p-4" style="background: rgba(233, 233, 235, 0.048); border: 1px solid rgba(233, 233, 235, 0.12);">
           <div class="font-semibold text-white text-sm mb-2">Option 2 — Switch to DSHOT300 + enable bidirectional DSHOT</div>
           <p class="text-gray-400 text-sm leading-relaxed">
             If your ESC supports bidirectional DSHOT (BLHeli_32, AM32, BlueJay), you can actually save CPU resources by switching to DSHOT300 <em>with</em> bidirectional DSHOT enabled. You're halving the bits-per-second on the DSHOT line, which frees up FC processing overhead. Counterintuitive but it works — the bidirectional protocol is more efficient per transmission than one-way DSHOT600.

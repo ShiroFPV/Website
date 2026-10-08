@@ -10,7 +10,7 @@
       <p class="text-gray-400 text-sm leading-relaxed">
         Betaflight won't warn you about this — it'll just silently not work, which is great for your sanity (it's not).
       </p>
-      <div class="mt-4 rounded-[3px] p-4 space-y-3" style="background: rgba(109,94,242,0.08); border: 1px solid rgba(109,94,242,0.2);">
+      <div class="mt-4 rounded-[3px] p-4 space-y-3" style="background: rgba(233, 233, 235, 0.048); border: 1px solid rgba(233, 233, 235, 0.12);">
         <div class="flex items-center gap-3 text-sm">
           <span class="text-red-400 font-bold">✗</span>
           <span class="text-gray-300">UART1: <span class="text-red-400">MSP ON</span> + Serial RX ON → receiver won't work</span>
@@ -27,23 +27,23 @@
       </h2>
       <ol class="space-y-3 text-gray-300 text-sm">
         <li class="flex items-start gap-3">
-          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">1</span>
+          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">1</span>
           <span>Go to Betaflight Configurator → <strong class="text-white">Ports</strong> tab.</span>
         </li>
         <li class="flex items-start gap-3">
-          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">2</span>
+          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">2</span>
           <span>Find the UART where Serial RX is enabled.</span>
         </li>
         <li class="flex items-start gap-3">
-          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">3</span>
+          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">3</span>
           <span>Make sure <strong class="text-white">Configuration / MSP is turned off</strong> on that same UART. It can be on other UARTs — just not this one.</span>
         </li>
         <li class="flex items-start gap-3">
-          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">4</span>
+          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">4</span>
           <span>Save → Reboot.</span>
         </li>
         <li class="flex items-start gap-3">
-          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">5</span>
+          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">5</span>
           <span>Go to the Receiver tab and check if your sticks are moving.</span>
         </li>
       </ol>

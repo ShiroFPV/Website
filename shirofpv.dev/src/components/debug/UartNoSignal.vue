@@ -10,7 +10,7 @@
       <p class="text-gray-400 text-sm leading-relaxed">
         Think of it like a conversation — one end talks (TX), the other listens (RX). If both ends are trying to talk on the same wire, nobody hears anything.
       </p>
-      <div class="mt-4 rounded-[3px] p-4" style="background: rgba(109,94,242,0.1); border: 1px solid rgba(109,94,242,0.25);">
+      <div class="mt-4 rounded-[3px] p-4" style="background: rgba(233, 233, 235, 0.06); border: 1px solid rgba(233, 233, 235, 0.15);">
         <div class="font-mono text-sm text-center space-y-1">
           <div><span style="color: var(--accent);">FC RX</span> <span class="text-gray-400">→</span> <span style="color: var(--accent);">Device TX</span></div>
           <div><span style="color: var(--accent);">FC TX</span> <span class="text-gray-400">→</span> <span style="color: var(--accent);">Device RX</span></div>
@@ -45,7 +45,7 @@
       </ul>
     </div>
 
-    <div class="glass-card rounded-[4px] p-6" style="border-color: rgba(109,94,242,0.2);">
+    <div class="glass-card rounded-[4px] p-6" style="border-color: rgba(233, 233, 235, 0.12);">
       <h2 class="dbg-h">Still nothing?
       </h2>
       <p class="text-gray-400 text-sm leading-relaxed">

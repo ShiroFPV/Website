@@ -5,7 +5,6 @@ import ProjectsView from '../views/ProjectsView.vue'
 import ContactView from '../views/ContactView.vue'
 import FlightControllerView from '../views/FlightControllerView.vue'
 import DebuggingFCView from '../views/DebuggingFCView.vue'
-import ConfigCreatorView from '../views/ConfigCreator.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
 const DEFAULT_DESCRIPTION =
@@ -19,7 +18,6 @@ const routes = [
   { path: '/flight-controller', component: FlightControllerView, meta: { title: 'ShiroFPV — Flight Controller', description: 'The ShiroFPV flight controller: open-source AT32F435 board for Betaflight. Specs, setup guide, DFU/flashing, and troubleshooting.' } },
   { path: '/debugging/:slug', redirect: (to) => ({ path: '/debugging', hash: '#' + to.params.slug }) },
   { path: '/debugging', component: DebuggingFCView, meta: { title: 'ShiroFPV — Debugging your FC', description: 'Practical guides for debugging common flight controller problems — UART, receivers, OSD, CPU load, and more.' } },
-  { path: '/config-gen', component: ConfigCreatorView, meta: { title: 'ShiroFPV — Config Generator', description: 'Generate a Betaflight 4.5+ config.h from a Support ID or build key.' } },
   { path: '/:pathMatch(.*)*', component: NotFoundView, meta: { title: 'ShiroFPV — Page Not Found', description: DEFAULT_DESCRIPTION } },
 ]
 

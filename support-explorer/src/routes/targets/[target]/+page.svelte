@@ -64,7 +64,7 @@
 	<meta property="og:url" content="https://shirofpv.com/" />
 	<meta property="og:type" content="website" />
 	<meta property="og:description" content={description} />
-	<meta name="theme-color" content="#b48bff" />
+	<meta name="theme-color" content="#1b1c1f" />
 </svelte:head>
 
 <div
@@ -133,20 +133,20 @@
 		gap: 0.55rem;
 		margin: 1rem 0 0.6rem;
 		padding: 0.5rem 0.7rem;
-		border: 1px solid rgba(168, 142, 255, 0.11);
+		border: 1px solid rgba(233, 233, 235, 0.11);
 		border-radius: 3px;
 		background: rgba(255, 255, 255, 0.02);
-		color: #6f6790;
+		color: #70727a;
 	}
 	.cfg-filter:focus-within {
-		border-color: rgba(255, 143, 199, 0.38);
+		border-color: rgba(233, 233, 235, 0.38);
 	}
 	.cfg-filter input {
 		flex: 1;
 		background: transparent;
 		border: 0;
 		outline: none;
-		color: #f3efff;
+		color: #e9e9eb;
 		font-family: "JetBrains Mono", ui-monospace, monospace;
 		font-size: 0.8rem;
 	}
@@ -155,7 +155,7 @@
 		font-size: 0.65rem;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
-		color: #ff8fc7;
+		color: #e9e9eb;
 		white-space: nowrap;
 	}
 </style>

@@ -20,25 +20,25 @@
           <div class="font-semibold text-white mb-2">Quick fix — swap the channel map preset</div>
           <ol class="space-y-2 text-gray-300">
             <li class="flex items-start gap-3">
-              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">1</span>
+              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">1</span>
               <span>Go to Betaflight Configurator → <strong class="text-white">Receiver</strong> tab.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">2</span>
+              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">2</span>
               <span>Look for the <strong class="text-white">Channel Map</strong> dropdown — try switching between <strong class="text-white">TAER</strong> and <strong class="text-white">AETR</strong> (or whichever options are listed).</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">3</span>
+              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">3</span>
               <span>Move your sticks after each change — you should see them map correctly in the channel preview below.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">4</span>
+              <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">4</span>
               <span>Save when sticks move correctly.</span>
             </li>
           </ol>
         </div>
 
-        <div class="rounded-[3px] p-4" style="background: rgba(109,94,242,0.08); border: 1px solid rgba(109,94,242,0.2);">
+        <div class="rounded-[3px] p-4" style="background: rgba(233, 233, 235, 0.048); border: 1px solid rgba(233, 233, 235, 0.12);">
           <div class="font-semibold text-white text-sm mb-2">If the presets don't work — manual mapping</div>
           <p class="text-gray-400 text-sm leading-relaxed">
             The channel map field in the Receiver tab is editable. You can type in a custom order (e.g. <span class="font-mono" style="color: var(--accent);">AERT1234</span>) to manually match whatever order your radio sends channels in. Just look at which channel bar moves when you move each stick, and arrange the letters accordingly.

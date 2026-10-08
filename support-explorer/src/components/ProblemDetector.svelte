@@ -223,9 +223,9 @@
 		margin-top: 0.35rem;
 		padding: 0.4rem 0.6rem;
 		border-radius: 3px;
-		border: 1px solid rgba(255, 143, 199, 0.38);
-		background: rgba(255, 143, 199, 0.13);
-		color: #ff8fc7;
+		border: 1px solid rgba(233, 233, 235, 0.38);
+		background: rgba(233, 233, 235, 0.13);
+		color: #e9e9eb;
 		font-family: "JetBrains Mono", ui-monospace, monospace;
 		font-size: 0.7rem;
 		letter-spacing: 0.04em;
@@ -234,7 +234,7 @@
 			color 0.2s ease;
 	}
 	.guide-link:hover {
-		background: rgba(255, 143, 199, 0.22);
-		color: #ffb3da;
+		background: rgba(233, 233, 235, 0.22);
+		color: #e9e9eb;
 	}
 </style>

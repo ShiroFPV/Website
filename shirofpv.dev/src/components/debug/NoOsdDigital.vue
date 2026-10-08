@@ -17,23 +17,23 @@
       </h2>
       <ol class="space-y-3 text-gray-300 text-sm">
         <li class="flex items-start gap-3">
-          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">1</span>
+          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">1</span>
           <span>Open Betaflight Configurator → <strong class="text-white">Ports</strong> tab.</span>
         </li>
         <li class="flex items-start gap-3">
-          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">2</span>
+          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">2</span>
           <span>Find the UART your VTX is connected to.</span>
         </li>
         <li class="flex items-start gap-3">
-          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">3</span>
+          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">3</span>
           <span>Under <strong class="text-white">Peripherals</strong>, select <strong class="text-white">VTX (MSP + DisplayPort)</strong>.</span>
         </li>
         <li class="flex items-start gap-3">
-          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">4</span>
+          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">4</span>
           <span>Also make sure <strong class="text-white">Configuration / MSP</strong> is enabled on that same UART.</span>
         </li>
         <li class="flex items-start gap-3">
-          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(109,94,242,0.2); color: var(--accent);">5</span>
+          <span class="font-mono font-bold text-xs mt-0.5 px-1.5 py-0.5 rounded" style="background: rgba(233, 233, 235, 0.12); color: var(--accent);">5</span>
           <span>Save → Reboot → check your goggles.</span>
         </li>
       </ol>

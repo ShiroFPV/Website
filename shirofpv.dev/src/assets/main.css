@@ -1,54 +1,53 @@
 @import "tailwindcss";
 
-/* ShiroFPV — warm ink, cream type, one copper accent.
-   Serif for voice, sans for reading, mono only for real data. */
+/* ShiroFPV — graphite. One sans family, quiet sizes, no colour accent.
+   Mono only for real data. */
 
 :root {
-  /* ground — warm ink, like a dark notebook page */
-  --bg-base: #12110f;
-  --bg-deep: #0e0d0c;
-  --bg-elevated: #181714;
-  --surface: #1c1a17;
-  --surface-hover: #23211d;
+  /* graphite — soft charcoal, light grey type, no colour accent */
+  --bg-base: #1b1c1f;
+  --bg-deep: #161719;
+  --bg-elevated: #202124;
+  --surface: #25262a;
+  --surface-hover: #2a2b30;
 
-  /* lines */
-  --border-subtle: rgba(237, 232, 223, 0.08);
-  --border-strong: rgba(237, 232, 223, 0.18);
-  --border-hot: rgba(214, 138, 92, 0.45);
+  --border-subtle: #2f3035;
+  --border-strong: #404147;
+  --border-hot: #55565d;
 
-  /* one accent: copper, like bare pads on a fresh board */
-  --copper: #d68a5c;
-  --copper-light: #e9ad86;
-  --copper-soft: rgba(214, 138, 92, 0.12);
+  --ink: #e9e9eb;
+  --hi: #d4d5d9;
+  --hi-soft: rgba(233, 233, 235, 0.06);
 
-  /* legacy names → mapped onto the new palette so every page follows */
-  --violet: var(--copper);
-  --violet-light: var(--copper-light);
-  --violet-dark: #b46e44;
-  --violet-soft: var(--copper-soft);
-  --pink: var(--copper);
-  --pink-light: var(--copper-light);
-  --pink-soft: var(--copper-soft);
-
-  --accent: var(--copper);
-  --accent-light: var(--copper-light);
-  --accent-dark: #b46e44;
-  --accent-soft: var(--copper-soft);
+  /* legacy names → all mapped onto the neutral palette */
+  --copper: var(--hi);
+  --copper-light: var(--ink);
+  --copper-soft: var(--hi-soft);
+  --violet: var(--hi);
+  --violet-light: var(--ink);
+  --violet-dark: #a3a4aa;
+  --violet-soft: var(--hi-soft);
+  --pink: var(--hi);
+  --pink-light: var(--ink);
+  --pink-soft: var(--hi-soft);
+  --accent: var(--hi);
+  --accent-light: var(--ink);
+  --accent-dark: #a3a4aa;
+  --accent-soft: var(--hi-soft);
   --accent-border: var(--border-strong);
 
-  /* ink */
-  --text-primary: #ede8df;
-  --text-secondary: #aaa397;
-  --text-muted: #736d63;
+  --text-primary: #e9e9eb;
+  --text-secondary: #a3a4aa;
+  --text-muted: #70727a;
   --danger: #e0645a;
 
   --rail-w: 0px;
-  --nav-h: 64px;
+  --nav-h: 60px;
   --domain-notice-h: 0px;
 
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-display: "Inter Tight", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 @layer base {
@@ -59,44 +58,34 @@
     color: var(--text-primary);
     font-family: var(--font-body);
     font-size: 16px;
+    line-height: 1.55;
     background: var(--bg-base);
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
   }
 
-  ::selection { background: var(--copper); color: var(--bg-deep); }
+  ::selection { background: var(--ink); color: var(--bg-base); }
 
-  h1, h2, h3 {
-    font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    font-variation-settings: "opsz" 96, "SOFT" 30;
-  }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.02em; }
 
   a { text-underline-offset: 3px; }
-  :focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; border-radius: 2px; }
+  :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
 }
 
 @layer components {
-  .page-shell { width: 100%; max-width: 1180px; margin-inline: auto; }
+  .page-shell { width: 100%; max-width: 1080px; margin-inline: auto; }
   .page-shell-narrow { width: 100%; max-width: 760px; margin-inline: auto; }
 
   /* ── type ─────────────────────────────────────────── */
   .display {
     font-family: var(--font-display);
-    font-weight: 400;
-    line-height: 1.02;
-    letter-spacing: -0.025em;
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
   }
 
-  /* emphasis is an italic, not a gradient */
-  .grad-text, .gradient-text {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 400;
-    color: var(--copper-light);
-  }
+  /* emphasis is just weight and full-strength ink */
+  .grad-text, .gradient-text { color: var(--text-primary); }
 
   .label {
     font-family: var(--font-body);
@@ -126,7 +115,7 @@
     position: relative;
     background: var(--bg-elevated);
     border: 1px solid var(--border-subtle);
-    border-radius: 10px;
+    border-radius: 12px;
     transition: border-color 0.2s ease;
   }
   .panel:hover { border-color: var(--border-strong); }
@@ -135,27 +124,27 @@
 
   /* ── controls ─────────────────────────────────────── */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-5 py-3 font-medium min-h-[44px];
+    @apply inline-flex items-center justify-center gap-2 px-[18px] font-medium min-h-[40px];
     font-family: var(--font-body);
-    font-size: 0.92rem;
-    border-radius: 999px;
-    color: var(--bg-deep);
+    font-size: 0.88rem;
+    border-radius: 8px;
+    color: var(--bg-base);
     background: var(--text-primary);
-    transition: background 0.2s ease;
+    transition: opacity 0.2s ease;
   }
-  .btn-primary:hover { background: #fff; }
+  .btn-primary:hover { opacity: 0.85; }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 px-5 py-3 font-medium min-h-[44px];
+    @apply inline-flex items-center justify-center gap-2 px-[18px] font-medium min-h-[40px];
     font-family: var(--font-body);
-    font-size: 0.92rem;
-    border-radius: 999px;
-    border: 1px solid var(--border-strong);
+    font-size: 0.88rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
     color: var(--text-primary);
     background: transparent;
     transition: border-color 0.2s, background 0.2s;
   }
-  .btn-outline:hover { border-color: var(--text-secondary); background: rgba(237, 232, 223, 0.04); }
+  .btn-outline:hover { border-color: var(--border-strong); background: var(--surface); }
 
   .glow-purple, .glow-pink { box-shadow: none; }
 
@@ -185,7 +174,7 @@
 
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg-base); }
-::-webkit-scrollbar-thumb { background: #2c2925; border: 3px solid var(--bg-base); border-radius: 999px; }
+::-webkit-scrollbar-thumb { background: #3a3b40; border: 3px solid var(--bg-base); border-radius: 999px; }
 
 .page-enter-active, .page-leave-active { transition: opacity 0.25s ease, transform 0.25s ease; }
 .page-enter-from { opacity: 0; transform: translateY(6px); }

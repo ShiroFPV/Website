@@ -10,7 +10,7 @@
       <p class="text-gray-400 text-sm leading-relaxed mb-4">
         Your FC has dedicated pads for this. The exact labels vary by board but they'll be something like:
       </p>
-      <div class="rounded-[3px] p-4" style="background: rgba(109,94,242,0.1); border: 1px solid rgba(109,94,242,0.25);">
+      <div class="rounded-[3px] p-4" style="background: rgba(233, 233, 235, 0.06); border: 1px solid rgba(233, 233, 235, 0.15);">
         <div class="font-mono text-sm space-y-2">
           <div class="flex items-center gap-3">
             <span style="color: var(--accent);">Camera</span>

@@ -20,27 +20,27 @@ defineProps({
 .card {
   display: flex; flex-direction: column;
   height: 100%;
-  padding: 26px;
-  background: var(--bg-elevated);
+  padding: 22px;
+  background: transparent;
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
   transition: border-color 0.2s ease;
 }
-.card:hover { border-color: var(--border-strong); }
+.card:hover { background: var(--surface); }
 
-.card-top { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 40px; }
+.card-top { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 32px; }
 .card-tags { font-size: 0.8rem; color: var(--text-muted); }
-.card-flag { font-size: 0.78rem; color: var(--copper-light); }
+.card-flag { font-size: 0.78rem; color: var(--text-secondary); }
 
 .card-title {
-  font-family: var(--font-display);
-  font-size: 1.55rem;
-  line-height: 1.15;
+  font-weight: 500;
+  font-size: 1.05rem;
+  line-height: 1.3;
   letter-spacing: -0.02em;
   color: var(--text-primary);
   margin-bottom: 10px;
 }
-.card-desc { flex: 1; font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 24px; }
+.card-desc { flex: 1; font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 24px; }
 .card-link { font-size: 0.88rem; color: var(--text-primary); transition: color 0.2s; }
-.card:hover .card-link { color: var(--copper-light); }
+.card-link { color: var(--text-secondary); }
 </style>
