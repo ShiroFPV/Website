@@ -20,10 +20,10 @@ const socials = [
     color: '#e9e9eb',
   },
   {
-    name: 'Discord',
+    name: 'BasilFPV Discord',
     handle: '@shiro1930',
-    url: 'https://discord.gg/PaRHFSmX',
-    description: 'Join the community and chat about FPV builds and hardware.',
+    url: 'https://discord.gg/pcVA5Mjgy2',
+    description: "Not my server, but it's the FPV Discord I'm most active in. Come say hi.",
     color: '#e9e9eb',
   },
   {

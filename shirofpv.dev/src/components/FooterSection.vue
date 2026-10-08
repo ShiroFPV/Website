@@ -3,7 +3,7 @@ const year = new Date().getFullYear()
 
 const socials = [
   { name: 'GitHub', url: 'https://github.com/ShiroFPV' },
-  { name: 'Discord', url: 'https://discord.gg/PaRHFSmX' },
+  { name: 'BasilFPV Discord', url: 'https://discord.gg/pcVA5Mjgy2' },
   { name: 'Support', url: 'https://support.shirofpv.com' },
 ]
 </script>
