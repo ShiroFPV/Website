@@ -1,4 +1,6 @@
 <script setup>
+import { RouterLink } from 'vue-router'
+
 const year = new Date().getFullYear()
 
 const socials = [
@@ -10,53 +12,57 @@ const socials = [
 
 <template>
   <footer class="ft">
-    <div class="ft-edge" aria-hidden="true"></div>
     <div class="page-shell ft-inner">
-      <div class="ft-mark">
-        <span class="ft-word">Shiro<span class="grad-text">FPV</span></span>
-        <span class="label ft-tag">open-source FPV hardware</span>
+      <div class="ft-top">
+        <p class="ft-line">
+          Building something that flies?
+          <RouterLink to="/contact" class="ft-cta">Let&rsquo;s talk.</RouterLink>
+        </p>
+        <nav class="ft-links">
+          <a v-for="s in socials" :key="s.name" :href="s.url" target="_blank" rel="noopener noreferrer">{{ s.name }}</a>
+        </nav>
       </div>
-
-      <nav class="ft-links">
-        <a v-for="s in socials" :key="s.name" :href="s.url" target="_blank" rel="noopener noreferrer">
-          {{ s.name }} <span aria-hidden="true">↗</span>
-        </a>
-      </nav>
-
-      <p class="ft-note">© {{ year }} — built with Vue + stubbornness</p>
+      <div class="ft-bottom">
+        <span>© {{ year }} ShiroFPV</span>
+        <span>Schematics are open. Use them, fly them.</span>
+      </div>
     </div>
   </footer>
 </template>
 
 <style scoped>
-.ft { position: relative; margin-top: auto; background: var(--bg-deep); }
+.ft { margin-top: auto; border-top: 1px solid var(--border-subtle); }
 
-.ft-edge {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--violet) 30%, var(--pink) 68%, transparent);
-  opacity: 0.6;
-}
-
-.ft-inner {
-  display: flex; flex-direction: column; gap: 18px;
-  padding: 30px 20px;
-}
+.ft-inner { padding: 56px 20px 28px; }
 @media (min-width: 640px) { .ft-inner { padding-inline: 32px; } }
+
+.ft-top {
+  display: flex; flex-direction: column; gap: 28px;
+  padding-bottom: 40px;
+}
 @media (min-width: 860px) {
-  .ft-inner { flex-direction: row; align-items: center; justify-content: space-between; gap: 24px; }
+  .ft-top { flex-direction: row; align-items: flex-end; justify-content: space-between; }
 }
 
-.ft-mark { display: flex; flex-direction: column; gap: 3px; }
-.ft-word { font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; color: var(--text-primary); }
-.ft-tag { text-transform: uppercase; }
-
-.ft-links { display: flex; flex-wrap: wrap; gap: 18px; }
-.ft-links a {
-  font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.09em;
-  text-transform: uppercase; color: var(--text-secondary);
-  transition: color 0.2s ease;
+.ft-line {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  max-width: 20ch;
 }
-.ft-links a:hover { color: var(--pink); }
+.ft-cta { font-style: italic; color: var(--copper-light); text-decoration: underline; text-decoration-thickness: 1px; }
+.ft-cta:hover { color: var(--text-primary); }
 
-.ft-note { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.06em; color: var(--text-muted); }
+.ft-links { display: flex; gap: 24px; }
+.ft-links a { font-size: 0.92rem; color: var(--text-secondary); transition: color 0.2s; }
+.ft-links a:hover { color: var(--text-primary); }
+
+.ft-bottom {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.8rem; color: var(--text-muted);
+}
 </style>

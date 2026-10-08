@@ -12,65 +12,42 @@ defineProps({
       <span class="row-title">{{ project.title }}</span>
       <span class="row-desc">{{ project.description }}</span>
     </span>
-    <span class="row-tags">
-      <span v-for="t in project.tags.slice(0, 3)" :key="t" class="tag">{{ t }}</span>
-    </span>
-    <span class="row-arrow" aria-hidden="true">→</span>
+    <span class="row-tags">{{ project.tags.slice(0, 3).join(' · ') }}</span>
+    <span class="row-arrow" aria-hidden="true">↗</span>
   </a>
 </template>
 
 <style scoped>
 .row {
-  position: relative;
   display: grid;
   grid-template-columns: auto 1fr auto;
   grid-template-areas: "i body arrow" ". tags tags";
-  gap: 4px 18px;
-  align-items: center;
-  padding: 22px 14px 22px 4px;
+  gap: 6px 20px;
+  align-items: baseline;
+  padding: 26px 0;
   border-bottom: 1px solid var(--border-subtle);
-  transition: background 0.25s ease, padding-left 0.25s ease;
 }
 @media (min-width: 860px) {
   .row {
-    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    grid-template-columns: 48px minmax(0, 1fr) 220px 24px;
     grid-template-areas: "i body tags arrow";
-    gap: 26px;
+    gap: 24px;
   }
 }
 
-.row::before {
-  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
-  background: linear-gradient(180deg, var(--violet-light), var(--pink));
-  transform: scaleY(0); transform-origin: top;
-  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.row:hover { background: rgba(255, 255, 255, 0.022); padding-left: 16px; }
-.row:hover::before { transform: scaleY(1); }
-
-.row-i { grid-area: i; align-self: start; padding-top: 4px; transition: color 0.25s; }
-.row:hover .row-i { color: var(--pink); }
-
-.row-body { grid-area: body; display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.row-i { grid-area: i; }
+.row-body { grid-area: body; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .row-title {
-  font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em;
-  font-size: clamp(1.08rem, 2vw, 1.4rem); color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
 }
-.row-desc { font-size: 0.87rem; line-height: 1.55; color: var(--text-muted); max-width: 62ch; }
+.row-desc { font-size: 0.92rem; line-height: 1.55; color: var(--text-muted); max-width: 60ch; }
+.row-tags { grid-area: tags; font-size: 0.82rem; color: var(--text-secondary); }
 
-.row-tags { grid-area: tags; display: flex; flex-wrap: wrap; gap: 6px; }
-.tag {
-  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--text-secondary);
-  border: 1px solid var(--border-subtle); border-radius: 2px;
-  padding: 3px 7px; white-space: nowrap;
-}
-
-.row-arrow {
-  grid-area: arrow; display: none;
-  font-family: var(--font-mono); color: var(--text-muted);
-  transition: transform 0.25s ease, color 0.25s ease;
-}
-@media (min-width: 860px) { .row-arrow { display: block; } }
-.row:hover .row-arrow { color: var(--pink); transform: translateX(4px); }
+.row-arrow { grid-area: arrow; color: var(--text-muted); transition: color 0.2s ease, transform 0.2s ease; }
+.row:hover .row-title { color: var(--copper-light); }
+.row:hover .row-arrow { color: var(--copper-light); transform: translate(2px, -2px); }
 </style>

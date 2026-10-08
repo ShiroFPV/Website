@@ -12,17 +12,11 @@ const num = (i) => String(i + 1).padStart(2, '0')
   <div>
     <HeroSection />
 
-    <!-- ── 02 selected work ─────────────────────────── -->
     <section class="sec">
       <div class="page-shell">
         <header class="sec-head">
-          <div class="meta">
-            <span class="idx">02</span>
-            <span class="rule meta-rule"></span>
-            <span class="label">Selected work</span>
-          </div>
           <h2 class="display sec-title">Things I&rsquo;ve built</h2>
-          <p class="sec-sub">FCs, firmware, tools — whatever I got obsessed with. Most of it actually works.</p>
+          <p class="sec-sub">Flight controllers, firmware, small tools. Whatever I got obsessed with that month. Most of it works.</p>
         </header>
 
         <ul class="work">
@@ -31,40 +25,29 @@ const num = (i) => String(i + 1).padStart(2, '0')
           </li>
         </ul>
 
-        <div class="sec-foot">
-          <RouterLink to="/projects" class="btn-outline">See everything</RouterLink>
-        </div>
+        <RouterLink to="/projects" class="more">All projects &rarr;</RouterLink>
       </div>
     </section>
 
-    <!-- ── 03 who ───────────────────────────────────── -->
     <section class="sec sec-who">
       <div class="page-shell who-grid">
-        <div class="who-left">
-          <div class="meta">
-            <span class="idx">03</span>
-            <span class="rule meta-rule"></span>
-            <span class="label">Who</span>
-          </div>
-          <h2 class="display sec-title">Who even<br />is Shiro?</h2>
-        </div>
+        <h2 class="display sec-title">Who&rsquo;s Shiro?</h2>
 
-        <div class="who-right">
+        <div>
           <p class="who-p">
-            FPV pilot turned hardware nerd. Got frustrated with what was out there,
-            started making my own. AT32 flight controllers, KiCad schematics,
-            open-source everything — it escalated quickly.
+            FPV pilot turned hardware nerd. I got frustrated with what was on the shelf
+            and started drawing my own boards: AT32 flight controllers, KiCad schematics,
+            everything open. It escalated quickly.
           </p>
 
           <blockquote class="pull">
-            A femboy who designs flight controllers.
-            <span class="pull-dim">The ESCs don&rsquo;t care, and honestly neither should you.</span>
+            &ldquo;A femboy who designs flight controllers. The ESCs don&rsquo;t care, and honestly neither should you.&rdquo;
           </blockquote>
 
-          <div class="who-foot">
-            <span class="chip">he/him/her</span>
-            <RouterLink to="/about" class="who-link">The full story →</RouterLink>
-          </div>
+          <p class="who-foot">
+            <span>he/him/her</span>
+            <RouterLink to="/about" class="who-link">The longer version &rarr;</RouterLink>
+          </p>
         </div>
       </div>
     </section>
@@ -72,61 +55,45 @@ const num = (i) => String(i + 1).padStart(2, '0')
 </template>
 
 <style scoped>
-.sec { padding: clamp(56px, 8vw, 104px) 20px; }
+.sec { padding: clamp(64px, 9vw, 120px) 20px; border-top: 1px solid var(--border-subtle); }
 @media (min-width: 640px) { .sec { padding-inline: 32px; } }
 
-.meta { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
-.meta-rule { flex: 0 0 44px; }
-
-.sec-head { margin-bottom: clamp(30px, 4vw, 48px); }
-.sec-title {
-  font-size: clamp(1.9rem, 4.2vw, 3rem);
-  color: var(--text-primary);
-  margin-bottom: 12px;
+.sec-head {
+  display: flex; flex-direction: column; gap: 14px;
+  margin-bottom: clamp(32px, 4vw, 56px);
 }
-.sec-sub { max-width: 52ch; color: var(--text-secondary); line-height: 1.65; font-size: 0.97rem; }
+@media (min-width: 900px) {
+  .sec-head { flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 48px; }
+}
+.sec-title { font-size: clamp(2rem, 4.4vw, 3.2rem); color: var(--text-primary); }
+.sec-sub { max-width: 42ch; color: var(--text-secondary); line-height: 1.6; }
 
 .work { border-top: 1px solid var(--border-subtle); }
 
-.sec-foot { margin-top: 30px; }
+.more {
+  display: inline-block; margin-top: 32px;
+  font-size: 0.95rem; color: var(--text-primary);
+  text-decoration: underline; text-decoration-color: var(--border-strong); text-decoration-thickness: 1px;
+}
+.more:hover { text-decoration-color: var(--copper); }
 
-/* ── who ── */
-.sec-who { border-top: 1px solid var(--border-subtle); }
-.who-grid { display: grid; gap: clamp(26px, 4vw, 60px); grid-template-columns: 1fr; }
-@media (min-width: 900px) { .who-grid { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); } }
+.who-grid { display: grid; gap: 28px; }
+@media (min-width: 900px) { .who-grid { grid-template-columns: 1fr 1.3fr; gap: 64px; } }
 
-.who-p { color: var(--text-secondary); line-height: 1.72; font-size: 1rem; margin-bottom: 26px; max-width: 58ch; }
+.who-p { color: var(--text-secondary); line-height: 1.75; font-size: 1.05rem; margin-bottom: 36px; max-width: 56ch; }
 
 .pull {
-  position: relative;
-  padding: 16px 0 16px 20px;
-  border-left: 2px solid var(--pink);
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
-  letter-spacing: -0.02em;
-  line-height: 1.38;
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
   color: var(--text-primary);
-  margin-bottom: 26px;
+  margin-bottom: 36px;
+  max-width: 30ch;
 }
-.pull-dim { display: block; margin-top: 7px; font-family: var(--font-body); font-weight: 400; font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); letter-spacing: 0; }
 
-.who-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
-.chip {
-  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--pink);
-  background: var(--pink-soft);
-  border: 1px solid var(--border-hot);
-  border-radius: 2px;
-  padding: 5px 9px;
-}
-.who-link {
-  font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--text-secondary);
-  border-bottom: 1px solid var(--border-strong);
-  padding-bottom: 2px;
-  transition: color 0.2s, border-color 0.2s;
-}
-.who-link:hover { color: var(--text-primary); border-color: var(--pink); }
+.who-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; font-size: 0.9rem; color: var(--text-muted); }
+.who-link { color: var(--text-primary); text-decoration: underline; text-decoration-color: var(--border-strong); text-decoration-thickness: 1px; }
+.who-link:hover { text-decoration-color: var(--copper); }
 </style>

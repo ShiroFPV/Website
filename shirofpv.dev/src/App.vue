@@ -1,11 +1,11 @@
 <script setup>
-import SideRail from './components/SideRail.vue'
+import SiteNav from './components/SiteNav.vue'
 import FooterSection from './components/FooterSection.vue'
 </script>
 
 <template>
-  <SideRail />
-  <div class="shell has-rail">
+  <SiteNav />
+  <div class="shell">
     <main class="flex-1 relative z-10">
       <RouterView v-slot="{ Component }">
         <Transition name="page" mode="out-in">
@@ -23,9 +23,6 @@ import FooterSection from './components/FooterSection.vue'
   display: flex;
   flex-direction: column;
   background-color: var(--bg-base);
-  padding-top: 56px; /* clears the mobile top bar */
-}
-@media (min-width: 1024px) {
-  .shell { padding-top: 0; }
+  padding-top: var(--nav-h);
 }
 </style>
