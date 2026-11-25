@@ -8,15 +8,21 @@ import DebuggingFCView from '../views/DebuggingFCView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
 const DEFAULT_DESCRIPTION =
-  'ShiroFPV — FPV hardware designer & pilot. Open-source AT32 flight controllers, KiCad designs, firmware, and FC debugging guides.'
+  'ShiroFPV — FPV hardware designer & pilot. Open-source AT32F435 flight controllers (30.5×30.5 V1 and 20×20 digital HD V2), KiCad designs, firmware, and FC debugging guides.'
 
 const routes = [
   { path: '/', component: HomeView, meta: { title: 'ShiroFPV — Home', description: DEFAULT_DESCRIPTION } },
   { path: '/about', component: AboutView, meta: { title: 'ShiroFPV — About', description: 'FPV pilot turned open-source hardware designer. The story behind ShiroFPV, the skills, and the journey from first build to custom flight controllers.' } },
   { path: '/projects', component: ProjectsView, meta: { title: 'ShiroFPV — Projects', description: 'Open-source flight controllers, firmware, and tools built by ShiroFPV.' } },
   { path: '/contact', component: ContactView, meta: { title: 'ShiroFPV — Contact', description: 'Get in touch with ShiroFPV — collaborations, hardware questions, or just to talk FPV.' } },
-  { path: '/flight-controller', component: FlightControllerView, meta: { title: 'ShiroFPV — Flight Controller', description: 'The ShiroFPV flight controller: open-source AT32F435 board for Betaflight. Specs, setup guide, DFU/flashing, and troubleshooting.' } },
-  { path: '/debugging/:slug', redirect: (to) => ({ path: '/debugging', hash: '#' + to.params.slug }) },
+  { path: '/flight-controller', component: FlightControllerView, meta: { title: 'ShiroFPV — Flight Controller', description: 'The ShiroFPV V1 (30.5×30.5 mm) and V2 (20×20 mm digital HD, ICM-42605, SPL07-003) open-source AT32F435 flight controllers for Betaflight. Specs, pinouts, setup, DFU/flashing, and troubleshooting.' } },
+  {
+    path: '/debugging/:slug',
+    redirect: (to) => {
+      const slug = String(to.params.slug || '').replace(/[^a-zA-Z0-9-]/g, '')
+      return { path: '/debugging', hash: slug ? `#${slug}` : '' }
+    },
+  },
   { path: '/debugging', component: DebuggingFCView, meta: { title: 'ShiroFPV — Debugging your FC', description: 'Practical guides for debugging common flight controller problems — UART, receivers, OSD, CPU load, and more.' } },
   { path: '/:pathMatch(.*)*', component: NotFoundView, meta: { title: 'ShiroFPV — Page Not Found', description: DEFAULT_DESCRIPTION } },
 ]

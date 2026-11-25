@@ -10,8 +10,12 @@ const ALLOWED_ORIGINS = [
   'http://localhost:5173',
 ]
 
-const LIMITS = { name: 100, email: 200, message: 5000 }
+const LIMITS = { name: 100, email: 200, message: 5000, maxBodyBytes: 16384, maxTokenLen: 2048 }
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+function sanitizeHeaderText(value) {
+  return String(value || '').replace(/[\r\n\x00-\x1f\x7f]/g, '').trim()
+}
 
 function cors(origin) {
   const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0]
@@ -26,7 +30,11 @@ function cors(origin) {
 function json(body, status, origin) {
   return new Response(JSON.stringify(body), {
     status,
-    headers: { 'Content-Type': 'application/json', ...cors(origin) },
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Content-Type-Options': 'nosniff',
+      ...cors(origin),
+    },
   })
 }
 
@@ -36,6 +44,7 @@ async function verifyTurnstile(token, ip, secret) {
   form.append('response', token)
   if (ip) form.append('remoteip', ip)
   const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', { method: 'POST', body: form })
+  if (!res.ok) return false
   const data = await res.json()
   return data.success === true
 }
@@ -49,23 +58,45 @@ export default {
     if (url.pathname !== '/' || request.method !== 'POST') return json({ success: false, message: 'Not found' }, 404, origin)
     if (!ALLOWED_ORIGINS.includes(origin)) return json({ success: false, message: 'Origin not allowed' }, 403, origin)
 
+    const contentType = request.headers.get('Content-Type') || ''
+    if (!contentType.toLowerCase().includes('application/json')) {
+      return json({ success: false, message: 'Unsupported content type' }, 415, origin)
+    }
+
+    const contentLength = Number(request.headers.get('Content-Length') || 0)
+    if (Number.isFinite(contentLength) && contentLength > LIMITS.maxBodyBytes) {
+      return json({ success: false, message: 'Payload too large' }, 413, origin)
+    }
+
+    let rawText
     let body
     try {
-      body = await request.json()
+      rawText = await request.text()
+      if (rawText.length > LIMITS.maxBodyBytes) {
+        return json({ success: false, message: 'Payload too large' }, 413, origin)
+      }
+      body = JSON.parse(rawText)
     } catch {
       return json({ success: false, message: 'Invalid JSON' }, 400, origin)
     }
 
-    const name = String(body.name || '').trim()
-    const email = String(body.email || '').trim()
-    const message = String(body.message || '').trim()
-    const token = String(body.turnstileToken || '')
+    if (!body || typeof body !== 'object' || Array.isArray(body)) {
+      return json({ success: false, message: 'Invalid JSON' }, 400, origin)
+    }
+
+    const name = sanitizeHeaderText(body.name)
+    const email = sanitizeHeaderText(body.email)
+    const message = String(body.message || '').replace(/\x00/g, '').trim()
+    const token = String(body.turnstileToken || '').trim()
 
     if (!name || !email || !message) return json({ success: false, message: 'Please fill in every field.' }, 400, origin)
     if (name.length > LIMITS.name || email.length > LIMITS.email || message.length > LIMITS.message) {
       return json({ success: false, message: 'Message is too long.' }, 400, origin)
     }
     if (!EMAIL_RE.test(email)) return json({ success: false, message: 'That email address looks wrong.' }, 400, origin)
+    if (!token || token.length > LIMITS.maxTokenLen) {
+      return json({ success: false, message: 'Spam check failed. Please try again.' }, 400, origin)
+    }
 
     const human = await verifyTurnstile(token, request.headers.get('CF-Connecting-IP'), env.TURNSTILE_SECRET)
     if (!human) return json({ success: false, message: 'Spam check failed. Please try again.' }, 400, origin)

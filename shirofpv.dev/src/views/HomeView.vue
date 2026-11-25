@@ -7,8 +7,8 @@ const others = projects.slice(1)
 const timeline = [
   { year: '2022', text: 'Started flying FPV. Built my first quad from scratch.' },
   { year: '2024', text: 'Opened KiCad and started learning PCB design.' },
-  { year: '2025', text: 'ShiroFPV FC v1 designed, manufactured and open-sourced.' },
-  { year: '2026', text: 'Refining the board and optimising the design.' },
+  { year: '2025', text: 'ShiroFPV FC V1 (30.5×30.5 mm) designed, manufactured and open-sourced.' },
+  { year: '2026', text: 'Designed and open-sourced ShiroFPV FC V2 — a 20×20 mm digital-only redesign with an 8 kHz ICM-42605 gyro.' },
 ]
 
 const tiles = [
@@ -20,7 +20,7 @@ const tiles = [
 <template>
   <div class="home">
     <section class="intro">
-      <p class="eyebrow">Shiro &middot; he/him/her</p>
+      <p class="eyebrow">Shiro &middot; Lea &middot; she/her</p>
       <h1 class="title">FPV pilot and open-source hardware designer.</h1>
       <p class="lead">
         I got into FPV drones and never looked back. What started as a hobby turned into a fixation on the
@@ -40,22 +40,23 @@ const tiles = [
       <RouterLink to="/flight-controller" class="feature">
         <div class="feature-model">
           <model-viewer
-            src="/assets/fc.glb"
-            alt="3D model of the ShiroFPV flight controller"
+            src="/assets/fc-v2.glb?v=3"
+            alt="3D model of the ShiroFPV V2 20x20 flight controller"
             auto-rotate
             auto-rotate-delay="0"
             rotation-per-second="14deg"
             camera-orbit="30deg 60deg auto"
-            shadow-intensity="0.5"
+            shadow-intensity="0"
             exposure="1.05"
+            loading="lazy"
             disable-zoom
             interaction-prompt="none"
           ></model-viewer>
         </div>
         <div class="feature-body">
-          <small>Hardware &middot; 2025</small>
-          <h3>ShiroFPV flight controller</h3>
-          <p>A 30.5 mm board around the AT32F435 at 288 MHz with 16 Mb blackbox flash. My own Betaflight target, schematics you can actually read.</p>
+          <small>Hardware &middot; V1 &amp; V2</small>
+          <h3>ShiroFPV flight controllers</h3>
+          <p>Open-source AT32F435 boards at 288 MHz &mdash; V1 in 30.5&times;30.5 mm with analog OSD and 16 Mb blackbox flash, and the new 20&times;20 mm V2 built for digital HD builds with an 8 kHz ICM-42605 gyro and TPS2116 power mux.</p>
           <span class="go">Pinout &amp; details &rarr;</span>
         </div>
       </RouterLink>

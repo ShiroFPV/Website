@@ -1,8 +1,8 @@
 export const projects = [
   {
     id: 1,
-    title: 'ShiroFPV Flight Controller',
-    description: 'High-performance, open-source flight controller designed for every FPV pilot. Built with precision, engineered for Fun.',
+    title: 'ShiroFPV Flight Controllers',
+    description: 'Open-source AT32F435 flight controllers in KiCad with Betaflight targets — V1 (30.5×30.5 mm, analog OSD + 16 Mb flash) and V2 (20×20 mm, digital HD, 8 kHz ICM-42605).',
     tags: ['AT32', 'Betaflight', 'Open Source'],
     link: 'https://github.com/ShiroFPV/ShiroFPV_Flight_Controller_Collection',
     featured: false,

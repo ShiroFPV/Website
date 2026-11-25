@@ -17,7 +17,7 @@ const timeline = [
   { year: '2022', title: 'First build', description: 'Built my first quad from scratch — learned how every component works, and that every solder joint has to be right.' },
   { year: '2024', title: 'Hardware design begins', description: 'Started learning PCB design in KiCad. Realised I wanted to build my own flight controller.' },
   { year: '2025', title: 'ShiroFPV FC v1', description: 'Designed and manufactured the first ShiroFPV flight controller. Open-sourced it immediately.' },
-  { year: '2026', title: 'Improvement', description: 'Currently refining the design and optimising the board.' },
+  { year: '2026', title: 'ShiroFPV FC V2 (20×20)', description: 'Shrank the architecture down to a 4-layer 20×20 mm digital-only board around the 48-pin AT32F435CGT7, ICM-42605, and SPL07-003 — open-sourced alongside V1.' },
 ]
 </script>
 
@@ -36,8 +36,8 @@ const timeline = [
         <h1 class="display id-name">Shiro<span class="grad-text">FPV</span></h1>
 
         <div class="id-line">
-          <span class="handle">@shirofpv</span>
-          <span class="chip">he/him/her</span>
+          <span class="handle">@shirofpv &middot; aka Lea</span>
+          <span class="chip">she/her</span>
         </div>
 
         <p class="id-role">
@@ -52,8 +52,8 @@ const timeline = [
         </dl>
 
         <blockquote class="pull">
-          A femboy who designs flight controllers.
-          <span class="pull-dim">The ESCs don&rsquo;t care, and honestly neither should you.</span>
+          Good hardware shouldn&rsquo;t be a black box.
+          <span class="pull-dim">Clean traces, honest specs, and schematics anyone can open, study, and build from.</span>
         </blockquote>
 
         <div class="id-cta">

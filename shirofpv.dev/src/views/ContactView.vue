@@ -211,7 +211,7 @@ async function handleSubmit() {
 
               <p v-if="submitError" class="text-sm text-red-300">{{ submitError }}</p>
 
-              <button :disabled="isSubmitting" type="submit" class="btn-primary text-white w-full text-sm font-semibold disabled:opacity-70 disabled:cursor-not-allowed">
+              <button :disabled="isSubmitting" type="submit" class="btn-primary w-full text-sm font-semibold disabled:opacity-70 disabled:cursor-not-allowed">
                 {{ isSubmitting ? 'Sending...' : 'Send Message' }}
               </button>
             </form>
